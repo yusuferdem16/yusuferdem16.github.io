@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Member - AYBU Board Game Club</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header section containing logo and navigation -->
+    <header id="main-header">
+        <div class="logo-container">
+            <h1>AYBU Board Game Club</h1>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="catalogue.html">Game Catalogue</a></li>
+                <li><a href="membership.html" class="active">Become a Member</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <!-- Membership hero section -->
+        <section id="membership-hero" class="section">
+            <div class="container">
+                <h2>Join AYBU Board Game Club</h2>
+                <p>Fill out the form below to become a member and join our WhatsApp group.</p>
+            </div>
+        </section>
+
+        <!-- Membership benefits section -->
+        <section id="benefits" class="section">
+            <div class="container">
+                <h2>Membership Benefits</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <img src="images/benefit1.jpg" alt="Game Access">
+                        <h3>Access to Game Library</h3>
+                        <p>Borrow games from our collection for personal use.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <img src="images/benefit2.jpg" alt="Events">
+                        <h3>Priority Event Registration</h3>
+                        <p>Get first access to limited-seat events and tournaments.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <img src="images/benefit3.jpg" alt="Discounts">
+                        <h3>Sponsor Discounts</h3>
+                        <p>Enjoy special discounts at our partner board game cafés.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration form section -->
+        <section id="registration-form" class="section">
+            <div class="container">
+                <h2>Membership Registration Form</h2>
+                <form class="form-container">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">AYBU Email</label>
+                        <input type="email" id="email" name="email" placeholder="your.name@aybu.edu.tr" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="+90 5XX XXX XX XX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Board Game Interests (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="strategy" name="interests" value="strategy">
+                                <label for="strategy">Strategy Games</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="party" name="interests" value="party">
+                                <label for="party">Party Games</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="family" name="interests" value="family">
+                                <label for="family">Family Games</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="card" name="interests" value="card">
+                                <label for="card">Card Games</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="roleplay" name="interests" value="roleplay">
+                                <label for="roleplay">Role-Playing Games</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Why do you want to join? (Optional)</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn">Submit Registration</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: boardgames@aybu.edu.tr</p>
+                    <p>WhatsApp Group: Join via membership</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Sponsors</h3>
+                    <div class="sponsor-logos">
+                        <img src="images/sponsor1.jpg" alt="Da Vinci">
+                        <img src="images/sponsor2.jpg" alt="Sauron Cafe">
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 AYBU Board Game Club. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

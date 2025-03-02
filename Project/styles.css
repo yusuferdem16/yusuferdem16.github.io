@@ -1,0 +1,488 @@
+/*Main Stylesheet for AYBU Board Game Club Website
+Created for CENG 311 - Web Technology Applications
+Authors: Efe Baştuğ, Abdullah Yusuf Erdem
+Date: March 2025
+*/
+
+/* --------------------------
+Reset and Base Styles
+--------------------------- */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+body {
+ font-family: 'Poppins', sans-serif;
+ line-height: 1.6;
+ color: #333;
+ background-color: #f8f9fa;
+ transition: background 0.3s ease-in-out;
+}
+
+.container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 20px;
+}
+
+img {
+ max-width: 100%;
+ height: auto;
+}
+
+a {
+ text-decoration: none;
+ color: #3498db; /* Blue color */
+}
+
+ul {
+ list-style: none;
+}
+
+/* --------------------------
+Typography
+--------------------------- */
+h1, h2, h3, h4 {
+ font-weight: 700;
+ line-height: 1.2;
+ margin-bottom: 15px;
+}
+
+h1 {
+ font-size: 2.5rem;
+}
+
+h2 {
+ font-size: 2rem;
+ color: #3498db; /* Blue color */
+ text-align: center;
+ margin-bottom: 30px;
+}
+
+h3 {
+ font-size: 1.5rem;
+ color: #444;
+}
+
+p {
+ margin-bottom: 15px;
+}
+
+/* --------------------------
+Header Styles
+--------------------------- */
+#main-header {
+ background-color: rgba(255, 255, 255, 0.8);
+ backdrop-filter: blur(10px);
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ padding: 15px 0;
+ position: sticky;
+ top: 0;
+ z-index: 100;
+}
+
+.logo-container {
+ text-align: center;
+ margin-bottom: 10px;
+}
+
+.logo-container h1 {
+ color: #3498db; /* Blue color */
+ font-size: 1.8rem;
+ margin-bottom: 0;
+}
+
+/* --------------------------
+Navigation Styles
+--------------------------- */
+#main-nav ul {
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ gap: 20px;
+}
+
+#main-nav li {
+ margin: 0 15px;
+}
+
+#main-nav a {
+ font-weight: 600;
+ transition: color 0.3s ease-in-out;
+ padding: 10px;
+ border-radius: 8px;
+}
+
+#main-nav a:hover {
+ background: #3498db; /* Blue color */
+ color: white;
+}
+
+#main-nav a.active {
+ color: #3498db; /* Blue color */
+ border-bottom: 2px solid #3498db; /* Blue color */
+}
+
+/* --------------------------
+Section Styles
+--------------------------- */
+.section {
+ padding: 60px 0;
+}
+
+#hero {
+ background: linear-gradient(135deg, #1abc9c, #16a085); /* Green gradient */
+ color: white;
+ text-align: center;
+ padding: 80px 0;
+ border-radius: 0 0 50px 50px;
+}
+
+#hero h2 {
+ color: white;
+ font-size: 2.5rem;
+}
+
+#hero p {
+ font-size: 1.2rem;
+ max-width: 800px;
+ margin: 0 auto 30px;
+}
+
+/* --------------------------
+Button Styles
+--------------------------- */
+.btn {
+ display: inline-block;
+ background: linear-gradient(145deg, #3498db, #2980b9); /* Blue gradient */
+ color: white;
+ padding: 12px 25px;
+ border-radius: 8px;
+ font-weight: 600;
+ transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.btn:hover {
+ transform: scale(1.05);
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-small {
+ padding: 8px 15px;
+ font-size: 0.9rem;
+}
+
+/* --------------------------
+Card Styles
+--------------------------- */
+.founding-members-container {
+ display: flex;
+ justify-content: center; /* Centers the cards horizontally */
+ gap: 20px; /* Adds space between the cards */
+ flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.founding-member-card {
+ width: 300px; /* Adjust width as needed */
+ text-align: center;
+ background: white;
+ padding: 20px;
+ border-radius: 10px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-grid, .game-slider, .sponsor-grid, .benefits-grid, .founder-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+ gap: 30px;
+ margin-top: 20px;
+}
+
+.event-card, .game-card, .sponsor-card, .benefit-card, .founder-card {
+ background: rgba(255, 255, 255, 0.2);
+ backdrop-filter: blur(10px);
+ border-radius: 15px;
+ padding: 20px;
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ transition: transform 0.3s;
+}
+
+.event-card:hover, .game-card:hover, .sponsor-card:hover {
+ transform: translateY(-5px);
+}
+
+.event-card img, .game-card img, .sponsor-card img, .benefit-card img, .founder-card img {
+ width: 100%;
+ height: 200px;
+ object-fit: cover;
+}
+
+.event-card h3, .game-card h3, .sponsor-card h3, .benefit-card h3, .founder-card h3 {
+ padding: 15px 15px 5px;
+}
+
+.event-card p, .game-card p, .sponsor-card p, .benefit-card p, .founder-card p {
+ padding: 0 15px 15px;
+}
+
+.event-card .btn-small {
+ margin: 0 15px 15px;
+}
+
+/* --------------------------
+Games List Styles
+--------------------------- */
+.games-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+ gap: 30px;
+}
+
+.game-item {
+ display: flex;
+ background-color: white;
+ border-radius: 10px;
+ overflow: hidden;
+ box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-item img {
+ width: 120px;
+ height: 120px;
+ object-fit: cover;
+}
+
+.game-info {
+ padding: 15px;
+ flex-grow: 1;
+}
+
+.game-info p {
+ margin-bottom: 5px;
+ font-size: 0.9rem;
+}
+
+/* --------------------------
+Category Tabs Styles
+--------------------------- */
+.category-tabs {
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ gap: 10px;
+ margin-bottom: 30px;
+}
+
+.category-tab {
+ padding: 8px 15px;
+ background-color: #f0f0f0;
+ border: none;
+ border-radius: 20px;
+ cursor: pointer;
+ transition: all 0.3s;
+}
+
+.category-tab:hover {
+ background-color: #e0e0e0;
+}
+
+.category-tab.active {
+ background-color: #3498db; /* Blue color */
+ color: white;
+}
+
+/* --------------------------
+Mission Section Styles
+--------------------------- */
+.mission-content {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 30px;
+ align-items: center;
+}
+
+.mission-text {
+ flex: 1;
+ min-width: 300px;
+}
+
+.mission-image {
+ flex: 1;
+ min-width: 300px;
+}
+
+.mission-image img {
+ border-radius: 10px;
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------
+FAQ Styles
+--------------------------- */
+.faq-list {
+ max-width: 800px;
+ margin: 0 auto;
+}
+
+.faq-item {
+ background-color: white;
+ border-radius: 10px;
+ padding: 20px;
+ margin-bottom: 15px;
+ box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item h3 {
+ color: #3498db; /* Blue color */
+ margin-bottom: 10px;
+}
+
+/* --------------------------
+Form Styles
+--------------------------- */
+.form-container {
+ max-width: 700px;
+ margin: 0 auto;
+ background-color: white;
+ padding: 30px;
+ border-radius: 10px;
+ box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+ margin-bottom: 20px;
+}
+
+.form-group label {
+ display: block;
+ margin-bottom: 8px;
+ font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+ width: 100%;
+ padding: 12px;
+ border: 1px solid #ddd;
+ border-radius: 5px;
+ font-size: 1rem;
+}
+
+.form-group textarea {
+ resize: vertical;
+ min-height: 100px;
+}
+
+.checkbox-group {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+ gap: 10px;
+}
+
+.checkbox-item {
+ display: flex;
+ align-items: center;
+}
+
+.checkbox-item input[type="checkbox"] {
+ margin-right: 8px;
+}
+
+/* --------------------------
+About Us Hero Styles
+--------------------------- */
+#about-hero, #catalogue-hero, #membership-hero {
+ background-color: #1abc9c; /* Green color */
+ color: white;
+ text-align: center;
+ padding: 60px 0;
+}
+
+#about-hero h2, #catalogue-hero h2, #membership-hero h2 {
+ color: white;
+}
+
+/* --------------------------
+Footer Styles
+--------------------------- */
+#main-footer {
+ background-color: #333;
+ color: #f8f9fa;
+ padding: 50px 0 20px;
+}
+
+.footer-content {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ margin-bottom: 30px;
+}
+
+.footer-section {
+ flex: 1;
+ min-width: 250px;
+ margin-bottom: 30px;
+}
+
+.footer-section h3 {
+ color: white;
+ border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+ padding-bottom: 10px;
+ margin-bottom: 20px;
+}
+
+.sponsor-logos {
+ display: flex;
+ gap: 15px;
+}
+
+.sponsor-logos img {
+ height: 40px;
+ width: auto;
+ filter: grayscale(100%) brightness(200%);
+}
+
+.copyright {
+ text-align: center;
+ padding-top: 20px;
+ border-top: 1px solid rgba(255, 255, 255, 0.1);
+ font-size: 0.9rem;
+}
+
+/* --------------------------
+Responsive Styles
+--------------------------- */
+@media (max-width: 768px) {
+ #main-nav ul {
+    flex-direction: column;
+    align-items: center;
+ }
+ 
+ #main-nav li {
+    margin: 5px 0;
+ }
+ 
+ .mission-content {
+    flex-direction: column;
+ }
+ 
+ .game-item {
+    flex-direction: column;
+ }
+ 
+ .game-item img {
+    width: 100%;
+    height: 180px;
+ }
+ 
+ .form-group input[type="text"],
+ .form-group input[type="email"],
+ .form-group input[type="tel"],
+ .form-group textarea {
+    padding: 10px;
+ }
+}
