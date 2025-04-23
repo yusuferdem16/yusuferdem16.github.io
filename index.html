@@ -1,25 +1,253 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A. Yusuf Erdem</title>
+    <title>Yusuf Erdem - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="../images/lol.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body style="background-color: #989ebd; color: black; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
-    <div style="text-align: center; width: 500px; word-wrap: break-word;">
-        
-        <h1>Abdullah Yusuf Erdem</h1>
-        <h1>Who Am I?</h3>
-    <p style="margin: 35px;">Hey, My name is Yusuf, I'm a 3rd-year Computer Engineering student at Ankara Yildirim Beyazit University (AYBU).
-        My main interests lie in data science, machine learning, and artificial intelligence.
-        Beyond the world of technology, I have a deep passion for traveling I’ve had the chance to explore almost every part of both 
-        Turkey and the United States, experiencing diverse cultures across these countries. <br><br>When it comes to my Computer Engineering journey, 
-        I had the opportunity to intern at Belsis, where I focused on ERP software development and GIS systems. 
-        This experience gave me hands-on exposure to enterprise-level software solutions and spatial data technologies,
-        helping me strengthen my technical expertise and analytical thinking.
-    </p>
-    </div>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="site-title">Yusuf Erdem</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <main>
+        <section id="about" class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="images/profile_photo.jpg" alt="Yusuf Erdem Profile Picture" class="profile-img">
+                <p>I'm a curious and driven Computer Engineering student at Ankara Yıldırım Beyazıt University, expecting to graduate in
+                2026. My passion for technology is matched by a lifelong commitment to continuous learning and personal growth.
+                <br><br> Over the course of my academic journey, I have developed a strong foundation in programming, software
+                development, and data analysis, while constantly exploring new areas like machine learning and web technologies. Outside
+                the classroom, I spent eight transformative months living and working in the United States through the Work and Travel
+                program. These experiences sharpened my adaptability, problem-solving, and intercultural communication skills—qualities
+                that I bring into every team and project I join.
+                <br><br> Beyond my technical expertise, I’m a certified voice actor and a language enthusiast, always seeking creative
+                outlets to complement my analytical mindset. I believe that combining creativity with technical problem-solving leads to
+                innovative solutions. I enjoy stepping out of my comfort zone, embracing challenges, and collaborating with others to
+                create meaningful, impactful work.</p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="container">
+            <h2>Education</h2>
+            <p><strong>Computer Engineering Bachelor's Degree</strong><br>
+                Ankara Yıldırım Beyazıt University • Ankara, Turkey • Graduating 2026</p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <img src="images/parcel.png" alt="Parcel Selection Program">
+                    <h3>Parcel Selection Program</h3>
+                    <p>Designed a GIS demo project using OpenLayers, C# .NET backend, and Node.js frontend, adopted by
+                        municipalities across Turkey.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/odoo.png" alt="Odoo ERP Customization">
+                    <h3>Odoo ERP Customization</h3>
+                    <p>Enhanced business operations by customizing and extending functionalities within the Odoo ERP
+                        system using Python.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/data_science.png" alt="Data Science Projects">
+                    <h3>Data Science Projects</h3>
+                    <p>Collaborated on real-world data science projects, performing data preprocessing, machine
+                        learning, and statistical analysis.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/titanic.png" alt="Titanic Survival Chance Predictor">
+                    <h3>Titanic Survival Chance Predictor</h3>
+                    <p>Developed a machine learning model to predict survival chances on the Titanic using Python, pandas, and scikit-learn.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/dog_breed.png" alt="Dog Breed Classifier">
+                    <h3>Dog Breed Classifier</h3>
+                    <p>Built a deep learning model using TensorFlow to classify dog breeds from images with high accuracy.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/blog_page.png" alt="Blog Page Made with Cursor AI">
+                    <h3>Blog Page Made with Cursor AI</h3>
+                    <p>Created a responsive and visually appealing blog page using Cursor AI to explore and test its capabilities in web development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="container">
+            <h2>Achievements</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <img src="images/cert1.png" alt="AI Certification">
+                    <h3>Complete AI & Machine Learning Certification</h3>
+                    <p>Earned Data Science Bootcamp certification from Udemy in 2025.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/achievements2.JPEG" alt="Udham Award">
+                    <h3>Udham Idea Contest Award</h3>
+                    <p>Recognized for the Rotasyon smart ecological destination planning project.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/voice_acting.JPEG" alt="Voice Acting">
+                    <h3>Voice Acting Certification</h3>
+                    <p>Certified voice actor with strong creative expression skills.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/wat.JPEG" alt="Work Experience">
+                    <h3>International Work Experience</h3>
+                    <p>Eight months living and working in the U.S. through Work and Travel program.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/cs2_rating.JPG" alt="CS2 Rating 16">
+                    <h3>CS2 Rating 16</h3>
+                    <p>As a formal global player, I achieved a CS2 Rating of 16k, showcasing my strategic thinking, teamwork, and
+                        competitive skills in the gaming world.</p>
+                </div>
+                <div class="project-item">
+                    <img src="images/kukri.JPEG" alt="Unboxing a Kukri Knife">
+                    <h3>Unboxing a Kukri Knife</h3>
+                    <p>After dedicating over 3,000 hours to gaming, I achieved the rare milestone of unboxing a Kukri Knife, a
+                        testament to perseverance and passion for the game.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="container">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>Programming Languages: Python, SQL, C#, JavaScript</li>
+                <li>Web Development: HTML, CSS, Node.js, OpenLayers</li>
+                <li>Software Development: OOP, ERP customization (Odoo), Full-Stack Development (C# .NET)</li>
+                <li>Data Analysis & ML: TensorFlow, NumPy, pandas, Matplotlib, machine learning concepts</li>
+                <li>Database Management: PostgreSQL, pgAdmin, DBeaver</li>
+                <li>Tools: Git, GitLab, Jira</li>
+                <li>Mathematical Foundations: Linear Algebra, Probability, Statistics, Discrete Mathematics</li>
+                <li>Soft Skills: Team collaboration, adaptability, problem-solving, excellent communication in English
+                </li>
+            </ul>
+        </section>
+        <!-- Hobbies Section -->
+        <section id="photography" class="container">
+            <h2>Photography</h2>
+            <p>Photography has always been a passion of mine. Here are some of my favorite shots that capture the beauty of the
+                world through my lens.</p>
+            <div class="photo-gallery">
+                <div class="photo-item">
+                    <img src="images/photography/photo1.JPEG" alt="Photo 1" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo2.JPEG" alt="Photo 2" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo3.JPEG" alt="Photo 3" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo4.JPEG" alt="Photo 4" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo5.JPEG" alt="Photo 5" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo6.JPEG" alt="Photo 6" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo7.JPEG" alt="Photo 7" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo8.JPEG" alt="Photo 8" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo9.JPEG" alt="Photo 9" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo10.JPEG" alt="Photo 10" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo11.JPEG" alt="Photo 11" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo12.JPEG" alt="Photo 12" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo13.JPEG" alt="Photo 13" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo14.JPEG" alt="Photo 14" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo15.JPEG" alt="Photo 15" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo16.JPEG" alt="Photo 16" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo17.JPEG" alt="Photo 17" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo18.JPEG" alt="Photo 18" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo19.JPEG" alt="Photo 19" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo20.JPEG" alt="Photo 20" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo21.JPEG" alt="Photo 21" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="images/photography/photo22.JPEG" alt="Photo 22" loading="lazy">
+                </div>
+            </div></div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="container">
+            <h2>Get In Touch</h2>
+            <p>Feel free to reach out to me!</p>
+            <div class="social-links">
+                <a href="https://github.com/yusuferdem16" class="social-icon" target="_blank" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yusuferdem16/" class="social-icon" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:abdullahyusuferdem@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+905464380894" class="social-icon" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                <a href="https://yusuferdem16.github.io" class="social-icon" target="_blank" aria-label="Website"><i
+                        class="fas fa-globe"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Yusuf Erdem. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
 
 </html>
