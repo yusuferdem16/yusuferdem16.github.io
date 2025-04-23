@@ -141,7 +141,10 @@ p {
     object-fit: cover;
     border: 4px solid #1abc9c;
 }
-
+#education{
+        margin-top: 50px;
+        text-align: center;
+    }
 /* Project Grid */
 .project-grid {
     display: grid;
@@ -179,10 +182,25 @@ p {
     font-size: 16px;
     color: #777;
 }
-
+#projects {
+    margin-top: 50px;
+    text-align: center;
+}
+#achievements {
+    margin-top: 50px;
+    text-align: center;
+}
+#skills {
+    margin-top: 50px;
+    text-align: center;
+}
+#contact {
+    margin-top: 50px;
+    text-align: center;
+}
 /* Photography Section */
 #photography {
-    margin-top: 60px;
+    margin-top: 50px;
     text-align: center;
 }
 
