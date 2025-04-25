@@ -1,16 +1,8 @@
 let lastScrollPosition = 0;
+const toggleHeaderButton = document.getElementById('toggle-header');
 const header = document.querySelector('header');
 
-window.addEventListener('scroll', () => {
-    const currentScrollPosition = window.pageYOffset;
-
-    if (currentScrollPosition > lastScrollPosition) {
-        // Scrolling down
-        header.style.transform = 'translateY(-100%)'; // Hide the header
-    } else {
-        // Scrolling up
-        header.style.transform = 'translateY(0)'; // Show the header
-    }
-
-    lastScrollPosition = currentScrollPosition;
+toggleHeaderButton.addEventListener('click', () => {
+    header.classList.toggle('hidden'); // Toggle the 'hidden' class on the header
+    toggleHeaderButton.textContent = header.classList.contains('hidden') ? '▼' : '▲'; // Change arrow direction
 });
