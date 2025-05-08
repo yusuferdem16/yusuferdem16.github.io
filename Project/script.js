@@ -210,3 +210,101 @@ $(document).ready(function() {
     $("#age").val($("#age-slider").slider("value"));
     $("#age-value").text($("#age-slider").slider("value"));
 });
+
+$(document).ready(function() {
+    // Load club news from JSON file
+    $.ajax({
+        url: 'data/news.json',
+        method: 'GET',
+        success: function(data) {
+            const newsContainer = $('#news-container');
+            data.news.forEach((item, index) => {
+                newsContainer.append(`
+                    <div class="accordion-item">
+                        <button class="accordion-header" aria-expanded="false">
+                            <span class="news-title">${item.title}</span>
+                            <span class="news-date">${item.date}</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>${item.content}</p>
+                        </div>
+                    </div>
+                `);
+            });
+
+            // Add click event for accordion
+            $('.accordion-header').click(function() {
+                const isExpanded = $(this).attr('aria-expanded') === 'true';
+                
+                // Close all other accordion items
+                $('.accordion-header').attr('aria-expanded', 'false');
+                $('.accordion-content').slideUp();
+                $('.accordion-icon').text('+');
+                
+                if (!isExpanded) {
+                    $(this).attr('aria-expanded', 'true');
+                    $(this).find('.accordion-icon').text('-');
+                    $(this).next('.accordion-content').slideDown();
+                }
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error loading news:', error);
+        }
+    });
+
+    // Fetch weather data from OpenMeteo API (free, no API key needed)
+    // Ankara coordinates
+    const ANKARA_LAT = 39.9334;
+    const ANKARA_LON = 32.8597;
+
+    $.ajax({
+        url: `https://api.open-meteo.com/v1/forecast?latitude=${ANKARA_LAT}&longitude=${ANKARA_LON}&current_weather=true&temperature_unit=celsius`,
+        method: 'GET',
+        success: function(data) {
+            const weather = data.current_weather;
+            const weatherDescription = getWeatherDescription(weather.weathercode);
+            
+            // Determine if weather is "good" or "bad"
+            const isBadWeather = [3, 45, 48, 51, 53, 55, 61, 63, 65, 71, 73, 75, 95].includes(weather.weathercode);
+            const message = isBadWeather ? 
+                'Perfect time to stay in and play board games!' : 
+                'Beautiful weather outside - go touch some grass! (But come back later for games!)';
+            
+            $('.weather-info').html(`
+                <h3>Ankara Weather</h3>
+                <p>Temperature: ${Math.round(weather.temperature)}°C</p>
+                <p>Conditions: ${weatherDescription}</p>
+                <p class="weather-message">${message}</p>
+            `);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error loading weather:', error);
+            $('.weather-info').html('<p>Weather information temporarily unavailable</p>');
+        }
+    });
+
+    // Helper function to convert weather codes to descriptions
+    function getWeatherDescription(code) {
+        const weatherCodes = {
+            0: 'Clear sky',
+            1: 'Mainly clear',
+            2: 'Partly cloudy',
+            3: 'Overcast',
+            45: 'Foggy',
+            48: 'Depositing rime fog',
+            51: 'Light drizzle',
+            53: 'Moderate drizzle',
+            55: 'Dense drizzle',
+            61: 'Slight rain',
+            63: 'Moderate rain',
+            65: 'Heavy rain',
+            71: 'Slight snow',
+            73: 'Moderate snow',
+            75: 'Heavy snow',
+            95: 'Thunderstorm'
+        };
+        return weatherCodes[code] || 'Unknown';
+    }
+});

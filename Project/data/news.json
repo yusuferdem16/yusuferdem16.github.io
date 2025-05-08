@@ -1,0 +1,34 @@
+{
+    "news": [
+        {
+            "title": "New Games Added!",
+            "date": "2025-05-08",
+            "content": "We've added 5 new games including Wingspan, Root, and Twilight Imperium to our collection!"
+        },
+        {
+            "title": "Tournament Winners",
+            "date": "2025-05-06",
+            "content": "Congratulations to Team Dragon for winning our monthly strategy tournament in Catan!"
+        },
+        {
+            "title": "Game Design Workshop",
+            "date": "2025-05-04",
+            "content": "Join us next weekend for a special Game Design Workshop with industry professionals!"
+        },
+        {
+            "title": "D&D Campaign Starting",
+            "date": "2025-05-02",
+            "content": "New D&D campaign starting this month! Sign up now - limited spots available."
+        },
+        {
+            "title": "Board Game Night Success",
+            "date": "2025-04-30",
+            "content": "Thank you to everyone who attended our International Tabletop Day celebration. Over 50 participants!"
+        },
+        {
+            "title": "Partnership Announcement",
+            "date": "2025-04-28",
+            "content": "We're excited to announce our partnership with local game store 'Dice & Dragons' for exclusive member discounts!"
+        }
+    ]
+}
