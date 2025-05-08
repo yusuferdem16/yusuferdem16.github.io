@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/aybülogo.ico">
     <title>Become a Member - AYBU Board Game Club</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <!-- AOS CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- SweetAlert CSS stylesheet-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert JS script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- AOS JS script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- JQuery JS scripts -->
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <!-- JQuery validation scripts -->
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <!-- Regular JS file -->
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- Header section containing logo and navigation -->
@@ -25,7 +42,7 @@
     <!-- Main content section -->
     <main>
         <!-- Membership hero section -->
-        <section id="membership-hero" class="section">
+        <section id="membership-hero" class="section" data-aos="fade-up">
             <div class="container">
                 <h2>Join AYBU Board Game Club</h2>
                 <p>Fill out the form below to become a member and join our WhatsApp group.</p>
@@ -33,7 +50,7 @@
         </section>
 
         <!-- Membership benefits section -->
-        <section id="benefits" class="section">
+        <section id="benefits" class="section" data-aos="fade-right">
             <div class="container">
                 <h2>Membership Benefits</h2>
                 <div class="benefits-grid">
@@ -57,28 +74,35 @@
         </section>
 
         <!-- Registration form section -->
-        <section id="registration-form" class="section">
+        <section id="registration-form" class="section" data-aos="fade-up">
             <div class="container">
                 <h2>Membership Registration Form</h2>
                 <form class="form-container">
                     <div class="form-group">
                         <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" name="fullName" required>
+                        <input type="text" id="fullName" name="fullName" required title="Please enter your full name">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">AYBU Email</label>
-                        <input type="email" id="email" name="email" placeholder="your.name@aybu.edu.tr" required>
+                        <input type="email" id="email" name="email" placeholder="your.name@aybu.edu.tr" required title="Please enter a valid AYBU email address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Your Age: <span id="age-value">18</span></label>
+                        <div id="age-slider"></div>
+                        <input type="hidden" id="age" name="age" value="18" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="whatsapp">WhatsApp Number</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="+90 5XX XXX XX XX" required>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="+90 5XX XXX XX XX" required title="Please enter a valid WhatsApp number">
                     </div>
                     
                     <div class="form-group">
-                        <label>Board Game Interests (Select all that apply)</label>
-                        <div class="checkbox-group">
+                        <fieldset class="checkbox-group">
+                            <legend>Board Game Interests (Select all that apply)</legend>
+                    
                             <div class="checkbox-item">
                                 <input type="checkbox" id="strategy" name="interests" value="strategy">
                                 <label for="strategy">Strategy Games</label>
@@ -99,8 +123,9 @@
                                 <input type="checkbox" id="roleplay" name="interests" value="roleplay">
                                 <label for="roleplay">Role-Playing Games</label>
                             </div>
-                        </div>
+                        </fieldset>
                     </div>
+                    
                     
                     <div class="form-group">
                         <label for="message">Why do you want to join? (Optional)</label>
@@ -137,5 +162,6 @@
             </div>
         </div>
     </footer>
+    <button id="scrollTopBtn" title="Go to top">⬆️</button>
 </body>
 </html>

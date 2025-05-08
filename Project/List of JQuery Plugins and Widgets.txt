@@ -1,0 +1,11 @@
+JQuery Plugins:
+1 - Slick Carousel
+2 - AOS (Animate On Scroll)
+3 - SweetAlert2
+4 - JQuery Validate
+
+JQuery Widgets:
+1 - Accordion for FAQ section in about.html
+2 - Tooltip for registration form on membership.hml
+3 - Age slider for registration form on membership.hml
+4 - Checkbox for registration form on membership.hml

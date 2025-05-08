@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/aybülogo.ico">
     <title>Game Catalogue - AYBU Board Game Club</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- Header section containing logo and navigation -->
-    <header id="main-header">
+    <header id="main-header" data-aos="fade-down">
         <div class="logo-container">
             <h1>AYBU Board Game Club</h1>
         </div>
@@ -25,7 +31,7 @@
     <!-- Main content section -->
     <main>
         <!-- Catalogue hero section -->
-        <section id="catalogue-hero" class="section">
+        <section id="catalogue-hero" class="section" data-aos="fade-right">
             <div class="container">
                 <h2>Our Game Catalogue</h2>
                 <p>Browse our collection of board games available for club members to enjoy during events or borrow.</p>
@@ -33,85 +39,107 @@
         </section>
 
         <!-- Game categories section -->
-        <section id="game-categories" class="section">
+        <section id="game-categories" class="section" data-aos="fade-right">
             <div class="container">
                 <h2>Game Categories</h2>
                 <div class="category-tabs">
-                    <button class="category-tab active">All Games</button>
-                    <button class="category-tab">Strategy</button>
-                    <button class="category-tab">Party</button>
-                    <button class="category-tab">Family</button>
-                    <button class="category-tab">Card Games</button>
+                    <button class="category-tab active" data-category="all">All Games</button>
+                    <button class="category-tab" data-category="strategy">Strategy</button>
+                    <button class="category-tab" data-category="party">Party</button>
+                    <button class="category-tab" data-category="family">Family</button>
+                    <button class="category-tab" data-category="card-game">Card Games</button>
                 </div>
             </div>
         </section>
 
         <!-- Games list section -->
-        <section id="games-list" class="section">
+        <section id="games-list" class="section" data-aos="fade-up">
             <div class="container">
                 <div class="games-grid">
-                    <div class="game-item">
+                    <div class="game-item" data-category="strategy">
                         <img src="images/game1.jpg" alt="Settlers of Catan">
                         <div class="game-info">
                             <h3>Settlers of Catan</h3>
                             <p><strong>Players:</strong> 3-4</p>
                             <p><strong>Play Time:</strong> 60-120 minutes</p>
-                            <p><strong>Category:</strong> Strategy, Resource Management</p>
+                            <p><strong>Category:</strong> Strategy</p>
                             <p><strong>Status:</strong> Available</p>
                             <p><strong>Current Price:</strong> ₺850</p>
                         </div>
                     </div>
-                    <div class="game-item">
+                    <div class="game-item" data-category="family">
                         <img src="images/game2.jpg" alt="Ticket to Ride">
                         <div class="game-info">
                             <h3>Ticket to Ride</h3>
                             <p><strong>Players:</strong> 2-5</p>
                             <p><strong>Play Time:</strong> 30-60 minutes</p>
-                            <p><strong>Category:</strong> Family, Strategy</p>
+                            <p><strong>Category:</strong> Family</p>
                             <p><strong>Status:</strong> Available</p>
                             <p><strong>Current Price:</strong> ₺700</p>
                         </div>
                     </div>
-                    <div class="game-item">
+                    <div class="game-item" data-category="family">
                         <img src="images/game3.jpg" alt="Pandemic">
                         <div class="game-info">
                             <h3>Pandemic</h3>
                             <p><strong>Players:</strong> 2-4</p>
                             <p><strong>Play Time:</strong> 45 minutes</p>
-                            <p><strong>Category:</strong> Cooperative, Strategy</p>
+                            <p><strong>Category:</strong> Family</p>
                             <p><strong>Status:</strong> Checked Out</p>
                             <p><strong>Current Price:</strong> ₺650</p>
                         </div>
                     </div>
-                    <div class="game-item">
+                    <div class="game-item" data-category="party">
                         <img src="images/game4.jpg" alt="Codenames">
                         <div class="game-info">
                             <h3>Codenames</h3>
                             <p><strong>Players:</strong> 2-8+</p>
                             <p><strong>Play Time:</strong> 15 minutes</p>
-                            <p><strong>Category:</strong> Party, Word Game</p>
+                            <p><strong>Category:</strong> Party</p>
                             <p><strong>Status:</strong> Available</p>
                             <p><strong>Current Price:</strong> ₺350</p>
                         </div>
                     </div>
-                    <div class="game-item">
+                    <div class="game-item" data-category="card-game">
                         <img src="images/game5.jpg" alt="7 Wonders">
                         <div class="game-info">
                             <h3>7 Wonders</h3>
                             <p><strong>Players:</strong> 3-7</p>
                             <p><strong>Play Time:</strong> 30 minutes</p>
-                            <p><strong>Category:</strong> Card Drafting, Civilization</p>
+                            <p><strong>Category:</strong> Card Game</p>
                             <p><strong>Status:</strong> Available</p>
                             <p><strong>Current Price:</strong> ₺550</p>
                         </div>
                     </div>
-                    <div class="game-item">
+                    <div class="game-item" data-category="party">
                         <img src="images/game6.jpg" alt="Dixit">
                         <div class="game-info">
                             <h3>Dixit</h3>
                             <p><strong>Players:</strong> 3-6</p>
                             <p><strong>Play Time:</strong> 30 minutes</p>
-                            <p><strong>Category:</strong> Party, Storytelling</p>
+                            <p><strong>Category:</strong> Party</p>
+                            <p><strong>Status:</strong> Available</p>
+                            <p><strong>Current Price:</strong> ₺450</p>
+                        </div>
+                    </div>
+                    <div class="game-item" data-category="card-game">
+                        <img src="images/game7.jpg" alt="Epic Spell Wars">
+                        <div class="game-info">
+                            <h3>Epic Spell Wars</h3>
+                            <p><strong>Players:</strong> 2-6</p>
+                            <p><strong>Play Time:</strong> 30-60 minutes</p>
+                            <p><strong>Category:</strong> Card Game</p>
+                            <p><strong>Status:</strong> Available</p>
+                            <p><strong>Current Price:</strong> ₺400</p>
+                        </div>
+                    </div>
+                    <div class="game-item" data-category="family">
+                        <img src="images/game8.jpg" alt="Monopoly">
+                        <div class="game-info">
+                            <h3>Monopoly</h3>
+                            <p><strong>Players:</strong> 2-6</p>
+                            <p><strong>Play Time:</strong> 60 minutes</p>
+                            <p><strong>Category:</strong> Family</p>
                             <p><strong>Status:</strong> Available</p>
                             <p><strong>Current Price:</strong> ₺450</p>
                         </div>
@@ -121,7 +149,7 @@
         </section>
 
         <!-- Request form section -->
-        <section id="request-form" class="section">
+        <section id="request-form" class="section" data-aos="fade-left">
             <div class="container">
                 <h2>Request to Borrow a Game</h2>
                 <p>Club members can request to borrow games for up to one week.</p>
@@ -134,7 +162,7 @@
     </main>
 
     <!-- Footer section -->
-    <footer id="main-footer">
+    <footer id="main-footer" data-aos="fade-up">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -155,5 +183,6 @@
             </div>
         </div>
     </footer>
+    <button id="scrollTopBtn" title="Go to top">⬆️</button>
 </body>
 </html>

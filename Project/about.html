@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/aybülogo.ico">
     <title>About Us - AYBU Board Game Club</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- Header section containing logo and navigation -->
@@ -12,7 +19,7 @@
         <div class="logo-container">
             <h1>AYBU Board Game Club</h1>
         </div>
-        <nav id="main-nav">
+        <nav id="main-nav" data-aos="fade-down">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About Us</a></li>
@@ -25,7 +32,7 @@
     <!-- Main content section -->
     <main>
         <!-- About us hero section -->
-        <section id="about-hero" class="section">
+        <section id="about-hero" class="section" data-aos="fade-right">
             <div class="container">
                 <h2>About AYBU Board Game Club</h2>
                 <p>Learn more about our club, our founding members, and our mission to bring board game enthusiasts together.</p>
@@ -33,7 +40,7 @@
         </section>
 
         <!-- Mission and vision section -->
-        <section id="mission" class="section">
+        <section id="mission" class="section" data-aos="fade-up">
             <div class="container">
                 <h2>Our Mission & Vision</h2>
                 <div class="mission-content">
@@ -52,7 +59,7 @@
         </section>
 
         <!-- Founding members section -->
-        <section id="founders" class="section">
+        <section id="founders" class="section" data-aos="fade-left">
             <div class="container">
                 <h2>Founding Members</h2>
                 <div class="founding-members-container">
@@ -71,20 +78,20 @@
         </section>
 
         <!-- FAQ section -->
-        <section id="faq" class="section">
+        <section id="faq" class="section" data-aos="fade-up">
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <h3>How can I join the club?</h3>
+                <div id="faq-accordion">
+                    <h3>How can I join the club?</h3>
+                    <div>
                         <p>You can join by filling out the membership form on our website and joining our WhatsApp group.</p>
                     </div>
-                    <div class="faq-item">
-                        <h3>Do I need to bring my own games?</h3>
+                    <h3>Do I need to bring my own games?</h3>
+                    <div>
                         <p>No, the club has a collection of games, but you're welcome to bring your favorites to share!</p>
                     </div>
-                    <div class="faq-item">
-                        <h3>How often do you meet?</h3>
+                    <h3>How often do you meet?</h3>
+                    <div>
                         <p>We typically hold events twice a month, with additional special events throughout the semester.</p>
                     </div>
                 </div>
@@ -109,8 +116,8 @@
                 </div>
             </div>
         </section>
+        <button id="scrollTopBtn" title="Go to top">⬆️</button>
     </main>
-
     <!-- Footer section -->
     <footer id="main-footer">
         <div class="container">
