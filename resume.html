@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusuf Erdem - Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @media print {
+            body { background: white; }
+            .print-button { display: none; }
+            a { color: #0066ff; text-decoration: underline; }
+        }
+        
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .resume-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #06b6d4;
+        }
+        
+        .resume-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+            color: #ffffff;
+        }
+        
+        .resume-header p {
+            margin: 0.25rem 0;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+        
+        .contact-info a {
+            color: #06b6d4;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .contact-info a:hover {
+            color: #22c55e;
+        }
+        
+        .resume-section {
+            margin-bottom: 2rem;
+        }
+        
+        .resume-section h2 {
+            font-size: 1.3rem;
+            color: #06b6d4;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .resume-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+        
+        .resume-item-title {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+        
+        .resume-item-subtitle {
+            color: #06b6d4;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .resume-item-meta {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .resume-item-description {
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .resume-item-description ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+        
+        .resume-item-description li {
+            margin-bottom: 0.3rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .resume-item-description li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+        }
+        
+        .skill-category {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-category-title {
+            font-weight: 600;
+            color: #06b6d4;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+        
+        .skill-list {
+            color: #e2e8f0;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        
+        .award-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        
+        .award-badge strong {
+            color: #22c55e;
+        }
+        
+        .print-button {
+            background: #06b6d4;
+            color: #0f172a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .print-button:hover {
+            background: #00bcd4;
+        }
+        
+        @media (max-width: 768px) {
+            .resume-container {
+                padding: 20px 15px;
+            }
+            
+            .resume-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .resume-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-info {
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <button class="print-button" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        
+        <div class="resume-header">
+            <h1>Abdullah Yusuf Erdem</h1>
+            <p>Computer Engineering Student | Data Science & ML Engineering Focus</p>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">Building production-grade systems with expertise in data engineering, machine learning, and full-stack development.</p>
+            <div class="contact-info">
+                <span>📧 <a href="mailto:abdullahyusuferdem@gmail.com">abdullahyusuferdem@gmail.com</a></span>
+                <span>💼 <a href="https://github.com/yusuferdem16" target="_blank">github.com/yusuferdem16</a></span>
+                <span>🔗 <a href="https://www.linkedin.com/in/yusuferdem16/" target="_blank">linkedin.com/in/yusuferdem16</a></span>
+                <span>🌐 <a href="https://yusuferdem16.github.io" target="_blank">Portfolio</a></span>
+            </div>
+        </div>
+
+        <!-- Awards & Recognition -->
+        <div class="resume-section">
+            <h2>🏆 Awards & Recognition</h2>
+            
+            <div class="award-badge">
+                <strong>🏆 ROTASYON: "Most Ecological Project" Award</strong><br>
+                2024 UDHAM National Universities Idea Competition. Recognized for innovative sustainable urban mobility solution. <strong>50,000 Turkish Lira grant recipient.</strong>
+            </div>
+            
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">📜 Udemy: Complete Data Science Bootcamp</span>
+                    <span class="resume-item-meta">2024 | Foundation for Data Science</span>
+                </div>
+                <div class="resume-item-description">
+                    Comprehensive certification covering supervised learning, deep learning, NLP, and MLOps fundamentals. This was my initial entry point into data science, providing foundational knowledge directly applied to ARIMA & LSTM learning projects, which evolved into the production end-to-end crypto forecaster.
+                </div>
+            </div>
+        </div>
+
+        <!-- Graduation Project -->
+        <div class="resume-section">
+            <h2>🎓 Capstone Project (Graduation)</h2>
+            
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">Integrated Health Risk Model & Hospital Referral Simulation</span>
+                    <span class="resume-item-meta">In Progress | Expected Completion: End of 2025</span>
+                </div>
+                <div class="resume-item-description">
+                    <strong>Two-Layer Machine Learning Architecture for Healthcare Resource Optimization</strong>
+                    <ul>
+                        <li><strong>Layer 1 (Classification):</strong> Multi-class ML model identifies patients' primary disease predisposition (hypertension, stroke, diabetes)</li>
+                        <li><strong>Layer 2 (Risk Analysis):</strong> Specialized models calculate unique risk scores for each disease condition</li>
+                        <li><strong>Application (Simulation):</strong> Simulation environment uses risk scores for optimal hospital resource allocation and patient-facility matching</li>
+                        <li><strong>Technical Innovation:</strong> Solved imbalanced dataset problem using SMOTE (oversampling) and applied comprehensive feature engineering for improved model robustness</li>
+                        <li><strong>Tech Stack:</strong> Python, scikit-learn, pandas, NumPy, Matplotlib, Seaborn</li>
+                        <li><strong>Healthcare Impact:</strong> Enables data-driven hospital referral decisions, optimizes resource distribution, improves patient outcomes through intelligent allocation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="resume-section">
+            <h2>💼 Professional Experience</h2>
+            
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">Odoo ERP System Developer</span>
+                    <span class="resume-item-meta">6-Month Contract + Internship</span>
+                </div>
+                <div class="resume-item-description">
+                    <ul>
+                        <li>Developed custom Odoo modules for inventory management, sales, and business intelligence reporting</li>
+                        <li>Deployed production system supporting 50+ concurrent users across organization</li>
+                        <li><strong>Tech Stack:</strong> Python, Odoo Framework, PostgreSQL, XML</li>
+                        <li>Collaborated with business stakeholders to translate requirements into technical solutions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">International Work Experience</span>
+                    <span class="resume-item-meta">8 Months (USA)</span>
+                </div>
+                <div class="resume-item-description">
+                    <ul>
+                        <li>Forbes 4-star restaurant server (Work & Travel program)</li>
+                        <li>Collaborated with 15+ nationalities in high-pressure service environment</li>
+                        <li>Developed cross-cultural communication, adaptability, and problem-solving skills</li>
+                        <li>Thrived in diverse, fast-paced team settings—skills transferable to global tech collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Experience -->
+        <div class="resume-section">
+            <h2>🚀 Project Experience</h2>
+            
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">End-to-End Crypto Forecaster</span>
+                    <span class="resume-item-meta">Live in Production</span>
+                </div>
+                <div class="resume-item-description">
+                    <strong>Why This Project:</strong> Learning progression from ARIMA & LSTM notebooks (theory) → production ML system (practice). Built to answer: "Can I engineer an autonomous ML pipeline?" 
+                    <ul>
+                        <li><strong>Architecture:</strong> Dockerized PostgreSQL data lake, idempotent ETL pipeline, feature engineering for stationarity</li>
+                        <li><strong>Model Arena:</strong> SARIMAX (1.8% MAPE) vs Bi-LSTM (3.2% MAPE)—proved statistical models outperform deep learning on high-noise crypto data</li>
+                        <li><strong>MLOps:</strong> Automated weekly retraining, live dashboard (Streamlit), GitHub Actions CI/CD</li>
+                        <li><strong>Tech Stack:</strong> Python, TensorFlow, scikit-learn, PostgreSQL, Docker, FastAPI, Streamlit</li>
+                        <li><strong>Live Demo:</strong> <a href="https://btcforecaster.streamlit.app/" target="_blank">btcforecaster.streamlit.app</a> | <strong>Blog:</strong> <a href="https://yusuferdem16.github.io/blog.html" target="_blank">12k-word technical deep dive</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">ROTASYON: Smart Urban Mobility System</span>
+                    <span class="resume-item-meta">Award-Winning | Team Lead: Backend</span>
+                </div>
+                <div class="resume-item-description">
+                    <strong>National Competition Winner:</strong> 2024 UDHAM universities idea competition. "Most Ecological Project" award. 50,000 TL grant.
+                    <ul>
+                        <li><strong>Problem:</strong> Sustainable urban transportation for Turkish cities (Istanbul, Ankara, Izmir, Kocaeli, Trabzon)</li>
+                        <li><strong>Solution:</strong> Mobile app for congestion pricing & low-emission zone management with intelligent routing</li>
+                        <li><strong>My Role:</strong> Backend API design, vehicle eligibility logic, route optimization algorithms, database schema (PostgreSQL)</li>
+                        <li><strong>Tech Stack:</strong> Python, FastAPI, PostgreSQL, Mobile (iOS/Android), Google Maps API, Real-time analytics</li>
+                        <li><strong>Team:</strong> 5 computer engineering students | <strong>Advisor:</strong> Assoc. Prof. Dr. İsmail Çağrı ÖZCAN</li>
+                        <li><strong>Impact:</strong> Deployment potential to 5+ Turkish municipalities; real-world civic tech solution</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">Parcel Selection GIS System</span>
+                    <span class="resume-item-meta">Enterprise Full-Stack | Deployed</span>
+                </div>
+                <div class="resume-item-description">
+                    <strong>N-Tier Architecture | Real-World Deployment</strong>
+                    <ul>
+                        <li><strong>Architecture:</strong> N-tier design (Presentation → API → Business → Data Access → Domain)</li>
+                        <li><strong>Features:</strong> Interactive OpenLayers mapping, spatial optimization queries, real-time filtering</li>
+                        <li><strong>Backend:</strong> ASP.NET Core API (C# 66.1%), PostGIS spatial database, complex geographic queries</li>
+                        <li><strong>Frontend:</strong> OpenLayers.js, responsive design, real-time data visualization</li>
+                        <li><strong>Deployment:</strong> Production system serving Turkish municipalities with 10k+ parcel queries monthly</li>
+                        <li><strong>Tech Stack:</strong> C#, ASP.NET Core, PostgreSQL+PostGIS, JavaScript, Docker</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">Computer Vision Project</span>
+                    <span class="resume-item-meta">In Development</span>
+                </div>
+                <div class="resume-item-description">
+                    Building deep learning solution for real-world computer vision tasks. Exploring CNN architectures (ResNet, EfficientNet), transfer learning, and production deployment strategies. Details coming Q1 2025.
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="resume-section">
+            <h2>💻 Technical Skills</h2>
+            
+            <div class="skill-category">
+                <div class="skill-category-title">Languages & Core</div>
+                <div class="skill-list"><strong>Expert:</strong> Python, SQL, C#, JavaScript</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Backend & APIs</div>
+                <div class="skill-list"><strong>Production:</strong> ASP.NET Core, FastAPI, Node.js, Express | <strong>Databases:</strong> PostgreSQL, PostGIS (spatial), SQLite</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Machine Learning & Data</div>
+                <div class="skill-list"><strong>Frameworks:</strong> TensorFlow, scikit-learn, pandas, numpy | <strong>Specialization:</strong> Time series forecasting (ARIMA, SARIMAX, LSTM), feature engineering, model evaluation</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Frontend & Visualization</div>
+                <div class="skill-list"><strong>Web:</strong> HTML, CSS, JavaScript, React | <strong>Mapping:</strong> OpenLayers, Google Maps API | <strong>Dashboards:</strong> Streamlit, Plotly</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Infrastructure & DevOps</div>
+                <div class="skill-list"><strong>Containerization:</strong> Docker, docker-compose | <strong>CI/CD:</strong> GitHub Actions | <strong>Cloud:</strong> Neon (serverless PostgreSQL), Streamlit Cloud</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Architecture & Patterns</div>
+                <div class="skill-list">N-tier architecture, OOP, SOLID principles, RESTful APIs, idempotent ETL pipelines, MLOps design</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Theoretical Foundations</div>
+                <div class="skill-list">Linear Algebra, Probability & Statistics, Discrete Mathematics, Data Structures, Algorithms</div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section">
+            <h2>🎓 Education</h2>
+            
+            <div class="resume-item">
+                <div class="resume-item-header">
+                    <span class="resume-item-title">Bachelor of Science in Computer Engineering</span>
+                    <span class="resume-item-meta">Expected Graduation: 2025</span>
+                </div>
+                <div class="resume-item-description">
+                    Ankara Yıldırım Beyazıt University (AYBU) | Cumulative GPA: 3.4/4.0
+                    <ul>
+                        <li>Relevant Coursework: Data Structures, Algorithms, Database Systems, Software Engineering, Machine Learning, Computer Networks</li>
+                        <li>Active in competitive programming and open-source contributions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="resume-section">
+            <h2>🌍 Additional Information</h2>
+            
+            <div class="skill-category">
+                <div class="skill-category-title">Languages</div>
+                <div class="skill-list">Turkish (Native), English (Fluent)</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Certifications & Learning</div>
+                <div class="skill-list">Udemy: Complete Data Science Bootcamp (2024) | Entry point into data science, foundational knowledge applied to all ML projects</div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title">Portfolio & Publications</div>
+                <div class="skill-list"><a href="https://yusuferdem16.github.io" target="_blank">Portfolio</a> | <a href="https://yusuferdem16.github.io/blog.html" target="_blank">Technical Blog</a> | <a href="https://github.com/yusuferdem16" target="_blank">GitHub</a></div>
+            </div>
+        </div>
+
+        <hr style="border: 1px solid rgba(6, 182, 212, 0.2); margin-top: 2rem;">
+        <p style="text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 1rem;">
+            Last Updated: December 2025 | For full project details, visit: <a href="https://yusuferdem16.github.io" target="_blank" style="color: #06b6d4;">yusuferdem16.github.io</a>
+        </p>
+    </div>
+</body>
+</html>
