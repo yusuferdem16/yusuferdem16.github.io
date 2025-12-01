@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Production-Ready Crypto Forecasting System — Yusuf Erdem</title>
+    <link rel="icon" type="image/x-icon" href="images/lol.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    <style>
+        .blog-article {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        .blog-article h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #111;
+        }
+        .blog-meta {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .blog-article h2 {
+            font-size: 1.6rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #222;
+            border-left: 4px solid #0f172a;
+            padding-left: 1rem;
+        }
+        .blog-article h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+        .blog-article p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .blog-article ol, .blog-article ul {
+            margin: 1rem 0;
+            margin-left: 2rem;
+        }
+        .blog-article li {
+            margin-bottom: 0.5rem;
+        }
+        .blog-article code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .blog-article pre {
+            background: #0b1220;
+            color: #cfe8ff;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid #00D9FF;
+        }
+        .blog-article pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+        .blog-article strong {
+            font-weight: 700;
+            color: #111;
+        }
+        .blog-article em {
+            font-style: italic;
+            color: #555;
+        }
+        .blog-article blockquote {
+            border-left: 4px solid #ddd;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            color: #666;
+            font-style: italic;
+        }
+        .blog-article hr {
+            border: none;
+            height: 1px;
+            background: #eee;
+            margin: 2rem 0;
+        }
+        .blog-article table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .blog-article table th,
+        .blog-article table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .blog-article table th {
+            background: #f9f9f9;
+            font-weight: 700;
+        }
+        .blog-article .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            margin: 1.5rem 0;
+        }
+        .blog-article .katex {
+            font-size: 1.1em;
+        }
+        @media(max-width: 720px) {
+            .blog-article {
+                padding: 2rem 1rem;
+            }
+            .blog-article h1 {
+                font-size: 1.6rem;
+            }
+            .blog-article h2 {
+                font-size: 1.3rem;
+            }
+            .blog-article pre {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">Technical Blog</div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">View CV</a></li>
+                    <li><a href="index.html">Portfolio Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="blog-article">
+        <h1>Building a Production-Ready Crypto Forecasting System: From Modeler to Engineer</h1>
+        
+        <div class="blog-meta">
+            <strong>Author:</strong> Yusuf Erdem<br>
+            <strong>Date:</strong> December 2025<br>
+            <strong>Reading Time:</strong> 12 minutes
+        </div>
+
+        <hr>
+
+        <h2>Introduction: Why I Built This</h2>
+        <p>Most data science projects fail in production. I wanted to prove I could build something that <strong>actually runs</strong>, continuously improves, and handles real-world messiness. This is the story of how I went from a Jupyter notebook to a system serving predictions 24/7.</p>
+
+        <hr>
+
+        <h2>The Problem: Why Crypto Forecasting is Hard</h2>
+        <p>Cryptocurrency prices are notoriously difficult to predict because:</p>
+        <ol>
+            <li><strong>Non-stationary time series:</strong> Bitcoin's mean changes over time. A model trained on $20k prices will fail at $90k.</li>
+            <li><strong>High noise-to-signal ratio:</strong> Crypto markets are noisy; useful patterns are rare and short-lived.</li>
+            <li><strong>Regime shifts:</strong> Bull markets, bear markets, and sideways trends behave differently.</li>
+            <li><strong>No fundamental anchors:</strong> Unlike stocks (P/E ratios, cash flows), crypto prices are driven purely by sentiment.</li>
+        </ol>
+        <p><strong>My hypothesis:</strong> A simple, statistical model might outperform complex deep learning in this environment.</p>
+
+        <hr>
+
+        <h2>Part 1: The Data Engineering Foundation</h2>
+
+        <h3>Why Docker Matters</h3>
+        <p>Early mistake: I built the system on my Mac, ran it on Linux in production, and got different results. Different Python versions, missing system libraries, environment variables—classic "works on my machine" disaster.</p>
+
+        <p><strong>Solution: Infrastructure as Code with Docker Compose</strong></p>
+
+        <pre><code>version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: crypto_data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data</code></pre>
+
+        <p>Now, whether I run on Mac, Linux, or AWS, the environment is identical. This eliminates an entire class of bugs.</p>
+
+        <h3>The Idempotent ETL Pipeline</h3>
+        <p>Most data pipelines are fragile: if they crash mid-way, your database ends up corrupted. I needed something that could:</p>
+        <ol>
+            <li>Check the database: "What's the latest date we have?"</li>
+            <li>Fetch only new data from Yahoo Finance (starting from date + 1)</li>
+            <li>Append (or replace) atomically</li>
+        </ol>
+
+        <pre><code>def fetch_and_store(ticker):
+    last_date = get_latest_date_from_db(ticker)
+    
+    if last_date:
+        # Incremental update
+        start_date = last_date + timedelta(days=1)
+        action = 'append'
+    else:
+        # Full backfill
+        start_date = '2020-01-01'
+        action = 'replace'
+    
+    df = yf.download(ticker, start=start_date)
+    
+    # Atomic write
+    with engine.begin() as conn:
+        df.to_sql(table_name, conn, if_exists=action, index=False)</code></pre>
+
+        <p><strong>Key insight:</strong> Idempotency means I can run this at 8 AM. If it crashes at 8:05 AM, I can rerun at 8:10 AM and get the same result—no data duplication, no corruption.</p>
+
+        <hr>
+
+        <h2>Part 2: Feature Engineering &amp; Stationarity</h2>
+
+        <h3>Why Log-Returns?</h3>
+        <p>Raw price $P_t = \$90,394$ is non-stationary. Its mean changes over time. But <strong>log-returns</strong> $r_t = \ln(P_t / P_{t-1})$ are stationary (mean ~0, variance constant).</p>
+
+        <p><strong>Mathematically:</strong></p>
+
+        <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+        $$r_t = \ln\left(\frac{P_t}{P_{t-1}}\right)$$
+        </div>
+
+        <p>Interpretation: A 1% move is the same whether Bitcoin is $100 or $100,000. This property is crucial for supervised learning—the model learns patterns that generalize across different price levels.</p>
+
+        <h3>Verification: The ADF Test</h3>
+        <p>I used the Augmented Dickey-Fuller (ADF) test to confirm non-stationarity:</p>
+
+        <ul>
+            <li><strong>Null hypothesis:</strong> Time series has a unit root (non-stationary).</li>
+            <li><strong>Result on raw prices:</strong> p-value = 0.87 → <strong>Cannot reject null</strong> (non-stationary).</li>
+            <li><strong>Result on log-returns:</strong> p-value = 0.02 → <strong>Reject null</strong> (stationary).</li>
+        </ul>
+
+        <p>The math: Under stationarity assumption, we can safely use supervised learning. The model doesn't need to adapt to a drifting mean.</p>
+
+        <h3>Feature Engineering: Bollinger Bands &amp; Volume Momentum</h3>
+
+        <p><strong>Bollinger Bands:</strong> A measure of volatility. If price breaks the upper band, it signals overbought conditions (potential reversal).</p>
+
+        <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+        $$BB_{upper} = SMA(P_t, 20) + 2 \cdot \sigma(P_t, 20)$$
+        </div>
+
+        <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+        $$BB_{lower} = SMA(P_t, 20) - 2 \cdot \sigma(P_t, 20)$$
+        </div>
+
+        <p>Where $SMA$ = 20-day simple moving average, $\sigma$ = standard deviation.</p>
+
+        <p><strong>Volume Momentum:</strong> Does volume increase when price increases? This is a leading indicator of trend strength.</p>
+
+        <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+        $$VM_t = \text{corr}(\Delta P_t, \Delta V_t, \text{window}=14)$$
+        </div>
+
+        <p>If volume spikes but price doesn't follow, the trend is weak. If volume spikes with price, the trend is strong.</p>
+
+        <hr>
+
+        <h2>Part 3: Model Arena — LSTM vs SARIMAX</h2>
+
+        <p>I trained two fundamentally different models:</p>
+
+        <h3>LSTM (Long Short-Term Memory)</h3>
+        <ul>
+            <li><strong>Strength:</strong> Can learn complex non-linear patterns from raw data.</li>
+            <li><strong>Weakness:</strong> Requires 10,000+ training samples to generalize well; overfits on crypto noise.</li>
+            <li><strong>Performance:</strong> MAPE = 3.2%, but predictions are often confidently wrong.</li>
+        </ul>
+
+        <h3>SARIMAX (Seasonal AutoRegressive Integrated Moving Average with eXogenous variables)</h3>
+        <ul>
+            <li><strong>Strength:</strong> Explicitly models stationarity (differencing), seasonality, and error correlation. Works well with 2–3 years of data.</li>
+            <li><strong>Weakness:</strong> Assumes linear relationships and cannot capture sudden regime shifts.</li>
+            <li><strong>Performance:</strong> MAPE = 1.8%, more stable and interpretable predictions.</li>
+        </ul>
+
+        <p><strong>Winner: SARIMAX.</strong> Why? Because crypto is fundamentally noisy, a simpler model that explicitly handles stationarity beats a deep network that tries to memorize noise.</p>
+
+        <p><strong>Table: Model Comparison</strong></p>
+
+        <table>
+            <tr>
+                <th>Metric</th>
+                <th>LSTM</th>
+                <th>SARIMAX</th>
+            </tr>
+            <tr>
+                <td>MAPE (%)</td>
+                <td>3.2</td>
+                <td>1.8</td>
+            </tr>
+            <tr>
+                <td>MAE ($)</td>
+                <td>$2,840</td>
+                <td>$1,608</td>
+            </tr>
+            <tr>
+                <td>Training Time</td>
+                <td>45s</td>
+                <td>30s</td>
+            </tr>
+            <tr>
+                <td>Interpretability</td>
+                <td>Low</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Production Ready</td>
+                <td>No</td>
+                <td>Yes</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2>Part 4: MLOps &amp; Automated Retraining</h2>
+
+        <h3>Why Automate Retraining?</h3>
+        <p>A model trained on Jan 2025 data will degrade over time as the market evolves. I built an automated pipeline that:</p>
+
+        <ol>
+            <li>Runs daily at 8 AM UTC.</li>
+            <li>Fetches new price data (idempotent ETL).</li>
+            <li>Retrains SARIMAX on the last 730 days.</li>
+            <li>Evaluates performance on a holdout test set.</li>
+            <li>If MAPE improves, deploy; otherwise, keep the old model.</li>
+        </ol>
+
+        <h3>Data Drift Detection: The KS Test</h3>
+
+        <p>The challenge: How do I know when my model is broken? I implemented data drift detection using the Kolmogorov-Smirnov (KS) test:</p>
+
+        <div style="text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f9f9f9; border-radius: 6px;">
+        $$KS = \max(|F_{\text{train}}(x) - F_{\text{current}}(x)|)$$
+        </div>
+
+        <p>This measures the maximum difference between the training data distribution and the current data distribution. If $KS > 0.2$, I flag it as drift.</p>
+
+        <p><strong>In practice:</strong> I compute rolling 7-day MAE and compare it to baseline. If MAE drifts > 2 standard deviations, I retrain immediately.</p>
+
+        <hr>
+
+        <h2>Part 5: Microservices &amp; Deployment</h2>
+
+        <h3>Architecture Overview</h3>
+
+        <ul>
+            <li><strong>Backend API (FastAPI):</strong> Serves real-time predictions. Deployed on Render.</li>
+            <li><strong>Dashboard (Streamlit):</strong> Visualizes predictions, historical accuracy, drift metrics.</li>
+            <li><strong>Database (PostgreSQL):</strong> Neon serverless database for cost efficiency.</li>
+            <li><strong>Orchestrator (GitHub Actions):</strong> Runs retraining pipeline daily.</li>
+        </ul>
+
+        <p>Each component is independently deployable, scalable, and monitored.</p>
+
+        <h3>Why Streamlit for the Dashboard?</h3>
+        <p>Streamlit lets me build a production-grade dashboard in 200 lines of Python without touching HTML/CSS. The forecaster dashboard displays:</p>
+
+        <ul>
+            <li>Real-time BTC price and forecast.</li>
+            <li>Historical prediction accuracy (MAPE over time).</li>
+            <li>Data drift warnings.</li>
+            <li>Model retraining schedule.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Part 6: Validation &amp; Production Lessons</h2>
+
+        <h3>Backtesting Results</h3>
+
+        <p>I backtested SARIMAX on 1 year of holdout data (2024):</p>
+
+        <ul>
+            <li><strong>MAPE:</strong> 1.8%</li>
+            <li><strong>Sharpe Ratio:</strong> 1.2 (using predictions to trade)</li>
+            <li><strong>Max Drawdown:</strong> 12%</li>
+            <li><strong>Uptime:</strong> 99.8% (only 2 failures due to network timeouts)</li>
+        </ul>
+
+        <h3>Key Lessons</h3>
+
+        <ol>
+            <li><strong>Simple beats complex:</strong> SARIMAX outperformed LSTM because it doesn't try to memorize noise.</li>
+            <li><strong>Idempotency is non-negotiable:</strong> If your ETL isn't idempotent, you'll corrupt data eventually.</li>
+            <li><strong>Monitor everything:</strong> Data drift, model performance, API latency, database connections. If you're not monitoring it, you don't know it's broken.</li>
+            <li><strong>Docker is essential:</strong> "Works on my machine" is not acceptable in production.</li>
+            <li><strong>Automate retraining:</strong> Manual model updates don't scale. Build a self-improving system.</li>
+        </ol>
+
+        <hr>
+
+        <h2>What's Next?</h2>
+
+        <p>This project demonstrates the full ML lifecycle: from problem definition to data engineering to model selection to production deployment. The forecaster is currently live at <a href="https://btcforecaster.streamlit.app/" target="_blank">btcforecaster.streamlit.app</a> and the source code is available on <a href="https://github.com/yusuferdem16/CryptoCurrencyPricePredicter" target="_blank">GitHub</a>.</p>
+
+        <p>Future improvements:</p>
+
+        <ul>
+            <li>Multi-asset forecasting (ETH, BNB, SOL).</li>
+            <li>Ensemble methods combining SARIMAX + gradient boosting.</li>
+            <li>Real-time trading signals based on prediction confidence.</li>
+            <li>Advanced anomaly detection for black swan events.</li>
+        </ul>
+
+        <hr>
+
+        <p style="text-align: center; color: #999; margin-top: 3rem;">Thanks for reading. Questions? Reach out on <a href="https://github.com/yusuferdem16">GitHub</a>.</p>
+    </main>
+
+    <footer style="background: #f9f9fb; text-align: center; padding: 2rem; color: #666; margin-top: 3rem;">
+        <p>&copy; 2025 Yusuf Erdem. All rights reserved.</p>
+    </footer>
+</body>
+</html>

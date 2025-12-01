@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcel Selection GIS System — Yusuf Erdem</title>
+    <link rel="icon" type="image/x-icon" href="images/lol.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">Parcel Selection GIS System</div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">View CV</a></li>
+                    <li><a href="index.html">Portfolio Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="project-article">
+            <style>
+                /* Page-specific styles */
+                .project-hero {
+                    position: relative;
+                    width: 100vw;
+                    margin-left: calc(-50vw + 50%);
+                    margin-bottom: 2rem;
+                    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+                    padding: 3rem 2rem;
+                    text-align: center;
+                    overflow: hidden;
+                }
+                .project-hero::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
+                    opacity: 0.5;
+                }
+                .project-hero > * {
+                    position: relative;
+                    z-index: 2;
+                }
+                .project-hero h1 {
+                    color: #fff;
+                    font-size: 2.8rem;
+                    margin: 0 0 0.5rem 0;
+                    font-weight: 700;
+                    letter-spacing: -0.5px;
+                }
+                .project-hero-img {
+                    max-width: 1000px;
+                    width: 100%;
+                    height: auto;
+                    border-radius: 12px;
+                    margin-top: 1.5rem;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+                .project-article {max-width:980px;margin:0 auto;padding:0 18px}
+                .lead {color:#fff;font-size:1.1rem;line-height:1.6;margin:0.5rem 0 0 0;max-width:800px;margin-left:auto;margin-right:auto}
+                .code-block pre{background:#0b1220;color:#a0e7e5;padding:12px;border-radius:6px;overflow:auto;border-left:4px solid #00d084}
+                .features-grid{display:flex;gap:16px;flex-wrap:wrap}
+                .feature{flex:1;min-width:220px;background:#f0f8f5;padding:16px;border-radius:8px;border-left:4px solid #00d084}
+                .feature h4{color:#1a472a;margin:0 0 8px 0}
+                .feature p{margin:0;color:#555;font-size:0.9rem}
+                .tech-stack{display:flex;gap:12px;flex-wrap:wrap;margin:1rem 0}
+                .tech-badge{display:inline-block;padding:6px 12px;background:#e0f5f0;border:1px solid #00d084;border-radius:4px;font-size:0.85rem;color:#1a472a;font-weight:600}
+                .results-table{width:100%;border-collapse:collapse;margin:10px 0}
+                .results-table th,.results-table td{border:1px solid #e6e6e6;padding:12px;text-align:left}
+                .results-table th{background:#f9f9f9;font-weight:700}
+                .architecture-section{background:#f0f8f5;padding:2rem;border-radius:8px;margin:2rem 0;border-left:4px solid #00d084}
+                .project-image{max-width:100%;height:auto;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+                .project-image-figure{margin:16px 0;text-align:center}
+                @media(max-width:720px){
+                    .project-hero {padding: 2rem 1rem;}
+                    .project-hero h1 {font-size: 2rem;}
+                    .project-hero-img {margin-top: 1rem;}
+                    .lead {font-size: 1rem;}
+                    .features-grid{flex-direction:column}
+                    .tech-stack{flex-direction:column}
+                }
+            </style>
+            <header class="project-hero">
+                <h1>🌍 Parcel Selection GIS System</h1>
+                <p class="lead">A full-stack Geographic Information System (GIS) application for land parcel analysis and selection. Built with OpenLayers frontend, C# .NET backend, and PostgreSQL+PostGIS database. Deployed to Turkish municipalities for spatial data management.</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2;">
+                    <a href="https://github.com/yusuferdem16/.NetWebProject" target="_blank" style="display: inline-block; padding: 10px 20px; background: #00d084; color: #1a472a; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s;">📦 GitHub Repository</a>
+                    <a href="index.html#projects" style="display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.2); color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s;">← Back to Portfolio</a>
+                </div>
+            </header>
+
+            <section>
+                <h2>Project Overview</h2>
+                <p>This project represents a <strong>complete full-stack web application</strong> designed for municipal government agencies to manage and analyze land parcels using geographic information systems. The system enables city planners and officials to:</p>
+                <ul>
+                    <li>View and query geographic data on interactive maps</li>
+                    <li>Analyze parcel boundaries and properties</li>
+                    <li>Filter and select parcels based on criteria (size, location, ownership, zoning)</li>
+                    <li>Generate reports for administrative decision-making</li>
+                    <li>Manage geospatial data with enterprise-grade database infrastructure</li>
+                </ul>
+                <p><strong>Tech Stack Highlights:</strong> C# .NET backend (66.1%), JavaScript/React frontend (21.8%), HTML/CSS (11.8%), with PostgreSQL+PostGIS for spatial data storage.</p>
+            </section>
+
+            <section>
+                <h2>Architecture Overview</h2>
+                <div class="architecture-section">
+                    <h3 style="margin-top: 0; color: #1a472a;">N-Tier Enterprise Architecture</h3>
+                    <p>The project follows industry-standard <strong>N-Tier (Layered) Architecture</strong> pattern commonly used in enterprise .NET applications:</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                    <div class="feature">
+                        <h4>🖼️ Presentation Layer</h4>
+                        <p><strong>Frontend (JavaScript)</strong><br>OpenLayers-based interactive map interface. Responsive UI for desktop and tablet access. Real-time visualization of parcel boundaries.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🔌 API Layer</h4>
+                        <p><strong>WebAPI (C# .NET)</strong><br>RESTful endpoints for CRUD operations on parcels, spatial queries, filtering, and reporting. Authentication and authorization.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>⚙️ Business Logic</h4>
+                        <p><strong>Business Layer (C#)</strong><br>Core algorithms for spatial analysis, parcel selection criteria, filtering logic, and business rule validation.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📦 Data Access</h4>
+                        <p><strong>DataAccess Layer (C#)</strong><br>Database abstraction. Entity Framework ORM. PostGIS spatial queries. Connection pooling and caching.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🧬 Domain Model</h4>
+                        <p><strong>Entities (C#)</strong><br>Parcel, Owner, Property, Zone domain models. POCO classes with navigation properties.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>💾 Database</h4>
+                        <p><strong>PostgreSQL + PostGIS</strong><br>Geospatial database engine. Stores polygon geometries, spatial indexes, city zoning data.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Frontend: OpenLayers GIS Interface</h2>
+                <p>The frontend is built with <strong>OpenLayers</strong>, a powerful JavaScript library for rendering geographic maps and spatial data. Users can:</p>
+                
+                <div class="features-grid">
+                    <div class="feature">
+                        <h4>🗺️ Interactive Mapping</h4>
+                        <p>Pan, zoom, and rotate map views. Layer toggling (satellite, street map, parcel boundaries). Basemap switching.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🎯 Parcel Selection</h4>
+                        <p>Click on parcels to highlight and view details. Multi-select with Ctrl+Click. Boundary visualization with color-coded zoning.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🔍 Advanced Filtering</h4>
+                        <p>Filter by size range, zone type, ownership status, distance from roads. Real-time filter results on map.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Data Display</h4>
+                        <p>Popup cards showing parcel ID, area (m²), zoning classification, owner name, property status.</p>
+                    </div>
+                </div>
+
+                <h3>Technical Implementation</h3>
+                <p>The frontend communicates with the .NET backend via RESTful API calls. When a user filters parcels:</p>
+                <div class="code-block">
+<pre><code>// Frontend: Filter parcels by area
+const filterParcels = async (minArea, maxArea) => {
+    const response = await fetch(
+        `/api/parcels/filter?minArea=${minArea}&maxArea=${maxArea}`,
+        { method: 'GET' }
+    );
+    const parcels = await response.json();
+    
+    // Render on map
+    parcels.forEach(parcel => {
+        const feature = new ol.Feature({
+            geometry: new ol.geom.Polygon(parcel.coordinates),
+            id: parcel.id,
+            area: parcel.area,
+            zone: parcel.zoneType
+        });
+        vectorSource.addFeature(feature);
+    });
+};</code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h2>Backend: C# .NET WebAPI</h2>
+                <p>The backend is built with <strong>ASP.NET Core</strong>, providing robust, high-performance APIs for spatial queries and business logic.</p>
+
+                <h3>Core API Endpoints</h3>
+                <div class="code-block">
+<pre><code>// GET /api/parcels - Retrieve all parcels
+GET /api/parcels
+
+// GET /api/parcels/{id} - Get specific parcel with details
+GET /api/parcels/123
+
+// POST /api/parcels/filter - Advanced filtering
+POST /api/parcels/filter
+Body: {
+    "minArea": 500,
+    "maxArea": 5000,
+    "zoneType": "Residential",
+    "distanceFromRoad": 100
+}
+
+// POST /api/parcels/nearby - Spatial query (radius search)
+POST /api/parcels/nearby
+Body: {
+    "latitude": 39.9334,
+    "longitude": 32.8597,
+    "radius": 500
+}
+
+// GET /api/parcels/report - Generate analytics report
+GET /api/parcels/report?period=month</code></pre>
+                </div>
+
+                <h3>Spatial Query Example (C#)</h3>
+                <p>Backend implements sophisticated PostGIS spatial queries using Entity Framework:</p>
+                <div class="code-block">
+<pre><code>// DataAccess Layer: Spatial Query for Nearby Parcels
+public async Task<List<Parcel>> GetNearbyParcels(
+    double latitude, 
+    double longitude, 
+    int radiusMeters)
+{
+    var userPoint = new Point(
+        new Coordinate(longitude, latitude)) 
+        { SRID = 4326 };
+    
+    return await dbContext.Parcels
+        .Where(p => p.Geometry.Distance(userPoint) 
+            <= radiusMeters)
+        .OrderBy(p => p.Geometry.Distance(userPoint))
+        .Take(50)
+        .ToListAsync();
+}</code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h2>Database: PostgreSQL + PostGIS</h2>
+                <p>Data is persisted in PostgreSQL with <strong>PostGIS extension</strong> for geospatial operations.</p>
+
+                <h3>Schema Design</h3>
+                <p>The database schema stores vector geometries (polygons for parcel boundaries) with spatial indexes for fast queries:</p>
+                <div class="code-block">
+<pre><code>-- Parcels table with geometry column
+CREATE TABLE parcels (
+    id SERIAL PRIMARY KEY,
+    parcel_number VARCHAR(50) UNIQUE NOT NULL,
+    area_sqm DECIMAL(12,2),
+    zone_type VARCHAR(50),
+    owner_id INT REFERENCES owners(id),
+    geometry GEOMETRY(Polygon, 4326),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Create spatial index for fast queries
+CREATE INDEX idx_parcels_geometry 
+    ON parcels USING GIST(geometry);
+
+-- Example spatial query: Find parcels within 500m
+SELECT id, parcel_number, area_sqm
+FROM parcels
+WHERE ST_DWithin(
+    geometry, 
+    ST_GeomFromText('POINT(32.8597 39.9334)', 4326),
+    500
+);</code></pre>
+                </div>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>Spatial Indexes:</strong> GIST (Generalized Search Tree) indexes enable <O(log N) queries on millions of parcels</li>
+                    <li><strong>Geometry Storage:</strong> Polygons stored in WGS84 (SRID 4326) - standard GPS coordinate system</li>
+                    <li><strong>Scalability:</strong> PostgreSQL can efficiently handle 100k+ parcels with complex geometries</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Project Structure</h2>
+                <p>The codebase is organized following clean architecture principles:</p>
+                <div class="code-block">
+<pre><code>.NetWebProject/
+├── Backend/
+│   ├── WebAPI/              # ASP.NET Core REST API
+│   │   ├── Controllers/
+│   │   │   ├── ParcelsController.cs
+│   │   │   └── ReportsController.cs
+│   │   └── Program.cs       # Dependency injection, middleware
+│   │
+│   ├── Business/            # Business logic layer
+│   │   ├── Services/
+│   │   │   ├── ParcelService.cs
+│   │   │   └── SpatialAnalysisService.cs
+│   │   └── Rules/
+│   │
+│   ├── DataAccess/          # Data access layer (EF Core)
+│   │   ├── Repositories/
+│   │   │   └── ParcelRepository.cs
+│   │   └── DbContext.cs
+│   │
+│   ├── Entities/            # Domain models (POCO)
+│   │   ├── Parcel.cs
+│   │   ├── Owner.cs
+│   │   └── ZoneType.cs
+│   │
+│   └── Core/                # Shared utilities
+│       ├── Exceptions/
+│       └── Helpers/
+│
+├── frontend/                # JavaScript/React
+│   ├── index.html
+│   ├── map.js              # OpenLayers integration
+│   ├── api-client.js       # HTTP client for backend
+│   └── styles.css
+│
+└── docker-compose.yml      # PostgreSQL + PostGIS setup</code></pre>
+                </div>
+            </section>
+
+            <section>
+                <h2>Deployment & DevOps</h2>
+                <p>The system is containerized using Docker for consistent deployment across environments:</p>
+
+                <h3>Docker Setup</h3>
+                <div class="code-block">
+<pre><code>version: '3.8'
+services:
+  api:
+    build: ./Backend
+    ports:
+      - "5000:80"
+    environment:
+      - ConnectionStrings__Default=...
+    depends_on:
+      - db
+
+  db:
+    image: postgis/postgis:15-3.3
+    environment:
+      - POSTGRES_DB=gis_db
+      - POSTGRES_PASSWORD=secure_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:</code></pre>
+                </div>
+
+                <h3>Deployment Flow</h3>
+                <ol>
+                    <li><strong>Build Docker image:</strong> Compile C# backend into container</li>
+                    <li><strong>Push to registry:</strong> Upload to Docker Hub or private registry</li>
+                    <li><strong>Deploy to server:</strong> Run on Linux server in municipality</li>
+                    <li><strong>Database migration:</strong> Apply schema migrations on PostgreSQL</li>
+                    <li><strong>Enable HTTPS:</strong> SSL certificates for secure data transmission</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Technical Skills Demonstrated</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <h4>🏗️ Backend Development</h4>
+                        <p>ASP.NET Core, RESTful API design, dependency injection, middleware, async/await patterns</p>
+                    </div>
+                    <div class="feature">
+                        <h4>💾 Database Design</h4>
+                        <p>PostgreSQL, PostGIS spatial operations, Entity Framework ORM, query optimization</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🗺️ GIS & Geospatial</h4>
+                        <p>OpenLayers, WGS84 coordinate systems, spatial indexing, polygon geometry operations</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🎨 Frontend Development</h4>
+                        <p>JavaScript, interactive UI design, API integration, responsive web design</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🐳 DevOps</h4>
+                        <p>Docker containerization, docker-compose orchestration, deployment automation</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🏛️ Enterprise Architecture</h4>
+                        <p>N-Tier architecture, separation of concerns, SOLID principles, clean code</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Key Achievements</h2>
+                <ul>
+                    <li><strong>Enterprise Architecture:</strong> Implemented proper layering (Presentation → API → Business → Data Access) for maintainability and scalability</li>
+                    <li><strong>Spatial Database:</strong> Optimized PostgreSQL+PostGIS for efficient geographic queries on large datasets</li>
+                    <li><strong>Full-Stack Integration:</strong> Seamless communication between JavaScript frontend and C# backend through RESTful APIs</li>
+                    <li><strong>Production Deployment:</strong> Containerized with Docker for reliable deployment to municipal servers</li>
+                    <li><strong>Real-World Use:</strong> System used by Turkish municipalities for actual land management and urban planning</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>What Makes This Project Stand Out</h2>
+                <p>This project demonstrates <strong>full-stack professional development capabilities</strong> beyond typical portfolio projects:</p>
+                
+                <table class="results-table">
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Complexity</strong></td>
+                        <td>Multi-layer architecture with sophisticated spatial queries, not a simple CRUD app</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Real-World Problem</strong></td>
+                        <td>Solves actual municipal government needs for land management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Technology Depth</strong></td>
+                        <td>Deep expertise in GIS, database optimization, and enterprise patterns</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Production Ready</strong></td>
+                        <td>Deployed to actual users in Turkish municipalities</td>
+                    </tr>
+                    <tr>
+                        <td><strong>System Design</strong></td>
+                        <td>Shows understanding of proper architecture, scalability, and maintainability</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section style="background: #f0f8f5; padding: 2rem; border-radius: 8px; margin-top: 3rem; border-left: 4px solid #00d084;">
+                <h2 style="margin-top: 0; color: #1a472a;">Future Enhancements</h2>
+                <ul style="color: #333;">
+                    <li>Real-time collaboration features for multiple users editing parcels simultaneously</li>
+                    <li>Mobile app (React Native or Flutter) for field surveys</li>
+                    <li>Advanced analytics dashboard with trend analysis and visualizations</li>
+                    <li>Machine learning for automated property classification</li>
+                    <li>Integration with drone imagery for high-resolution boundary verification</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer style="background: #f9f9fb; text-align: center; padding: 2rem; color: #666; margin-top: 3rem;">
+        <p>&copy; 2025 Yusuf Erdem. All rights reserved.</p>
+    </footer>
+</body>
+</html>

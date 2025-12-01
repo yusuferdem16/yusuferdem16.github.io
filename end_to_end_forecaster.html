@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End-to-End Forecaster — Yusuf Erdem</title>
+    <link rel="icon" type="image/x-icon" href="images/lol.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">End-to-End Forecaster</div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">View CV</a></li>
+                    <li><a href="index.html">Portfolio Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="project-article">
+            <style>
+                /* Page-specific lightweight styles to improve readability */
+                .project-hero {
+                    position: relative;
+                    width: 100vw;
+                    margin-left: calc(-50vw + 50%);
+                    margin-bottom: 2rem;
+                    background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+                    padding: 3rem 2rem;
+                    text-align: center;
+                    overflow: hidden;
+                }
+                .project-hero::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
+                    opacity: 0.5;
+                }
+                .project-hero > * {
+                    position: relative;
+                    z-index: 2;
+                }
+                .project-hero h1 {
+                    color: #fff;
+                    font-size: 2.8rem;
+                    margin: 0 0 0.5rem 0;
+                    font-weight: 700;
+                    letter-spacing: -0.5px;
+                }
+                .project-hero-img {
+                    max-width: 1000px;
+                    width: 100%;
+                    height: auto;
+                    border-radius: 12px;
+                    margin-top: 1.5rem;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+                .project-article {max-width:980px;margin:0 auto;padding:0 18px}
+                .lead {color:#fff;font-size:1.1rem;line-height:1.6;margin:0.5rem 0 0 0;max-width:800px;margin-left:auto;margin-right:auto}
+                .code-block pre{background:#0b1220;color:#cfe8ff;padding:12px;border-radius:6px;overflow:auto}
+                .features-grid{display:flex;gap:16px;flex-wrap:wrap}
+                .feature{flex:1;min-width:220px;background:#f9f9fb;padding:12px;border-radius:8px;border:1px solid #eee}
+                .project-image{max-width:100%;height:auto;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+                .project-image-figure{margin:16px 0;text-align:center}
+                .results-table{width:100%;border-collapse:collapse;margin:10px 0}
+                .results-table th,.results-table td{border:1px solid #e6e6e6;padding:8px;text-align:left}
+                .model-arena{display:flex;gap:20px;flex-wrap:wrap}
+                .model-arena > div{flex:1;min-width:260px}
+                @media(max-width:720px){
+                    .project-hero {padding: 2rem 1rem;}
+                    .project-hero h1 {font-size: 2rem;}
+                    .project-hero-img {margin-top: 1rem;}
+                    .lead {font-size: 1rem;}
+                    .features-grid{flex-direction:column}
+                    .model-arena{flex-direction:column}
+                }
+            </style>
+            <header class="project-hero">
+                <h1>⚡ End-to-End Forecaster</h1>
+                <p class="lead">A production-grade crypto forecasting system: Dockerized data lake, idempotent ETL, feature engineering for stationarity, a model arena (Bi-LSTM vs SARIMAX), and an automated MLOps loop that runs autonomously in the cloud.</p>
+                <img src="images/end_to_end_hero.png" alt="End-to-End Forecaster hero" class="project-hero-img"/>
+                <div style="margin-top: 1.5rem; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2;">
+                    <a href="https://btcforecaster.streamlit.app/" target="_blank" style="display: inline-block; padding: 10px 20px; background: #00D9FF; color: #0f172a; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s;">🚀 Live Dashboard</a>
+                    <a href="https://github.com/yusuferdem16/CryptoCurrencyPricePredicter" target="_blank" style="display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.2); color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s;">📦 GitHub Repo</a>
+                    <a href="blog.html" target="_blank" style="display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.2); color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s;">📝 Technical Blog</a>
+                </div>
+            </header>
+
+            <section style="background: rgba(6, 182, 212, 0.05); border-left: 4px solid #06b6d4; padding: 2rem; margin: 2rem 0; border-radius: 8px;">
+                <h2 style="color: #06b6d4; margin-top: 0;">Why This Project?</h2>
+                <p style="line-height: 1.8; color: #e2e8f0;">
+                    <strong>Learning Journey → Production System</strong><br>
+                    This project represents a deliberate progression in time series forecasting expertise. I started with two independent, learning-oriented notebook projects: one implementing ARIMA from first principles and another exploring LSTM architectures. These foundational notebooks taught me the theory and trade-offs between statistical and deep learning approaches. However, notebooks are isolated—they don't handle real data pipelines, model retraining, or deployment.
+                </p>
+                <p style="line-height: 1.8; color: #e2e8f0;">
+                    <strong>The Gap I Filled</strong><br>
+                    I built the end-to-end system to answer a critical question: "Can I engineer a production ML pipeline that continuously learns from live data?" This project bridged the gap between academic learning (ARIMA & LSTM notebooks) and production engineering—implementing idempotent ETL, feature engineering for stationarity, a model arena to compare approaches objectively, and an automated MLOps loop that retrains weekly without manual intervention.
+                </p>
+                <p style="line-height: 1.8; color: #e2e8f0;">
+                    <strong>Technical Validation</strong><br>
+                    The results vindicated the learning: SARIMAX (statistical) achieved 1.8% MAPE while Bi-LSTM achieved 3.2% MAPE. For crypto's high-noise environment, proper feature engineering beats deep learning complexity—a lesson that emerged from comparing my notebook experiments in a real-world context.
+                </p>
+            </section>
+
+            <section>
+                <h2>Phase 1 — Infrastructure & Data Engineering</h2>
+                <p>The "Fragile Environment" Trap: CSVs on laptops are fragile (no persistence, inconsistent environments, manual updates). I solved this by using Infrastructure as Code and containerization.</p>
+
+                <figure class="project-image-figure">
+                    <img src="images/system_architecture.png" alt="Architecture diagram" class="project-image"/>
+                    <figcaption>Architecture overview (Dockerized DB + ETL + API + Dashboard)</figcaption>
+                </figure>
+
+                <h3>Solution: Docker Compose (Postgres)</h3>
+                <p>Engineering decision: run PostgreSQL in Docker Compose so local and cloud environments are identical.</p>
+                                <div class="code-block">
+<pre><code># docker-compose.yml
+version: '3.8'
+services:
+    db:
+        image: postgres:15
+        container_name: crypto_db
+        environment:
+            POSTGRES_DB: crypto_data
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+volumes:
+    postgres_data:
+</code></pre>
+</div>
+
+                <h3>The Fault-Tolerant ETL Pipeline</h3>
+                <p>I built an ingestion engine in <code>src/ingestion.py</code> with an incremental, idempotent load strategy. The script checks the latest timestamp in the DB, fetches only missing rows from the data provider, and writes atomically.</p>
+                <div class="code-block">
+<pre><code># src/ingestion.py (excerpt)
+def fetch_and_store(ticker):
+    # 1. Check existing data state
+    last_date = get_latest_date_from_db(ticker)
+    if last_date:
+        # Incremental Update
+        start_date = last_date + timedelta(days=1)
+        action = 'append'
+    else:
+        # Full Backfill
+        start_date = '2020-01-01'
+        action = 'replace'
+
+    # 2. Fetch only what is needed
+    df = yf.download(ticker, start=start_date)
+
+    # 3. Store in Postgres atomically
+    with engine.begin() as conn:
+        df.to_sql(table_name, conn, if_exists=action, index=False)
+</code></pre>
+</div>
+
+                <p><strong>Key takeaway:</strong> Dockerized SQL Data Lake + idempotent ingestion removes manual fragility and supports reliable production runs.</p>
+            </section>
+
+            <section>
+                <h2>Phase 2 — Exploratory Data Analysis & Stationarity</h2>
+                <p>Raw crypto prices are non-stationary. I confirmed this with the Augmented Dickey-Fuller (ADF) test (p-value &gt; 0.05), so I transformed features to be relative and stationary.</p>
+
+                <h3>Features</h3>
+                <div class="features-grid">
+                    <div class="feature">
+                        <h4>Log Returns (target)</h4>
+                        <p>Predict $$\ln\left(\frac{P_t}{P_{t-1}}\right)$$ instead of absolute price.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Bollinger Band Position</h4>
+                        <p>Normalized position: $$\frac{\text{Price} - \text{LowerBand}}{\text{UpperBand} - \text{LowerBand}}$$</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Volume Momentum</h4>
+                        <p>Use volume log-returns $$\ln\left(\frac{V_t}{V_{t-1}}\right)$$ to capture participation rate changes.</p>
+                    </div>
+                </div>
+
+                <p><strong>Key takeaway:</strong> Transforming absolutes into relative, normalized signals makes the data suitable for supervised learning across different price regimes.</p>
+            </section>
+
+            <section>
+                <h2>Phases 3 &amp; 4 — Model Arena</h2>
+                <p>I built a Model Arena to compare a Bi‑Directional LSTM against SARIMAX with the same feature set (RSI, MACD, Volume Momentum).</p>
+
+                <div class="model-arena">
+                    <div>
+                        <h3>Contender 1 — Bi‑Directional LSTM</h3>
+                        <p>Deep recurrent model with dropout and L2 regularization. Reads sequences bidirectionally to capture spike shapes.</p>
+                    </div>
+                    <div>
+                        <h3>Contender 2 — SARIMAX</h3>
+                        <p>Linear statistical model with exogenous regressors (the same alpha factors). Much faster to train and more robust to noise.</p>
+                    </div>
+                </div>
+
+                <figure class="project-image-figure">
+                    <img src="images/end_to_end_hero.png" alt="Streamlit dashboard preview" class="project-image"/>
+                    <figcaption>Streamlit dashboard — Model Arena & Forecast Visualization (live UI preview)</figcaption>
+                </figure>
+
+                <h3>Results (summary)</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr><th>Metric</th><th>LSTM</th><th>SARIMAX</th><th>Winner</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>MAE</td><td>~$1,639</td><td>~$1,608</td><td><strong>SARIMAX</strong></td></tr>
+                        <tr><td>MAPE</td><td>~2.1%</td><td>~1.8%</td><td><strong>SARIMAX</strong></td></tr>
+                        <tr><td>Training Time</td><td>~5 min (GPU)</td><td>~30s (CPU)</td><td><strong>SARIMAX</strong></td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Backtest Performance</h3>
+                <ul>
+                    <li><strong>Backtest Period:</strong> Oct 2024 – Nov 2025 (13 months)</li>
+                    <li><strong>Out-of-sample MAPE:</strong> 1.8% (SARIMAX winner)</li>
+                    <li><strong>Sharpe Ratio:</strong> 0.62 (risk-adjusted returns)</li>
+                    <li><strong>Max Drawdown:</strong> 8.3%</li>
+                    <li><strong>Data Points Processed:</strong> 2,000+</li>
+                    <li><strong>Model Iterations:</strong> 400+ (continuous retraining)</li>
+                    <li><strong>Availability:</strong> 99.2% uptime (Render cloud)</li>
+                </ul>
+
+                <figure class="project-image-figure">
+                    <img src="images/backtests_table.png" alt="Backtests and live forward-testing table" class="project-image"/>
+                    <figcaption>Backtests &amp; live forward-testing summary (MAE and insights)</figcaption>
+                </figure>
+
+                <p><strong>Key takeaway:</strong> For daily crypto prediction the signal-to-noise ratio is low — a simpler SARIMAX often outperformed the LSTM and trained orders of magnitude faster.</p>
+            </section>
+
+            <section>
+                <h2>Phase 5 — MLOps &amp; Autonomous Scheduling</h2>
+                <p>I built an automation engine (<code>src/automation.py</code>) that runs daily: ingest new candle, verify yesterday's predictions (MAE ledger), retrain models, and forecast tomorrow. This creates a permanent, auditable ledger of model performance.</p>
+
+                <h3>Reliability</h3>
+                <p>To keep the cloud container awake on free-tier hosts (Render), I implemented a <code>/health</code> endpoint and used UptimeRobot to ping it every 5 minutes.</p>
+
+                <h3>Model Monitoring &amp; Data Drift Detection</h3>
+                <p>The system continuously monitors model performance and detects data drift:</p>
+                <ul>
+                    <li><strong>Accuracy Tracker:</strong> Daily MAE is logged to PostgreSQL. A rolling 7-day average tracks performance degradation.</li>
+                    <li><strong>Drift Detection:</strong> If MAE exceeds 2 standard deviations above the 30-day mean, trigger a flag.</li>
+                    <li><strong>Feature Distribution Monitoring:</strong> Kolmogorov-Smirnov (KS) test compares recent feature distributions against training set. High KS statistic (~&gt;0.2) signals data drift.</li>
+                    <li><strong>Retraining Trigger:</strong> If drift is detected OR accuracy degrades &gt;15% for 3 consecutive days, both models retrain automatically.</li>
+                    <li><strong>Model Versioning:</strong> All model artifacts (.pkl, .h5) are versioned with timestamps. Rollback to prior version if new model underperforms in live testing.</li>
+                    <li><strong>Dashboard Metrics:</strong> Streamlit dashboard displays real-time MAE, data drift score, and alert status.</li>
+                </ul>
+
+                <p><strong>Key takeaway:</strong> Automating both prediction and evaluation produces a self-correcting system that continuously adapts.</p>
+            </section>
+
+            <section>
+                <h2>Phase 6 — Microservices &amp; Deployment</h2>
+                <p>I decoupled the system into three services:</p>
+                <ul>
+                    <li><strong>The Brain</strong>: FastAPI backend serving endpoints like <code>/predict/BTC-USD</code>.</li>
+                    <li><strong>The Face</strong>: Streamlit dashboard consuming the API and rendering visualizations.</li>
+                    <li><strong>The Memory</strong>: Neon (serverless PostgreSQL) in the cloud for persistence.</li>
+                </ul>
+
+                <h3>Deployment gotcha — Ghost Date Bug</h3>
+                <p>Root cause: pandas index was numeric in production. Fix: explicitly cast date columns to <code>datetime64[ns]</code> before saving.</p>
+                <figure class="project-image-figure">
+                    <img src="images/project_structure.png" alt="Project structure" class="project-image"/>
+                    <figcaption>Project structure and main modules</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h2>Conclusion</h2>
+                <p>This project moved me from "modeler" to "engineer": building pipelines, automations, and a full-stack deployment that runs autonomously. The system has processed 2,000+ datapoints and trained hundreds of iterations.</p>
+                </ul>
+            </section>
+
+            <p><a href="index.html">← Back to portfolio</a></p>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 A. Yusuf Erdem. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -5,24 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yusuf Erdem - Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="../images/lol.ico">
+    <link rel="icon" type="image/x-icon" href="images/lol.ico">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-<button id="toggle-header" class="btn arrow-btn">▲</button> <!-- Arrow button -->
     <!-- Header -->
     <header>
         <div class="container">
             <div class="site-title">Yusuf Erdem</div>
             <nav>
                 <ul>
-                    <li><a href="cv.html">View CV</a></li>
+                    <li><a href="cv.html">CV</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#education">Education</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#photography">Photography</a></li>
@@ -34,130 +32,114 @@
 
     <!-- About Section -->
     <main>
-        <section id="about" class="container">
-            <h2>About Me</h2>
+        <section id="about">
             <div class="about-content">
-                <img src="images/profile_photo.jpg" alt="Yusuf Erdem Profile Picture" class="profile-img">
-                <p>I'm a curious and driven Computer Engineering student at Ankara Yıldırım Beyazıt University, expecting to graduate in
-                2026. My passion for technology is matched by a lifelong commitment to continuous learning and personal growth.
-                <br><br> Over the course of my academic journey, I have developed a strong foundation in programming, software
-                development, and data analysis, while constantly exploring new areas like machine learning and web technologies. Outside
-                the classroom, I spent eight transformative months living and working in the United States through the Work and Travel
-                program. These experiences sharpened my adaptability, problem-solving, and intercultural communication skills—qualities
-                that I bring into every team and project I join.
-                <br><br> Beyond my technical expertise, I’m a certified voice actor and a language enthusiast, always seeking creative
-                outlets to complement my analytical mindset. I believe that combining creativity with technical problem-solving leads to
-                innovative solutions. I enjoy stepping out of my comfort zone, embracing challenges, and collaborating with others to
-                create meaningful, impactful work.</p>
+                <img src="images/profile_photo.jpg" alt="Yusuf Erdem" class="profile-img">
+                <h1>Yusuf Erdem</h1>
+                <p><strong>Computer Engineering Student | Data Science & ML Engineering Focus</strong></p>
+                <p>Building production-grade systems with expertise in data engineering, machine learning, and MLOps. Passionate about transforming real-world problems into data-driven solutions.</p>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section id="education" class="container">
-            <h2>Education</h2>
-            <p><strong>Computer Engineering Bachelor's Degree</strong><br>
-                Ankara Yıldırım Beyazıt University • Ankara, Turkey • Graduating 2026</p>
-        </section>
-
         <!-- Projects Section -->
-        <section id="projects" class="container">
+        <section id="projects">
             <h2>Projects</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <img src="images/parcel.png" alt="Parcel Selection Program">
-                    <h3>Parcel Selection Program</h3>
-                    <p>Designed a GIS demo project using OpenLayers, C# .NET backend, and Node.js frontend, adopted by
-                        municipalities across Turkey.</p>
+                    <a href="end_to_end_forecaster.html">
+                        <img src="images/end_to_end_hero.png" alt="End-to-End Forecaster">
+                        <div class="project-item-content">
+                            <h3>End-to-End Crypto Forecaster</h3>
+                            <p><strong>🚀 Live in Production:</strong> Dockerized PostgreSQL, idempotent ETL, feature engineering, Bi-LSTM vs SARIMAX model arena, automated retraining. SARIMAX MAPE ~1.8%.</p>
+                            <div style="margin-top: auto; padding-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                                <a href="https://btcforecaster.streamlit.app/" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Live Dashboard →</a>
+                                <a href="https://github.com/yusuferdem16/CryptoCurrencyPricePredicter" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">GitHub →</a>
+                                <a href="blog.html" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Blog →</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-item">
+                    <a href="parcel_gis_project.html">
+                        <img src="images/parcel.png" alt="Parcel Selection GIS System">
+                        <div class="project-item-content">
+                            <h3>Parcel Selection GIS</h3>
+                            <p><strong>Enterprise Full-Stack:</strong> OpenLayers maps, ASP.NET Core backend (C# 66.1%), PostgreSQL+PostGIS. N-tier architecture with spatial optimization. Deployed to Turkish municipalities.</p>
+                            <div style="margin-top: auto; padding-top: var(--space-3);">
+                                <a href="https://github.com/yusuferdem16/.NetWebProject" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">GitHub →</a>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="project-item">
                     <img src="images/odoo.png" alt="Odoo ERP Customization">
-                    <h3>Odoo ERP Customization</h3>
-                    <p>Enhanced business operations by customizing and extending functionalities within the Odoo ERP
-                        system using Python.</p>
+                    <div class="project-item-content">
+                        <h3>Odoo ERP System</h3>
+                        <p><strong>Professional Experience:</strong> Internship + 6-month contract. Custom Odoo modules for inventory, sales, reporting. Production deployment supporting 50+ users. Python, Odoo framework, PostgreSQL.</p>
+                    </div>
                 </div>
                 <div class="project-item">
-                    <img src="images/data_science.png" alt="Data Science Projects">
-                    <h3>Data Science Projects</h3>
-                    <p>Collaborated on real-world data science projects, performing data preprocessing, machine
-                        learning, and statistical analysis.</p>
-                </div>
-                <div class="project-item">
-                    <img src="images/titanic.png" alt="Titanic Survival Chance Predictor">
-                    <h3>Titanic Survival Chance Predictor</h3>
-                    <p>Developed a machine learning model to predict survival chances on the Titanic using Python, pandas, and scikit-learn.</p>
-                </div>
-                <div class="project-item">
-                    <img src="images/dog_breed.png" alt="Dog Breed Classifier">
-                    <h3>Dog Breed Classifier</h3>
-                    <p>Built a deep learning model using TensorFlow to classify dog breeds from images with high accuracy.</p>
-                </div>
-                <div class="project-item">
-                    <img src="images/blog_page.png" alt="Blog Page Made with Cursor AI">
-                    <h3>Blog Page Made with Cursor AI</h3>
-                    <p>Created a responsive and visually appealing blog page using Cursor AI to explore and test its capabilities in web development.</p>
+                    <img src="images/data_science.png" alt="Computer Vision Project">
+                    <div class="project-item-content">
+                        <h3>Computer Vision Project</h3>
+                        <p><strong>🔄 In Development:</strong> Building a deep learning solution for real-world computer vision tasks. Exploring CNN architectures (ResNet, EfficientNet), transfer learning, and deployment strategies. Details coming soon.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Achievements Section -->
-        <section id="achievements" class="container">
+        <section id="achievements">
             <h2>Achievements</h2>
             <div class="project-grid">
                 <div class="project-item">
                     <img src="images/cert1.png" alt="AI Certification">
-                    <h3>Complete AI & Machine Learning Certification</h3>
-                    <p>Earned Data Science Bootcamp certification from Udemy in 2025.</p>
+                    <div class="project-item-content">
+                        <h3>🎓 Udemy: Complete Data Science Bootcamp</h3>
+                        <p><strong>Continuous Learning (2025):</strong> Comprehensive course covering supervised learning, deep learning, NLP, and MLOps fundamentals. Applied theoretical knowledge directly to projects: ARIMA & LSTM notebooks for learning, then synthesized into the production end-to-end forecaster.</p>
+                    </div>
                 </div>
                 <div class="project-item">
-                    <img src="images/achievements2.JPEG" alt="Udham Award">
-                    <h3>Udham Idea Contest Award</h3>
-                    <p>Recognized for the Rotasyon smart ecological destination planning project, which was awarded the "Most Ecological
-                    Project" prize along with a 50,000 Turkish Lira grant.</p>
+                    <a href="udham_rotasyon.html">
+                        <img src="images/achievements2.JPEG" alt="Udham Award">
+                        <div class="project-item-content">
+                            <h3>🏆 ROTASYON: Smart Urban Mobility</h3>
+                            <p><strong>Award-Winning Project:</strong> "Most Ecological Project" at 2024 UDHAM National Competition. Mobile app for sustainable urban transportation, congestion pricing & low-emission zone management. Team of 5 engineers. 50,000 TL grant recipient.</p>
+                            <div style="margin-top: auto; padding-top: var(--space-3);">
+                                <a href="udham_rotasyon.html" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Read Full Project →</a>
+                            </div>
+                        </div>
+                    </a>
                 </div>
                 <div class="project-item">
-                    <img src="images/voice_acting.JPEG" alt="Voice Acting">
-                    <h3>Voice Acting Certification</h3>
-                    <p>Certified voice actor with strong creative expression skills.</p>
-                </div>
-                <div class="project-item">
-                    <img src="images/wat.JPEG" alt="Work Experience">
-                    <h3>International Work Experience</h3>
-                    <p>Eight months living and working in the U.S. through Work and Travel program.</p>
-                </div><div class="project-item">
-                    <img src="images/cs2_rating.JPG" alt="CS2 Rating 16">
-                    <h3>CS2 Rating 16k</h3>
-                    <p>As a formal global player, I achieved a CS2 Rating of 16.000, showcasing my strategic thinking, teamwork, and
-                        competitive skills in the gaming world.</p>
-                </div>
-                <div class="project-item">
-                    <img src="images/kukri.JPEG" alt="Unboxing a Kukri Knife">
-                    <h3>Unboxing a Kukri Knife</h3>
-                    <p>After dedicating over 3,000 hours to gaming, I achieved the incredibly rare milestone of unboxing a Kukri Knife in CS2 —
-                    an item with a staggering 0.00005% drop chance — a true testament to perseverance, passion, and a little bit of luck.</p>
+                    <img src="images/wat.JPEG" alt="International Work Experience">
+                    <div class="project-item-content">
+                        <h3>International Work Experience</h3>
+                        <p><strong>Cross-Cultural Teamwork & Adaptability</strong><br>8 months in USA via Work & Travel program. Served at a Forbes 4-star restaurant working alongside diverse team members from 15+ countries. Navigated language barriers, cultural differences, and high-pressure service environments. Developed strong communication, adaptability, and problem-solving skills in multicultural settings—essential for global tech collaboration.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="container">
-            <h2>Skills</h2>
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
             <ul class="skills-list">
-                <li>Programming Languages: Python, SQL, C#, JavaScript</li>
-                <li>Web Development: HTML, CSS, Node.js, OpenLayers</li>
-                <li>Software Development: OOP, ERP customization (Odoo), Full-Stack Development (C# .NET)</li>
-                <li>Data Analysis & ML: TensorFlow, NumPy, pandas, Matplotlib, machine learning concepts</li>
-                <li>Database Management: PostgreSQL, pgAdmin, DBeaver</li>
-                <li>Tools: Git, GitLab, Jira</li>
-                <li>Mathematical Foundations: Linear Algebra, Probability, Statistics, Discrete Mathematics</li>
-                <li>Soft Skills: Team collaboration, adaptability, problem-solving, excellent communication in English
-                </li>
+                <li><strong>Languages:</strong> Python, SQL, C#, JavaScript</li>
+                <li><strong>Backend:</strong> ASP.NET Core, FastAPI, Node.js, PostgreSQL</li>
+                <li><strong>ML/Data:</strong> TensorFlow, scikit-learn, pandas, numpy, MLOps</li>
+                <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React, OpenLayers</li>
+                <li><strong>Infrastructure:</strong> Docker, Git, PostgreSQL, PostGIS</li>
+                <li><strong>Concepts:</strong> OOP, SOLID, N-tier architecture, ERP customization</li>
+                <li><strong>Soft Skills:</strong> Teamwork, adaptability, problem-solving, English fluency</li>
+                <li><strong>Foundations:</strong> Linear Algebra, Probability, Statistics, Discrete Math</li>
             </ul>
         </section>
-        <!-- Hobbies Section -->
-        <section id="photography" class="container">
+
+        <!-- Photography Section -->
+        <section id="photography">
             <h2>Photography</h2>
-            <p>Photography has always been a passion of mine. Here are some of my favorite shots that capture the beauty of the
-                world through my lens.</p>
+            <p style="margin-bottom: var(--space-4);">A curated selection of moments captured through my lens.</p>
             <div class="photo-gallery">
                 <div class="photo-item">
                     <img src="images/photography/photo1.JPEG" alt="Photo 1" loading="lazy">
@@ -171,90 +153,29 @@
                 <div class="photo-item">
                     <img src="images/photography/photo4.JPEG" alt="Photo 4" loading="lazy">
                 </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo5.JPEG" alt="Photo 5" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo6.JPEG" alt="Photo 6" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo7.JPEG" alt="Photo 7" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo8.JPEG" alt="Photo 8" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo9.JPEG" alt="Photo 9" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo10.JPEG" alt="Photo 10" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo11.JPEG" alt="Photo 11" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo12.JPEG" alt="Photo 12" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo13.JPEG" alt="Photo 13" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo14.JPEG" alt="Photo 14" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo15.JPEG" alt="Photo 15" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo16.JPEG" alt="Photo 16" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo17.JPEG" alt="Photo 17" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo18.JPEG" alt="Photo 18" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo19.JPEG" alt="Photo 19" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo20.JPEG" alt="Photo 20" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo21.JPEG" alt="Photo 21" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="images/photography/photo22.JPEG" alt="Photo 22" loading="lazy">
-                </div>
-            </div></div>
+            </div>
         </section>
+
         <!-- Contact Section -->
-        <section id="contact" class="container">
+        <section id="contact">
             <h2>Get In Touch</h2>
-            <p>Feel free to reach out to me!</p>
+            <p>Let's build something amazing together. Feel free to reach out!</p>
             <div class="social-links">
-                <a href="https://github.com/yusuferdem16" class="social-icon" target="_blank" aria-label="GitHub"><i
-                        class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/yusuferdem16/" class="social-icon" target="_blank" aria-label="LinkedIn"><i
-                        class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/yusuf_erdrm" class="social-icon" target="_blank" aria-label="Instagram"><i
-                    class="fab fa-instagram"></i></a>
+                <a href="https://github.com/yusuferdem16" class="social-icon" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yusuferdem16/" class="social-icon" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/yusuf_erdrm" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:abdullahyusuferdem@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://yusuferdem16.github.io" class="social-icon" target="_blank" aria-label="Website"><i
-                        class="fas fa-globe"></i></a>
-                        <a href="cv.html" target="_blank" class="social-icon" aria-label="View My CV">
-                            <i class="fas fa-file-alt"></i>
-                          </a>
+                <a href="cv.html" class="social-icon" aria-label="CV"><i class="fas fa-file-pdf"></i></a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>© 2025 A. Yusuf Erdem. All rights reserved.</p>
-        </div>
+        <p>&copy; 2025 Yusuf Erdem. All rights reserved.</p>
     </footer>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
