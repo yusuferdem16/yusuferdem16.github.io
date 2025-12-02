@@ -129,9 +129,46 @@
             overflow-x: auto;
             overflow-y: hidden;
             margin: 1.5rem 0;
+            background: #1a2332;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #06b6d4;
         }
         .blog-article .katex {
             font-size: 1.1em;
+        }
+        .blog-article .katex * {
+            color: #ffffff !important;
+        }
+        .blog-article .katex-mathml {
+            display: none;
+        }
+        /* KaTeX elements dark mode - strong visibility */
+        .blog-article .katex-html {
+            color: #ffffff !important;
+        }
+        .blog-article .katex .mord {
+            color: #ffffff !important;
+        }
+        .blog-article .katex .mord.mathrm {
+            color: #ffffff !important;
+        }
+        .blog-article .katex .mbin,
+        .blog-article .katex .mop,
+        .blog-article .katex .mrel {
+            color: #06b6d4 !important;
+        }
+        .blog-article .katex .base {
+            color: #ffffff !important;
+        }
+        .blog-article .katex-display > .katex {
+            color: #ffffff !important;
+        }
+        .blog-article .katex .strut {
+            display: none;
+        }
+        .blog-article .katex svg {
+            color: #ffffff !important;
         }
         @media(max-width: 720px) {
             .blog-article {
