@@ -20,7 +20,6 @@
                     <li><a href="cv.html">CV</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#photography">Photography</a></li>
@@ -45,18 +44,21 @@
         <section id="projects">
             <h2>Projects</h2>
             <div class="project-grid">
+                <!-- 1. Capstone — flagship academic project -->
                 <div class="project-item">
                     <a href="health_risk_model.html">
-                        <img src="images/data_science.png" alt="Health Risk Model">
+                        <img src="images/health_risk_hero.png" alt="AI-Based Health Risk Scoring">
                         <div class="project-item-content">
-                            <h3>🎓 Health Risk Model & Hospital Referral Simulation</h3>
-                            <p><strong>Capstone Project:</strong> Two-layer ML system for disease risk assessment and intelligent hospital resource allocation. Classification + risk analysis for hypertension, stroke, diabetes. SMOTE balancing, comprehensive feature engineering. In development.</p>
-                            <div style="margin-top: auto; padding-top: var(--space-3);">
+                            <h3>🏥 AI-Based Health Risk Scoring & Resource Allocation</h3>
+                            <p><strong>Capstone Project:</strong> Led 3-person team building disease prediction for diabetes, hypertension & stroke using non-lab data. Chose 82% Logistic Regression over 98% overfitted XGBoost — clinical validity first. 30K synthetic patients, three-tier risk stratification.</p>
+                            <div style="margin-top: auto; padding-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
                                 <a href="health_risk_model.html" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Read Full Project →</a>
+                                <a href="FatmaYerlikayaÖzkurt_AI-Based_Health_Risk_Scoring_and_Resource_Allocation_FINAL_REPORT.pdf" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Final Report →</a>
                             </div>
                         </div>
                     </a>
                 </div>
+                <!-- 2. Live Production — end-to-end MLOps -->
                 <div class="project-item">
                     <a href="end_to_end_forecaster.html">
                         <img src="images/end_to_end_hero.png" alt="End-to-End Forecaster">
@@ -66,11 +68,39 @@
                             <div style="margin-top: auto; padding-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
                                 <a href="https://btcforecaster.streamlit.app/" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Live Dashboard →</a>
                                 <a href="https://github.com/yusuferdem16/CryptoCurrencyPricePredicter" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">GitHub →</a>
-                                <a href="blog.html" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Blog →</a>
                             </div>
                         </div>
                     </a>
                 </div>
+                <!-- 3. Completed ML — strong metrics -->
+                <div class="project-item">
+                    <a href="intrusion_detection.html">
+                        <img src="images/intrusion_detection_thumbnail.png" alt="IoT Intrusion Detection System">
+                        <div class="project-item-content">
+                            <h3>🛡️ IoT Intrusion Detection System</h3>
+                            <p><strong>Completed Project:</strong> XGBoost-based IDS for IoT networks with real-time Flask dashboard. Trained on EdgeIIoT dataset — 99% precision, 0.97 F1-score. Features live traffic monitoring, explainable alerts, and color-coded threat levels.</p>
+                            <div style="margin-top: auto; padding-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                                <a href="intrusion_detection.html" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Read Full Project →</a>
+                                <a href="https://github.com/yusuferdem16/IntrusionDetectionWithML" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">GitHub →</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- 4. Completed NLP -->
+                <div class="project-item">
+                    <a href="az_text_classifier.html">
+                        <img src="images/az_text_classifier_hero.png" alt="Azerbaijani Sentiment Analysis">
+                        <div class="project-item-content">
+                            <h3>🗣️ Azerbaijani Sentiment Analysis</h3>
+                            <p><strong>NLP Course Project:</strong> FastText + GRU sentiment classifier for Azerbaijani YouTube comments. 36K comments across 5 domains, custom language filter (85.7% noise removal), Macro-F1: 0.8016. Frozen embeddings beat fine-tuned.</p>
+                            <div style="margin-top: auto; padding-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                                <a href="az_text_classifier.html" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">Read Full Project →</a>
+                                <a href="https://github.com/yusuferdem16/Az-Text-Classifier" target="_blank" style="color: var(--secondary); font-weight: 600; font-size: 0.9rem;">GitHub →</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- 5. Enterprise Full-Stack -->
                 <div class="project-item">
                     <a href="parcel_gis_project.html">
                         <img src="images/parcel.png" alt="Parcel Selection GIS System">
@@ -83,18 +113,12 @@
                         </div>
                     </a>
                 </div>
+                <!-- 6. Professional Experience -->
                 <div class="project-item">
                     <img src="images/odoo.png" alt="Odoo ERP Customization">
                     <div class="project-item-content">
                         <h3>Odoo ERP System</h3>
                         <p><strong>Professional Experience:</strong> Internship + 6-month contract. Custom Odoo modules for inventory, sales, reporting. Production deployment supporting 50+ users. Python, Odoo framework, PostgreSQL.</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <img src="images/data_science.png" alt="Computer Vision Project">
-                    <div class="project-item-content">
-                        <h3>Computer Vision Project</h3>
-                        <p><strong>🔄 In Development:</strong> Building a deep learning solution for real-world computer vision tasks. Exploring CNN architectures (ResNet, EfficientNet), transfer learning, and deployment strategies. Details coming soon.</p>
                     </div>
                 </div>
             </div>
@@ -128,6 +152,13 @@
                     <div class="project-item-content">
                         <h3>International Work Experience</h3>
                         <p><strong>Cross-Cultural Teamwork & Adaptability</strong><br>8 months in USA via Work & Travel program. Served at a Forbes 4-star restaurant working alongside diverse team members from 15+ countries. Navigated language barriers, cultural differences, and high-pressure service environments. Developed strong communication, adaptability, and problem-solving skills in multicultural settings—essential for global tech collaboration.</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="images/achievement_ielts.png" alt="IELTS Band 8">
+                    <div class="project-item-content">
+                        <h3>📝 IELTS Academic — Band 8</h3>
+                        <p><strong>English Proficiency:</strong> Achieved Band 8 on the IELTS Academic exam, demonstrating advanced proficiency in reading, writing, listening, and speaking. Reflects ability to communicate complex technical concepts effectively in English and collaborate in international environments.</p>
                     </div>
                 </div>
             </div>
