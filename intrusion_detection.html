@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IoT Intrusion Detection System — Yusuf Erdem</title>
+    <link rel="icon" type="image/x-icon" href="images/lol.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="site-title">IoT Intrusion Detection</div>
+        <nav>
+          <ul>
+            <li><a href="cv.html">View CV</a></li>
+            <li><a href="index.html">Portfolio Home</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <article class="project-article">
+        <style>
+          .project-hero {
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-bottom: 2rem;
+            background: linear-gradient(
+              135deg,
+              #0a0e1a 0%,
+              #0d1f3c 50%,
+              #1a0a2e 100%
+            );
+            padding: 3rem 2rem;
+            text-align: center;
+            overflow: hidden;
+          }
+          .project-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+              radial-gradient(
+                circle at 20% 50%,
+                rgba(0, 200, 255, 0.08) 0%,
+                transparent 50%
+              ),
+              radial-gradient(
+                circle at 80% 50%,
+                rgba(255, 50, 50, 0.06) 0%,
+                transparent 50%
+              ),
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(0,200,255,0.04)" stroke-width="0.5"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
+            opacity: 0.7;
+          }
+          .project-hero > * {
+            position: relative;
+            z-index: 2;
+          }
+          .project-hero h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+          }
+          .project-hero-img {
+            max-width: 1000px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            box-shadow:
+              0 20px 60px rgba(0, 0, 0, 0.4),
+              0 0 1px rgba(0, 200, 255, 0.2);
+            border: 1px solid rgba(0, 200, 255, 0.15);
+          }
+          .project-article {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 18px;
+          }
+          .lead {
+            color: #c0d0e0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0.5rem 0 0 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .feature-box {
+            background: rgba(0, 200, 255, 0.08);
+            border-left: 4px solid #00c8ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+          }
+          .feature-box h3 {
+            color: #00c8ff;
+            margin-top: 0;
+          }
+          .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+          }
+          .feature-card {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #00c8ff;
+          }
+          .feature-card h4 {
+            margin-top: 0;
+            color: #0f172a;
+          }
+          .feature-card p {
+            color: #333;
+            margin: 0.5rem 0;
+          }
+          .impact-list {
+            list-style: none;
+            padding: 0;
+          }
+          .impact-list li {
+            padding: 0.8rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+          }
+          .impact-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00c8ff;
+            font-weight: bold;
+          }
+          .section-divider {
+            border-top: 1px solid #e6e6e6;
+            margin: 3rem 0;
+          }
+          .highlight {
+            background: rgba(0, 200, 255, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+          }
+          .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1rem 0;
+          }
+          .tech-tag {
+            background: #00c8ff;
+            color: #0a0e1a;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+          }
+          .layer-box {
+            background: rgba(0, 200, 255, 0.06);
+            border: 2px solid #00c8ff;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+          }
+          .layer-box h4 {
+            color: #00c8ff;
+            margin-top: 0;
+          }
+          .warning-box {
+            background: rgba(255, 80, 80, 0.08);
+            border-left: 4px solid #ff5050;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+          }
+          .warning-box h4 {
+            color: #ff5050;
+            margin-top: 0;
+          }
+          .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 1.5rem 0;
+          }
+          .metric-card {
+            background: #f0f8ff;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #d0e8ff;
+          }
+          .metric-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0d1f3c;
+            display: block;
+          }
+          .metric-card .label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 4px;
+          }
+          .arch-diagram {
+            background: #0a0e1a;
+            color: #00c8ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: "Courier New", monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(0, 200, 255, 0.2);
+          }
+          @media (max-width: 720px) {
+            .project-hero {
+              padding: 2rem 1rem;
+            }
+            .project-hero h1 {
+              font-size: 2rem;
+            }
+            .features-grid {
+              grid-template-columns: 1fr;
+            }
+            .metric-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+        </style>
+
+        <header class="project-hero">
+          <h1>🛡️ ML-Based Intrusion Detection for IoT Networks</h1>
+          <p class="lead">
+            An XGBoost-powered Intrusion Detection System for IoT devices with a
+            real-time Flask dashboard. Trained on the EdgeIIoT dataset,
+            achieving 99% precision and 97% F1-score on test data.
+          </p>
+          <p style="color: #8899aa; font-size: 0.95rem; margin-top: 0.5rem">
+            Authors: Abdullah Yusuf Erdem & Cemaleddin Seyhan · December 2025
+          </p>
+          <div
+            style="
+              margin-top: 1.5rem;
+              display: flex;
+              gap: 16px;
+              justify-content: center;
+              flex-wrap: wrap;
+              position: relative;
+              z-index: 2;
+            "
+          >
+            <a
+              href="index.html"
+              style="
+                display: inline-block;
+                padding: 10px 20px;
+                background: rgba(255, 255, 255, 0.15);
+                color: #fff;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 700;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                transition: all 0.3s;
+              "
+              >← Back to Portfolio</a
+            >
+            <a
+              href="https://github.com/yusuferdem16/IntrusionDetectionWithML"
+              target="_blank"
+              style="
+                display: inline-block;
+                padding: 10px 20px;
+                background: #00c8ff;
+                color: #0a0e1a;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 700;
+                transition: all 0.3s;
+              "
+              ><i class="fab fa-github"></i> View on GitHub</a
+            >
+          </div>
+        </header>
+
+        <!-- Abstract & Goals -->
+        <section>
+          <h2>📋 Abstract</h2>
+          <p>
+            This project implements an
+            <strong>intrusion detection system (IDS)</strong> for IoT devices
+            using XGBoost machine learning. The system trains on the EdgeIIoT
+            dataset and provides a Flask web dashboard for real-time network
+            traffic monitoring. It achieves high accuracy in distinguishing
+            normal traffic from attacks but has limitations in detecting
+            zero-day vulnerabilities—a known challenge with supervised learning
+            approaches.
+          </p>
+          <div class="feature-box">
+            <h3>🎯 Project Goals</h3>
+            <ul class="impact-list">
+              <li>
+                Build an ML-based IDS capable of detecting multiple attack types
+                in IoT traffic
+              </li>
+              <li>
+                Create an interactive dashboard displaying real-time traffic
+                analysis
+              </li>
+              <li>
+                Evaluate performance using comprehensive classification metrics
+              </li>
+              <li>Assess feasibility for real-world deployment scenarios</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Background & Motivation -->
+        <section class="section-divider">
+          <h2>🔍 Background & Motivation</h2>
+
+          <h3>IoT Security Challenges</h3>
+          <p>IoT networks present unique security problems:</p>
+          <ul class="impact-list">
+            <li>
+              Devices run on limited hardware with minimal security
+              configurations
+            </li>
+            <li>
+              Multiple communication protocols (MQTT, CoAP) create complexity
+            </li>
+            <li>Default credentials and unpatched firmware are widespread</li>
+            <li>
+              Traditional security tools are too resource-intensive for IoT
+              environments
+            </li>
+          </ul>
+
+          <h3>Why Machine Learning?</h3>
+          <p>
+            ML algorithms can learn normal traffic patterns and automatically
+            detect anomalies, finding subtle patterns that manual analysis would
+            miss. <strong>XGBoost</strong> and similar ensemble methods are
+            particularly effective due to their ability to handle noisy data and
+            imbalanced datasets.
+          </p>
+        </section>
+
+        <!-- System Architecture -->
+        <section class="section-divider">
+          <h2>🏗️ System Architecture</h2>
+          <p>The system consists of four main components working together:</p>
+
+          <div class="arch-diagram">
+            <pre>
+┌─────────────────────────────────────────┐
+│         Flask Backend API               │
+│      (/api/predict, /api/stats)         │
+└────────────────┬────────────────────────┘
+                 │
+    ┌────────────┼────────────┐
+    │            │            │
+┌───▼───┐  ┌────▼────┐  ┌────▼─────┐
+│XGBoost│  │ Logging │  │Dashboard │
+│ Model │  │  (CSV)  │  │ (Web UI) │
+└───────┘  └─────────┘  └──────────┘
+                 │
+    ┌────────────▼────────────┐
+    │   Traffic Simulator     │
+    │  (Replays test data)    │
+    └─────────────────────────┘
+</pre
+            >
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4>🤖 ML Model</h4>
+              <p>
+                XGBoost classifier for binary classification (Normal vs. Attack)
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>⚙️ Backend</h4>
+              <p>
+                Flask server handling predictions and statistics via REST API
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>📊 Dashboard</h4>
+              <p>
+                Real-time web interface with live alerts and traffic monitoring
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>🔄 Simulator</h4>
+              <p>
+                Replays historical traffic to simulate live network conditions
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dataset & Preprocessing -->
+        <section class="section-divider">
+          <h2>📊 Dataset & Preprocessing</h2>
+
+          <div class="highlight">
+            <p>
+              <strong>Source:</strong> EdgeIIoT dataset (ML-EdgeIIoT variant
+              from Kaggle)<br />
+              <strong>Features:</strong> 32 network packet features including
+              ARP, ICMP, HTTP, TCP, UDP, DNS, MQTT, and Modbus TCP fields
+            </p>
+          </div>
+
+          <h3>Data Pipeline</h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4>1. Feature Selection</h4>
+              <p>
+                Removed identifying fields (IP/MAC addresses, timestamps) to
+                ensure model generalizes across different devices.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>2. Data Cleaning</h4>
+              <p>
+                Deleted rows with missing values, removed duplicates, and
+                converted categorical features to numerical format.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>3. Class Balancing</h4>
+              <p>
+                Applied random undersampling on normal traffic to address class
+                imbalance and prevent majority-class bias.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>4. Feature Scaling</h4>
+              <p>
+                Applied Min-Max scaling (0–1 range) to prevent high-magnitude
+                features from dominating training.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- XGBoost Model -->
+        <section class="section-divider">
+          <h2>🤖 XGBoost Model Configuration</h2>
+
+          <h3>Why XGBoost?</h3>
+          <ul class="impact-list">
+            <li>Excellent performance with imbalanced data</li>
+            <li>Provides feature importance scores for interpretability</li>
+            <li>Handles non-linear patterns effectively</li>
+            <li>Fast inference suitable for real-time applications</li>
+          </ul>
+
+          <div class="layer-box">
+            <h4>Hyperparameters (Optimized via GridSearchCV)</h4>
+            <ul class="impact-list">
+              <li><strong>Algorithm:</strong> Binary Classification</li>
+              <li><strong>Number of Trees:</strong> 100</li>
+              <li><strong>Learning Rate:</strong> 0.1</li>
+              <li><strong>Max Depth:</strong> 5</li>
+              <li><strong>Min Child Weight:</strong> 1</li>
+              <li><strong>Subsample:</strong> 0.8</li>
+              <li><strong>Feature Subsample:</strong> 0.8</li>
+            </ul>
+          </div>
+
+          <h3>Training Pipeline</h3>
+          <ol>
+            <li>Load EdgeIIoT dataset</li>
+            <li>Split data (80% train, 20% test)</li>
+            <li>Apply feature scaling</li>
+            <li>Balance training set</li>
+            <li>Train XGBoost classifier</li>
+            <li>Evaluate on holdout test set</li>
+          </ol>
+        </section>
+
+        <!-- Results -->
+        <section class="section-divider">
+          <h2>📈 Results</h2>
+
+          <h3>Test Performance Metrics</h3>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <span class="value">99%</span>
+              <span class="label">Precision</span>
+            </div>
+            <div class="metric-card">
+              <span class="value">94%</span>
+              <span class="label">Recall</span>
+            </div>
+            <div class="metric-card">
+              <span class="value">0.97</span>
+              <span class="label">F1-Score</span>
+            </div>
+            <div class="metric-card">
+              <span class="value">4.98%</span>
+              <span class="label">False Positive Rate</span>
+            </div>
+          </div>
+
+          <h3>Confusion Matrices</h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4>Training Set</h4>
+              <p>
+                <strong>True Negatives:</strong> 18,378<br />
+                <strong>False Positives:</strong> 903<br />
+                <strong>False Negatives:</strong> 1,029<br />
+                <strong>True Positives:</strong> 18,252
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>Test Set</h4>
+              <p>
+                <strong>True Negatives:</strong> 4,580<br />
+                <strong>False Positives:</strong> 240<br />
+                <strong>False Negatives:</strong> 1,420<br />
+                <strong>True Positives:</strong> 24,112
+              </p>
+            </div>
+          </div>
+          <p style="margin-top: 1rem">
+            <strong>Interpretation:</strong> Close alignment between training
+            and test metrics indicates good generalization with minimal
+            overfitting.
+          </p>
+
+          <h3>Top 10 Important Features</h3>
+          <ol>
+            <li><code>mqtt.len</code></li>
+            <li><code>mqtt.msg.type</code></li>
+            <li><code>mqtt.conflag.cleanness</code></li>
+            <li><code>tcp.flags</code></li>
+            <li><code>tcp.seq</code></li>
+            <li><code>mqtt.hdr.flags</code></li>
+            <li><code>tcp.ack</code></li>
+            <li><code>tcp.connection.synack</code></li>
+            <li><code>tcp.len</code></li>
+            <li><code>tcp.connection.rst</code></li>
+          </ol>
+        </section>
+
+        <!-- Real-Time Dashboard -->
+        <section class="section-divider">
+          <h2>🚀 Real-Time Dashboard</h2>
+
+          <div class="metric-grid">
+            <div class="metric-card">
+              <span class="value">1/sec</span>
+              <span class="label">Prediction Throughput</span>
+            </div>
+            <div class="metric-card">
+              <span class="value">&lt;50ms</span>
+              <span class="label">Inference Latency</span>
+            </div>
+          </div>
+
+          <h3>Dashboard Features</h3>
+          <ul class="impact-list">
+            <li>Live traffic feed with color-coded threat levels</li>
+            <li>Device status cards showing connectivity and alert status</li>
+            <li>Attack probability scores for each prediction</li>
+            <li>Top contributing features for alerts (explainability)</li>
+            <li>Historical attack log and statistics</li>
+          </ul>
+        </section>
+
+        <!-- Key Insights -->
+        <section class="section-divider">
+          <h2>💡 Key Insights</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4>📡 MQTT Protocol Critical</h4>
+              <p>
+                MQTT-related features dominate attack detection, indicating IoT
+                devices using MQTT are identifiable attack vectors.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>🎯 High Attack Precision</h4>
+              <p>
+                99% precision on test set means very few false alarms—critical
+                for operational feasibility.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>📊 Good Generalization</h4>
+              <p>
+                Similar performance on unseen test data suggests the model
+                captures genuine attack patterns, not noise.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>🔍 Explainable Alerts</h4>
+              <p>
+                Feature importance helps operators understand why traffic was
+                flagged, building trust in automated systems.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Limitations -->
+        <section class="section-divider">
+          <h2>⚠️ Limitations & Challenges</h2>
+          <div class="warning-box">
+            <h4>1. Zero-Day Attack Vulnerability (Critical)</h4>
+            <p>
+              The model can only detect attacks matching its training data.
+              Novel attack methods are invisible to supervised learning
+              approaches. <strong>Example:</strong> If an attacker invents a new
+              IoT malware variant not in EdgeIIoT, the system treats it as
+              normal traffic.
+            </p>
+          </div>
+          <div class="warning-box">
+            <h4>2. Dataset Specificity</h4>
+            <p>
+              The model is trained specifically on EdgeIIoT network
+              characteristics. Performance may degrade in different network
+              environments without retraining.
+            </p>
+          </div>
+          <div class="warning-box">
+            <h4>3. Detection-Only</h4>
+            <p>
+              The system alerts on suspicious traffic but doesn't automatically
+              block connections, isolate devices, or trigger automated
+              responses. Manual intervention is required for containment.
+            </p>
+          </div>
+        </section>
+
+        <!-- Future Improvements -->
+        <section class="section-divider">
+          <h2>🔮 Future Improvements</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h4>1. Anomaly Detection Layer</h4>
+              <p>
+                Implement unsupervised methods (Isolation Forest, Autoencoders)
+                to catch zero-day attacks by detecting statistical deviations
+                from normal traffic baselines.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>2. Active Response Module</h4>
+              <p>
+                Automated IP blacklisting, device isolation protocols, and alert
+                escalation workflows for proactive defense.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>3. Continuous Learning</h4>
+              <p>
+                Periodic retraining on new data, feedback loops from security
+                analysts, and federated learning for multi-site deployments.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>4. Explainability Enhancement</h4>
+              <p>
+                SHAP values for per-sample explanations, confusion case
+                analysis, and attack attribution (identifying specific attack
+                types).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="section-divider">
+          <h2>🛠️ Tech Stack</h2>
+          <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">XGBoost</span>
+            <span class="tech-tag">scikit-learn</span>
+            <span class="tech-tag">pandas</span>
+            <span class="tech-tag">NumPy</span>
+            <span class="tech-tag">Matplotlib</span>
+            <span class="tech-tag">Seaborn</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">HTML/CSS/JS</span>
+            <span class="tech-tag">EdgeIIoT Dataset</span>
+          </div>
+        </section>
+
+        <!-- Footer note -->
+        <section
+          style="
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e6e6e6;
+          "
+        >
+          <p style="text-align: center; color: #666">
+            <em
+              >Project by Abdullah Yusuf Erdem & Cemaleddin Seyhan at Ankara
+              Yıldırım Beyazıt University. Completed December 2025.</em
+            >
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Yusuf Erdem. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

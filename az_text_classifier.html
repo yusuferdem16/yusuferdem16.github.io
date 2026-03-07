@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azerbaijani Sentiment Analysis — Yusuf Erdem</title>
+    <link rel="icon" type="image/x-icon" href="images/lol.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">Az Sentiment Analysis</div>
+            <nav>
+                <ul>
+                    <li><a href="cv.html">View CV</a></li>
+                    <li><a href="index.html">Portfolio Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="project-article">
+            <style>
+                .project-hero {
+                    position: relative;
+                    width: 100vw;
+                    margin-left: calc(-50vw + 50%);
+                    margin-bottom: 2rem;
+                    background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #0f172a 100%);
+                    padding: 3rem 2rem;
+                    text-align: center;
+                    overflow: hidden;
+                }
+                .project-hero::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: 0; right: 0; bottom: 0;
+                    background:
+                        radial-gradient(circle at 30% 40%, rgba(168, 130, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(255, 183, 77, 0.08) 0%, transparent 50%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(168,130,255,0.04)" stroke-width="0.5"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
+                    opacity: 0.7;
+                }
+                .project-hero > * {
+                    position: relative;
+                    z-index: 2;
+                }
+                .project-hero h1 {
+                    color: #fff;
+                    font-size: 2.8rem;
+                    margin: 0 0 0.5rem 0;
+                    font-weight: 700;
+                    letter-spacing: -0.5px;
+                }
+                .project-article {max-width:980px;margin:0 auto;padding:0 18px}
+                .lead {color:#c0b8d8;font-size:1.1rem;line-height:1.6;margin:0.5rem 0 0 0;max-width:800px;margin-left:auto;margin-right:auto}
+                .feature-box {background: rgba(168, 130, 255, 0.08); border-left: 4px solid #a882ff; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;}
+                .feature-box h3 {color: #a882ff; margin-top: 0;}
+                .features-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 2rem 0;}
+                .feature-card {background: #f8f8f8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #a882ff;}
+                .feature-card h4 {margin-top: 0; color: #1a0a2e;}
+                .feature-card p {color: #333; margin: 0.5rem 0;}
+                .impact-list {list-style: none; padding: 0;}
+                .impact-list li {padding: 0.8rem 0; padding-left: 1.8rem; position: relative;}
+                .impact-list li:before {content: '✓'; position: absolute; left: 0; color: #a882ff; font-weight: bold;}
+                .section-divider {border-top: 1px solid #e6e6e6; margin: 3rem 0;}
+                .highlight {background: rgba(168, 130, 255, 0.05); padding: 1rem; border-radius: 6px; margin: 1rem 0;}
+                .tech-stack {display: flex; flex-wrap: wrap; gap: 10px; margin: 1rem 0;}
+                .tech-tag {background: #a882ff; color: #1a0a2e; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;}
+                .layer-box {background: rgba(168, 130, 255, 0.06); border: 2px solid #a882ff; padding: 1.5rem; margin: 1.5rem 0; border-radius: 8px;}
+                .layer-box h4 {color: #a882ff; margin-top: 0;}
+                .warning-box {background: rgba(255, 80, 80, 0.08); border-left: 4px solid #ff5050; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;}
+                .warning-box h4 {color: #ff5050; margin-top: 0;}
+                .success-box {background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;}
+                .success-box h4 {color: #22c55e; margin-top: 0;}
+                .metric-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 1.5rem 0;}
+                .metric-card {background: #f0f0ff; padding: 1.2rem; border-radius: 8px; text-align: center; border: 1px solid #d8d0f0;}
+                .metric-card .value {font-size: 2rem; font-weight: 700; color: #1a0a2e; display: block;}
+                .metric-card .label {font-size: 0.85rem; color: #666; margin-top: 4px;}
+                .arch-diagram {background: #1a0a2e; color: #a882ff; padding: 1.5rem; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.6; overflow-x: auto; margin: 1.5rem 0; border: 1px solid rgba(168,130,255,0.2);}
+                .compare-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 1.5rem 0;}
+                .compare-card-win {background: rgba(34, 197, 94, 0.08); padding: 1.5rem; border-radius: 8px; border: 2px solid #22c55e;}
+                .compare-card-lose {background: rgba(255, 80, 80, 0.06); padding: 1.5rem; border-radius: 8px; border: 2px solid #ff5050;}
+                .compare-card-win h4 {color: #22c55e; margin-top: 0;}
+                .compare-card-lose h4 {color: #ff5050; margin-top: 0;}
+                @media(max-width:720px){
+                    .project-hero {padding: 2rem 1rem;}
+                    .project-hero h1 {font-size: 2rem;}
+                    .features-grid {grid-template-columns: 1fr;}
+                    .metric-grid {grid-template-columns: repeat(2, 1fr);}
+                    .compare-grid {grid-template-columns: 1fr;}
+                }
+            </style>
+
+            <header class="project-hero">
+                <h1>🗣️ Azerbaijani Sentiment Analysis</h1>
+                <p style="color: #d4c8f0; font-size: 1.3rem; margin: 0.5rem 0; font-weight: 600;">YouTube Dataset + FastText + GRU</p>
+                <p class="lead">An NLP pipeline for Azerbaijani-language sentiment classification using FastText embeddings and GRU neural networks. Collected 36K YouTube comments across 5 domains, achieving Macro-F1 of 0.8016 with frozen embeddings.</p>
+                <p style="color: #8899aa; font-size: 0.95rem; margin-top: 0.5rem;">Course: CENG442 Natural Language Processing · Author: Abdullah Yusuf Erdem · March 2026</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2;">
+                    <a href="index.html" style="display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.15); color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,0.25); transition: all 0.3s;">← Back to Portfolio</a>
+                    <a href="https://github.com/yusuferdem16/Az-Text-Classifier" target="_blank" style="display: inline-block; padding: 10px 20px; background: #a882ff; color: #1a0a2e; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s;"><i class="fab fa-github"></i> View on GitHub</a>
+                </div>
+            </header>
+
+            <!-- Project Overview -->
+            <section>
+                <h2>📋 Project Overview</h2>
+                <p>
+                    This project builds a <strong>sentiment classification system for Azerbaijani text</strong> using FastText embeddings and GRU neural networks. It combines a labeled dataset (55,673 samples) with 2,910 YouTube videos scraped across 5 semantic domains, achieving a <strong>Macro-F1 score of 0.8016</strong> on held-out test data.
+                </p>
+                <div class="feature-box">
+                    <h3>🏆 Key Achievement</h3>
+                    <p>FastText <strong>frozen embeddings</strong> outperformed all other configurations, demonstrating the importance of preserving pre-trained linguistic knowledge for morphologically rich languages like Azerbaijani.</p>
+                </div>
+
+                <h3>🎯 Project Objectives</h3>
+                <ul class="impact-list">
+                    <li>Extend Part 1 labeled sentiment dataset with YouTube domain-specific data</li>
+                    <li>Map sources to 5 semantic domains (Finance, Technology, Retail, Public Services, Social Life)</li>
+                    <li>Implement robust Azerbaijani language filtering to remove Turkish/English noise</li>
+                    <li>Build embedding matrices using Word2Vec and FastText</li>
+                    <li>Train and evaluate GRU-based sentiment classifier</li>
+                    <li>Compare frozen vs. fine-tuned embeddings</li>
+                    <li>Perform error analysis and provide actionable insights</li>
+                </ul>
+            </section>
+
+            <!-- Dataset Construction -->
+            <section class="section-divider">
+                <h2>📊 Dataset Construction</h2>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>Part 1: Labeled Sentiment Data</h4>
+                        <p><strong>55,673 samples</strong> from bank reviews, movie comments, and product reviews.<br>
+                        Positive: 32,832 (58.9%) · Negative: 22,841 (41.1%)</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Part 2: YouTube Collection</h4>
+                        <p><strong>2,910 videos</strong> scraped via YouTube Data API v3. Two-stage discovery: channel-based scraping + domain-specific keyword matching.</p>
+                    </div>
+                </div>
+
+                <h3>5 Semantic Domains</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>💻 Technology & Digital Services</h4>
+                        <p>Keywords: telefon, smartfon, iphone, samsung, internet, wifi, tətbiq, rəqəmsal, ai</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💰 Finance & Business</h4>
+                        <p>Keywords: bank, kredit, kart, kapital, faiz, biznes, dollar, manat, investisiya, maaş</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏛️ Public Services</h4>
+                        <p>Keywords: pensiya, təqaüd, sosial, yardım, yol, su, qaz, işıq, dövlət, asan xidmət</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛍️ Retail & Lifestyle</h4>
+                        <p>Keywords: alış, satış, qiymət, market, geyim, endirim, mətbəx, vlog</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎬 Social Life & Entertainment</h4>
+                        <p>Keywords: musiqi, mahnı, klip, konsert, film, serial, şou, toy, meyxana</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Language Filtering -->
+            <section class="section-divider">
+                <h2>🛡️ Azerbaijani Language Filtering</h2>
+                <p>Implemented a <strong>Two-Layer Intelligent Filter</strong> to remove Turkish and English noise from YouTube comments:</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>Layer A: Character-Based Detection</h4>
+                        <p><strong>Schwa (ə):</strong> +4.0 points (unique to Azerbaijani)<br>
+                        <strong>Frequent 'q' and 'x':</strong> +1.5 points if count ≥ 2 (rare in Turkish)</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Layer B: Lexicon-Based Scoring</h4>
+                        <p><strong>Azerbaijani markers:</strong> +1.5 pts each (mən, sən, biz, deyil, hansı, üçün…)<br>
+                        <strong>Turkish markers:</strong> −5.0 pts each (değil, için, bence, kanka, güzel…)<br>
+                        <strong>Decision threshold:</strong> Score ≥ 2.5</p>
+                    </div>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <span class="value">252,872</span>
+                        <span class="label">Raw Comments</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">36,181</span>
+                        <span class="label">Filtered (Azerbaijani)</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">85.7%</span>
+                        <span class="label">Noise Removal Rate</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Embeddings -->
+            <section class="section-divider">
+                <h2>🧠 Embedding Matrix Construction</h2>
+
+                <div class="highlight">
+                    <p><strong>Combined Corpus:</strong> 124,353 sentences (Part 1) + 34,775 sentences (YouTube) = <strong>159,128 total sentences</strong></p>
+                </div>
+
+                <div class="layer-box">
+                    <h4>FastText Model Configuration</h4>
+                    <ul class="impact-list">
+                        <li><strong>Vector size:</strong> 300 dimensions</li>
+                        <li><strong>Window:</strong> 5 (context window)</li>
+                        <li><strong>Min count:</strong> 3</li>
+                        <li><strong>Architecture:</strong> Skip-gram (sg=1)</li>
+                        <li><strong>Vocabulary:</strong> 90,168 words</li>
+                        <li><strong>Keras tokenizer vocabulary:</strong> 108,124 tokens</li>
+                        <li><strong>OOV rate:</strong> 0% (FastText subword advantage)</li>
+                    </ul>
+                </div>
+
+                <p><strong>Key Feature:</strong> FastText's subword-based approach means even out-of-vocabulary words receive meaningful representations from their character n-grams—critical for Azerbaijani's agglutinative morphology.</p>
+            </section>
+
+            <!-- Frozen vs Fine-Tuned -->
+            <section class="section-divider">
+                <h2>🔬 Frozen vs. Fine-Tuned Embeddings</h2>
+
+                <div class="compare-grid">
+                    <div class="compare-card-win">
+                        <h4>✅ Frozen Embeddings (Winner)</h4>
+                        <ul class="impact-list">
+                            <li><strong>F1 Score:</strong> 0.8016</li>
+                            <li>Better generalization</li>
+                            <li>Preserves linguistic knowledge</li>
+                            <li>Stable training curve</li>
+                            <li>Appropriate for small labeled datasets</li>
+                        </ul>
+                    </div>
+                    <div class="compare-card-lose">
+                        <h4>❌ Fine-Tuned Embeddings (Overfitting)</h4>
+                        <ul class="impact-list" style="--check-color: #ff5050;">
+                            <li><strong>F1 Score:</strong> 0.7508</li>
+                            <li>Catastrophic forgetting</li>
+                            <li>98% train accuracy, 75% validation</li>
+                            <li>Val loss explosion: 0.42 → 1.02</li>
+                            <li>Poor generalization to YouTube</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Root Cause: Catastrophic Forgetting</h4>
+                    <p>The 300-dimensional embedding space has <strong>32.4M parameters</strong> (108,124 words × 300 dims) but only 55,673 training samples — a ratio of ~581 parameters per example. Fine-tuning forced embeddings to overspecialize, forgetting general linguistic knowledge learned from the 159K-sentence corpus.</p>
+                </div>
+            </section>
+
+            <!-- GRU Architecture -->
+            <section class="section-divider">
+                <h2>🏗️ GRU Neural Network Architecture</h2>
+
+                <div class="arch-diagram">
+<pre>
+Input: Tokenized sequences (max_len=100)
+         ↓
+Embedding Layer
+  - vocab_size: 108,124
+  - embedding_dim: 300
+  - trainable: False (FROZEN)
+  - mask_zero: True
+         ↓
+SpatialDropout1D (rate=0.2)
+         ↓
+GRU Layer
+  - units: 64
+  - return_sequences: False
+         ↓
+Dropout (rate=0.3)
+         ↓
+Dense Layer
+  - units: 2
+  - activation: softmax
+         ↓
+Output: [P(Negative), P(Positive)]
+</pre>
+                </div>
+
+                <div class="layer-box">
+                    <h4>Training Configuration</h4>
+                    <ul class="impact-list">
+                        <li><strong>Optimizer:</strong> Adam (lr=0.001)</li>
+                        <li><strong>Loss:</strong> Sparse categorical cross-entropy</li>
+                        <li><strong>Batch size:</strong> 256</li>
+                        <li><strong>Epochs:</strong> 10 (early stopping ~epoch 7-8)</li>
+                        <li><strong>Train/Val split:</strong> 90/10 (stratified)</li>
+                        <li><strong>Hardware:</strong> Apple Silicon M-series (CPU)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section class="section-divider">
+                <h2>📈 Evaluation Results</h2>
+
+                <h3>Quantitative Performance (Test Set)</h3>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <span class="value">0.8016</span>
+                        <span class="label">Macro-F1 Score</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">81.25%</span>
+                        <span class="label">Validation Accuracy</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">0%</span>
+                        <span class="label">OOV Rate (FastText)</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="value">36,181</span>
+                        <span class="label">YouTube Comments Classified</span>
+                    </div>
+                </div>
+
+                <h3>Domain-Level Sentiment Distribution</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>🎬 Social Life & Entertainment</h4>
+                        <p><strong>34.6% negative</strong> — Highest negativity. Reflects critical viewer comments on content quality, performances, and entertainment preferences.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💰 Finance & Business</h4>
+                        <p><strong>30.7% negative</strong> — Moderate negativity reflecting concerns about loan rates, credit card terms, inflation, and banking services.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏛️ Public Services</h4>
+                        <p><strong>29.9% negative</strong> — Infrastructure complaints, pension/welfare concerns, government accessibility, and social support critiques.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💻 Technology & Retail</h4>
+                        <p><strong>23.9% negative</strong> — Most positive domain. High customer satisfaction, positive product reviews, and strong tech content engagement.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Word2Vec vs FastText -->
+            <section class="section-divider">
+                <h2>🔤 Word2Vec vs. FastText: Why FastText Wins</h2>
+                <p>Azerbaijani is a highly <strong>agglutinative</strong> language with multiple stacked suffixes. This creates enormous challenges for word-level embedding models:</p>
+
+                <div class="arch-diagram">
+<pre>
+Base word: telefon (phone)
+
+Inflected forms:
+  telefonlar        (phones)       → OOV in Word2Vec
+  telefonlarım      (my phones)    → OOV in Word2Vec
+  telefonlarımız    (our phones)   → OOV in Word2Vec
+  telefonlarımızdan (from our phones) → OOV in Word2Vec
+
+FastText: ALL forms get meaningful vectors via subword n-grams
+Word2Vec OOV rate: 26.58% (28,627 / 108,124 tokens → zero vectors)
+</pre>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>1. Subword Information</h4>
+                        <p>FastText decomposes words into character n-grams, capturing morphological structure and preserving semantic similarity across inflections.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>2. Zero OOV Rate</h4>
+                        <p>Can generate vectors for any word using subword info. Word2Vec lost 26.58% of tokens to zero vectors — massive information loss.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>3. YouTube Robustness</h4>
+                        <p>Handles misspellings, informal language, abbreviations, and code-switched Azerbaijani-Turkish comments naturally.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Analysis -->
+            <section class="section-divider">
+                <h2>⚠️ Error Analysis</h2>
+
+                <div class="warning-box">
+                    <h4>Error 1: Catastrophic Forgetting (Fine-Tuned)</h4>
+                    <p>Training accuracy reached 98%+ while validation accuracy stalled at 75-76%. The 32.4M embedding parameters vs. 55K training samples created a ~581:1 parameter-to-sample ratio, causing extreme overfitting.</p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Error 2: Word2Vec OOV Issues</h4>
+                    <p>26.58% of tokens replaced with zero vectors. Comments with multiple OOV words became semantically empty — up to 60% of meaning lost in some cases.</p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Error 3: Language Filter Edge Cases</h4>
+                    <p>Very short comments (&lt;2 words) and code-switched Azerbaijani-Turkish text occasionally evade the filter. Impact: minimal (&lt;2% of filtered data).</p>
+                </div>
+            </section>
+
+            <!-- Key Learnings -->
+            <section class="section-divider">
+                <h2>🎓 Key Learning Outcomes</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>📐 Embedding Quality Matters</h4>
+                        <p>Frozen embeddings from large combined corpus outperformed fine-tuned models—linguistic pretraining is more valuable than task-specific adaptation with limited data.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔤 Morphology-Aware Embeddings</h4>
+                        <p>FastText's subword approach is essential for morphologically rich, agglutinative languages like Azerbaijani where word forms multiply rapidly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛡️ Language-Specific Filtering</h4>
+                        <p>Two-layer character + lexicon-based filtering effectively removes Turkish/English noise with 85.7% elimination rate.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Domain-Specific Sentiment</h4>
+                        <p>Different domains show distinct sentiment distributions—technology/retail more positive; social life/entertainment more critical and negative.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Future Improvements -->
+            <section class="section-divider">
+                <h2>🔮 Future Improvements</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>1. Ensemble Methods</h4>
+                        <p>Combine Word2Vec + FastText + GloVe embeddings with voting classifier for more robust predictions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>2. Transfer Learning</h4>
+                        <p>Fine-tune on unlabeled YouTube data first, then on labeled data. Reduce catastrophic forgetting through staged training.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>3. Transformer Models</h4>
+                        <p>Experiment with BERT/mBERT for Azerbaijani. Attention mechanisms for better context understanding.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>4. Multilingual Models</h4>
+                        <p>Multilingual FastText trained on multiple Turkic languages. Better handle Turkish code-switching in YouTube comments.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>5. Domain Adaptation</h4>
+                        <p>Domain-specific fine-tuning for each of 5 semantic categories to improve within-domain precision.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>6. Active Learning</h4>
+                        <p>Identify uncertain predictions, collect human annotations for hard cases, and incrementally improve the model.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Stack -->
+            <section class="section-divider">
+                <h2>🛠️ Tech Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow/Keras</span>
+                    <span class="tech-tag">Gensim</span>
+                    <span class="tech-tag">FastText</span>
+                    <span class="tech-tag">Word2Vec</span>
+                    <span class="tech-tag">pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">NLTK</span>
+                    <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">YouTube Data API v3</span>
+                </div>
+            </section>
+
+            <!-- Footer note -->
+            <section style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e6e6e6;">
+                <p style="text-align: center; color: #666;">
+                    <em>CENG442 Natural Language Processing — Ankara Yıldırım Beyazıt University. Completed March 2026.</em>
+                </p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Yusuf Erdem. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
