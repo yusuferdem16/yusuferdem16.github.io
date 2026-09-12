@@ -251,7 +251,17 @@ export function CoverFlowCarousel({
             return (
               <div
                 key={idx}
+                className={isCenter ? "" : "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#22d3ee]"}
                 onClick={() => !isCenter && goToSlide(idx)}
+                onKeyDown={(e) => {
+                  if (!isCenter && (e.key === "Enter" || e.key === " ")) {
+                    e.preventDefault();
+                    goToSlide(idx);
+                  }
+                }}
+                role={isCenter ? undefined : "button"}
+                tabIndex={isCenter ? -1 : 0}
+                aria-label={isCenter ? undefined : `Show ${item.titleLine1}`}
                 style={{
                   position: "absolute",
                   width: `${m.card}px`,
