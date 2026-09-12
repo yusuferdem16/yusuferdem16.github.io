@@ -404,9 +404,11 @@ p {
     white-space: nowrap;
 }
 
-/* Live status badge — an inline chip next to a project's title */
+/* Live status badge — its own line below a project's title, never inline
+   with the title text, so it can't overlap the description below it */
 .badge-live {
     display: inline-flex;
+    align-self: flex-start;
     align-items: center;
     gap: 0.4em;
     background: rgba(34, 197, 94, 0.12);
@@ -418,8 +420,7 @@ p {
     text-transform: uppercase;
     padding: 0.25em 0.7em;
     border-radius: 999px;
-    vertical-align: middle;
-    margin-left: 0.6em;
+    margin-bottom: var(--space-2);
 }
 
 .badge-live::before {
