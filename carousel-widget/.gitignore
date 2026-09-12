@@ -1,0 +1,6 @@
+node_modules
+dist
+node_modules/.tmp
+*.local
+# Local-dev-only symlink to ../images for `npm run dev` preview; not needed to rebuild
+public/images

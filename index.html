@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="images/lol.ico">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="carousel-dist/carousel-widget.css">
 </head>
 
 <body>
@@ -71,6 +72,8 @@
         <!-- Projects Section -->
         <section id="projects">
             <h2>Projects</h2>
+            <div id="projects-carousel-root"></div>
+            <noscript>
             <div class="project-grid">
                 <!-- 1. Capstone — flagship academic project -->
                 <div class="project-item">
@@ -155,11 +158,14 @@
                     </div>
                 </div>
             </div>
+            </noscript>
         </section>
 
         <!-- Achievements Section -->
         <section id="achievements">
             <h2>Achievements</h2>
+            <div id="achievements-carousel-root"></div>
+            <noscript>
             <div class="project-grid">
                 <div class="project-item">
                     <a href="images/certificate_muisc_2026.jpg" target="_blank"><img src="images/certificate_muisc_2026.jpg" alt="MUISC 2026 Certificate of Participation"></a>
@@ -215,6 +221,7 @@
                     </div>
                 </div>
             </div>
+            </noscript>
         </section>
 
         <!-- Skills Section -->
@@ -271,6 +278,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module" src="carousel-dist/carousel-widget.js"></script>
 </body>
 
 </html>

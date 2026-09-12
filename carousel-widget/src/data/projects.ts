@@ -1,0 +1,58 @@
+import type { CarouselItem } from "@/components/ui/3-d-coverflow-carousel";
+
+export const projectItems: CarouselItem[] = [
+  {
+    tag: "#Capstone",
+    titleLine1: "AI HEALTH RISK",
+    titleLine2: "SCORING & ROUTING",
+    desc: "Disease-risk scoring for diabetes, hypertension & stroke from non-lab data, plus a hospital routing algorithm.",
+    img: "images/health_risk_hero.png",
+    ctaText: "Read Full Project",
+    ctaUrl: "health_risk_model.html",
+  },
+  {
+    tag: "#AIEngineering",
+    titleLine1: "AGENT COUNCIL",
+    titleLine2: "MULTI-AGENT VAULT MANAGER",
+    desc: "Three role-played AI agents plan, edit, and review markdown notes in a loop, built on Google's Agent Development Kit.",
+    img: "images/agent_council_hero.svg",
+    ctaText: "Read Full Project",
+    ctaUrl: "agent_council.html",
+  },
+  {
+    tag: "#LiveInProduction",
+    titleLine1: "CRYPTO FORECASTER",
+    titleLine2: "BI-LSTM VS SARIMAX",
+    desc: "Zero-infrastructure MLOps on GitHub Actions — automated daily forecasts and weekly retraining, no server or database.",
+    img: "images/end_to_end_hero.png",
+    ctaText: "Read Full Project",
+    ctaUrl: "end_to_end_forecaster.html",
+  },
+  {
+    tag: "#LiveInProduction",
+    titleLine1: "IOT INTRUSION",
+    titleLine2: "DETECTION SYSTEM",
+    desc: "XGBoost-based IDS for IoT networks with a real-time dashboard — 99% precision, 0.97 F1-score on the EdgeIIoT dataset.",
+    img: "images/intrusion_detection_thumbnail.png",
+    ctaText: "Read Full Project",
+    ctaUrl: "intrusion_detection.html",
+  },
+  {
+    tag: "#NLP",
+    titleLine1: "AZERBAIJANI",
+    titleLine2: "SENTIMENT ANALYSIS",
+    desc: "FastText + GRU sentiment classifier for 36K Azerbaijani YouTube comments across 5 domains — Macro-F1: 0.8016.",
+    img: "images/az_text_classifier_hero.png",
+    ctaText: "Read Full Project",
+    ctaUrl: "az_text_classifier.html",
+  },
+  {
+    tag: "#EnterpriseFullStack",
+    titleLine1: "PARCEL SELECTION",
+    titleLine2: "GIS SYSTEM",
+    desc: "OpenLayers + ASP.NET Core + PostGIS N-tier system for spatial optimization, deployed to Turkish municipalities.",
+    img: "images/parcel.png",
+    ctaText: "Read Full Project",
+    ctaUrl: "parcel_gis_project.html",
+  },
+];
