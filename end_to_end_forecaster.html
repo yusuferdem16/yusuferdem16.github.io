@@ -91,7 +91,7 @@
             </style>
             <header class="project-hero">
                 <h1>⚡ End-to-End Forecaster</h1>
-                <p class="lead">A production-grade crypto forecasting system: Dockerized data lake, idempotent ETL, feature engineering for stationarity, a model arena (Bi-LSTM vs SARIMAX), and an automated MLOps loop that runs autonomously in the cloud.</p>
+                <p class="lead">A production-grade crypto forecasting system: idempotent file-based ETL, feature engineering for stationarity, a model arena (Bi-LSTM vs SARIMAX), and a fully automated MLOps loop that runs on GitHub Actions with zero servers or databases to maintain.</p>
                 <img src="images/end_to_end_hero.png" alt="End-to-End Forecaster hero" class="project-hero-img"/>
                 <div style="margin-top: 1.5rem; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2;">
                     <a href="https://btcforecaster.streamlit.app/" target="_blank" style="display: inline-block; padding: 10px 20px; background: #00D9FF; color: #0f172a; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s;">🚀 Live Dashboard</a>
@@ -118,58 +118,62 @@
 
             <section>
                 <h2>Phase 1 — Infrastructure & Data Engineering</h2>
-                <p>The "Fragile Environment" Trap: CSVs on laptops are fragile (no persistence, inconsistent environments, manual updates). I solved this by using Infrastructure as Code and containerization.</p>
+                <p>The system went through a real architecture pivot: it originally ran on a Dockerized PostgreSQL "data lake." That added a database to host, secrets to manage, and a server that needed to stay alive. I replaced it with a file-based store — plain CSV/JSON committed straight into the repo — so GitHub Actions and the Streamlit dashboard can both read/write the same source of truth with zero infrastructure to babysit.</p>
 
                 <figure class="project-image-figure">
-                    <img src="images/system_architecture.png" alt="Architecture diagram" class="project-image"/>
-                    <figcaption>Architecture overview (Dockerized DB + ETL + API + Dashboard)</figcaption>
+                    <img src="images/system_architecture.svg" alt="Architecture diagram" class="project-image"/>
+                    <figcaption>Current architecture: GitHub Actions cron jobs + file-based storage + Streamlit auto-redeploy — no server or database</figcaption>
                 </figure>
 
-                <h3>Solution: Docker Compose (Postgres)</h3>
-                <p>Engineering decision: run PostgreSQL in Docker Compose so local and cloud environments are identical.</p>
-                                <div class="code-block">
-<pre><code># docker-compose.yml
-version: '3.8'
-services:
-    db:
-        image: postgres:15
-        container_name: crypto_db
-        environment:
-            POSTGRES_DB: crypto_data
-        volumes:
-            - postgres_data:/var/lib/postgresql/data
+                <h3>Solution: File-Based Storage (<code>src/storage.py</code>)</h3>
+                <p>Every table is just a CSV under <code>data/</code>, and predictions live in a single JSON file. No connection strings, no network-reachable service — reads and writes are plain file I/O.</p>
+                <div class="code-block">
+<pre><code># src/storage.py
+"""
+File-based data store.
 
-volumes:
-    postgres_data:
+Replaces the old Postgres "data lake" with plain CSV/JSON files committed to
+the repo under data/. There is no server to reach, so GitHub Actions and the
+Streamlit dashboard can both read/write the same source of truth without any
+network-reachable database or connection secrets.
+"""
+
+def read_table(name):
+    path = _table_filename(name)
+    if not os.path.exists(path):
+        return None
+    df = pd.read_csv(path)
+    if "date" in df.columns:
+        df["date"] = pd.to_datetime(df["date"])
+    return df
+
+def write_table(df, name):
+    os.makedirs(DATA_DIR, exist_ok=True)
+    df.to_csv(_table_filename(name), index=False)
 </code></pre>
 </div>
 
-                <h3>The Fault-Tolerant ETL Pipeline</h3>
-                <p>I built an ingestion engine in <code>src/ingestion.py</code> with an incremental, idempotent load strategy. The script checks the latest timestamp in the DB, fetches only missing rows from the data provider, and writes atomically.</p>
+                <h3>The Idempotent Ingestion Pipeline</h3>
+                <p><code>src/ingestion.py</code> checks the latest date already stored, fetches only the missing days from Yahoo Finance, then de-duplicates and merges before writing back — safe to re-run at any time without corrupting history.</p>
                 <div class="code-block">
 <pre><code># src/ingestion.py (excerpt)
 def fetch_and_store(ticker):
-    # 1. Check existing data state
-    last_date = get_latest_date_from_db(ticker)
-    if last_date:
-        # Incremental Update
-        start_date = last_date + timedelta(days=1)
-        action = 'append'
-    else:
-        # Full Backfill
-        start_date = '2020-01-01'
-        action = 'replace'
+    last_date = get_latest_date(ticker)
+    start_date = (last_date + timedelta(days=1)).strftime('%Y-%m-%d') if last_date else "2020-01-01"
 
-    # 2. Fetch only what is needed
-    df = yf.download(ticker, start=start_date)
+    df_new = yf.download(ticker, start=start_date, interval="1d", progress=False)
+    df_new.reset_index(inplace=True)
+    df_new.columns = [c.lower() for c in df_new.columns]
 
-    # 3. Store in Postgres atomically
-    with engine.begin() as conn:
-        df.to_sql(table_name, conn, if_exists=action, index=False)
+    existing = read_table(table_name)
+    combined = pd.concat([existing, df_new], ignore_index=True) if existing is not None else df_new
+    combined = combined.drop_duplicates(subset="date", keep="last").sort_values("date")
+
+    write_table(combined, table_name)
 </code></pre>
 </div>
 
-                <p><strong>Key takeaway:</strong> Dockerized SQL Data Lake + idempotent ingestion removes manual fragility and supports reliable production runs.</p>
+                <p><strong>Key takeaway:</strong> Replacing a hosted database with version-controlled files traded a small amount of query power for zero infrastructure cost, zero secrets, and a system that literally cannot go down between deploys.</p>
             </section>
 
             <section>
@@ -229,13 +233,10 @@ def fetch_and_store(ticker):
 
                 <h3>Backtest Performance</h3>
                 <ul>
-                    <li><strong>Backtest Period:</strong> Oct 2024 – Nov 2025 (13 months)</li>
-                    <li><strong>Out-of-sample MAPE:</strong> 1.8% (SARIMAX winner)</li>
-                    <li><strong>Sharpe Ratio:</strong> 0.62 (risk-adjusted returns)</li>
-                    <li><strong>Max Drawdown:</strong> 8.3%</li>
-                    <li><strong>Data Points Processed:</strong> 2,000+</li>
-                    <li><strong>Model Iterations:</strong> 400+ (continuous retraining)</li>
-                    <li><strong>Availability:</strong> 99.2% uptime (Render cloud)</li>
+                    <li><strong>History Used:</strong> Daily BTC-USD close since Jan 2020 — 2,400+ trading days</li>
+                    <li><strong>Out-of-sample MAPE:</strong> ~1.8% (SARIMAX winner)</li>
+                    <li><strong>Retraining Cadence:</strong> Weekly, fully automated via GitHub Actions</li>
+                    <li><strong>Forecast Cadence:</strong> Daily, 05:00 UTC, zero manual steps</li>
                 </ul>
 
                 <figure class="project-image-figure">
@@ -248,46 +249,34 @@ def fetch_and_store(ticker):
 
             <section>
                 <h2>Phase 5 — MLOps &amp; Autonomous Scheduling</h2>
-                <p>I built an automation engine (<code>src/automation.py</code>) that runs daily: ingest new candle, verify yesterday's predictions (MAE ledger), retrain models, and forecast tomorrow. This creates a permanent, auditable ledger of model performance.</p>
+                <p>I built an automation engine (<code>src/automation.py</code>) that GitHub Actions runs daily at 05:00 UTC: ingest new candle → recompute features → verify yesterday's predictions → forecast tomorrow. A separate weekly workflow (<code>src/retrain.py</code>, Sundays 06:00 UTC) retrains both models on the freshest history. Both workflows commit their output straight back to the repo using the default <code>GITHUB_TOKEN</code> — no secrets to configure.</p>
 
-                <h3>Reliability</h3>
-                <p>To keep the cloud container awake on free-tier hosts (Render), I implemented a <code>/health</code> endpoint and used UptimeRobot to ping it every 5 minutes.</p>
+                <h3>Zero-Infrastructure Reliability</h3>
+                <p>There's no server to keep awake and nothing to ping. GitHub Actions runs on GitHub's own infrastructure on a fixed schedule, and Streamlit Community Cloud auto-redeploys the dashboard on every push — so uptime is whatever GitHub Actions' and Streamlit's own platforms guarantee, not something I have to engineer myself.</p>
 
-                <h3>Model Monitoring &amp; Data Drift Detection</h3>
-                <p>The system continuously monitors model performance and detects data drift:</p>
+                <h3>Accuracy Tracking</h3>
                 <ul>
-                    <li><strong>Accuracy Tracker:</strong> Daily MAE is logged to PostgreSQL. A rolling 7-day average tracks performance degradation.</li>
-                    <li><strong>Drift Detection:</strong> If MAE exceeds 2 standard deviations above the 30-day mean, trigger a flag.</li>
-                    <li><strong>Feature Distribution Monitoring:</strong> Kolmogorov-Smirnov (KS) test compares recent feature distributions against training set. High KS statistic (~&gt;0.2) signals data drift.</li>
-                    <li><strong>Retraining Trigger:</strong> If drift is detected OR accuracy degrades &gt;15% for 3 consecutive days, both models retrain automatically.</li>
-                    <li><strong>Model Versioning:</strong> All model artifacts (.pkl, .h5) are versioned with timestamps. Rollback to prior version if new model underperforms in live testing.</li>
-                    <li><strong>Dashboard Metrics:</strong> Streamlit dashboard displays real-time MAE, data drift score, and alert status.</li>
+                    <li><strong>Prediction Ledger:</strong> Every forecast is appended to <code>data/predictions.json</code> with its model version and target date.</li>
+                    <li><strong>Verification:</strong> The next day's run looks up the actual close and back-fills MAE/MAPE for each pending prediction.</li>
+                    <li><strong>Dashboard:</strong> The Accuracy Tracker tab renders this ledger directly — every real forecast either model has made, verified once the outcome is known.</li>
                 </ul>
 
-                <p><strong>Key takeaway:</strong> Automating both prediction and evaluation produces a self-correcting system that continuously adapts.</p>
+                <p><strong>Key takeaway:</strong> Committing results as version-controlled files instead of writing to a database turns "the log" and "the trigger for redeploy" into the same action — one <code>git push</code> does both.</p>
             </section>
 
             <section>
-                <h2>Phase 6 — Microservices &amp; Deployment</h2>
-                <p>I decoupled the system into three services:</p>
-                <ul>
-                    <li><strong>The Brain</strong>: FastAPI backend serving endpoints like <code>/predict/BTC-USD</code>.</li>
-                    <li><strong>The Face</strong>: Streamlit dashboard consuming the API and rendering visualizations.</li>
-                    <li><strong>The Memory</strong>: Neon (serverless PostgreSQL) in the cloud for persistence.</li>
-                </ul>
-
-                <h3>Deployment gotcha — Ghost Date Bug</h3>
-                <p>Root cause: pandas index was numeric in production. Fix: explicitly cast date columns to <code>datetime64[ns]</code> before saving.</p>
+                <h2>Phase 6 — From Microservices Back to Simplicity</h2>
+                <p>An earlier version of this system split into three services: a FastAPI "brain" serving predictions over HTTP, a Streamlit "face" calling that API, and a hosted Postgres "memory." In production that meant a server to keep alive, an API contract to maintain, and a database to pay for — for a dashboard that only needs to show numbers that change once a day.</p>
+                <p>The current version collapses all three into two GitHub Actions workflows plus one Streamlit app that reads committed files directly. No internal API, no backend process, no database connection.</p>
                 <figure class="project-image-figure">
-                    <img src="images/project_structure.png" alt="Project structure" class="project-image"/>
-                    <figcaption>Project structure and main modules</figcaption>
+                    <img src="images/project_structure.svg" alt="Project structure" class="project-image"/>
+                    <figcaption>Current project structure and main modules</figcaption>
                 </figure>
             </section>
 
             <section>
                 <h2>Conclusion</h2>
-                <p>This project moved me from "modeler" to "engineer": building pipelines, automations, and a full-stack deployment that runs autonomously. The system has processed 2,000+ datapoints and trained hundreds of iterations.</p>
-                </ul>
+                <p>This project moved me from "modeler" to "engineer" — and then, just as importantly, taught me when to simplify. The Docker/Postgres/FastAPI version worked, but a file-based, GitHub-Actions-driven redesign delivers the same daily forecasts and weekly retraining with no server, no database, and no secrets to manage.</p>
             </section>
 
             <p><a href="index.html">← Back to portfolio</a></p>
