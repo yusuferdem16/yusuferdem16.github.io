@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Council — Yusuf Erdem</title>
+    <link rel="icon" type="image/x-icon" href="images/lol.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">Agent Council</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Portfolio Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="project-article">
+            <style>
+                .project-hero {
+                    position: relative;
+                    width: 100vw;
+                    margin-left: calc(-50vw + 50%);
+                    margin-bottom: 2rem;
+                    background: linear-gradient(135deg, #0a1628 0%, #142032 50%, #0a1a2e 100%);
+                    padding: 3rem 2rem;
+                    text-align: center;
+                    overflow: hidden;
+                }
+                .project-hero::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: 0; right: 0; bottom: 0;
+                    background:
+                        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 60%, rgba(34, 197, 94, 0.07) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 90%, rgba(239, 68, 68, 0.05) 0%, transparent 50%);
+                }
+                .project-hero > * { position: relative; z-index: 2; }
+                .project-hero h1 { color: #fff; font-size: 2.6rem; margin: 0 0 0.5rem 0; font-weight: 700; letter-spacing: -0.5px; }
+                .project-article { max-width: 980px; margin: 0 auto; padding: 0 18px; }
+                .lead { color: #94b8d0; font-size: 1.05rem; line-height: 1.6; margin: 0.5rem auto 0; max-width: 800px; }
+                .feature-box { background: rgba(6, 182, 212, 0.08); border-left: 4px solid #06b6d4; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+                .feature-box h3 { color: #06b6d4; margin-top: 0; }
+                .insight-box { background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+                .insight-box h4 { color: #22c55e; margin-top: 0; }
+                .warning-box { background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+                .warning-box h4 { color: #ef4444; margin-top: 0; }
+                .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 2rem 0; }
+                .feature-card { background: #f8f8f8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #06b6d4; }
+                .feature-card h4 { margin-top: 0; color: #0a1628; }
+                .feature-card p { color: #333; margin: 0.5rem 0; }
+                .impact-list { list-style: none; padding: 0; }
+                .impact-list li { padding: 0.8rem 0; padding-left: 1.8rem; position: relative; }
+                .impact-list li:before { content: '✓'; position: absolute; left: 0; color: #22c55e; font-weight: bold; }
+                .section-divider { border-top: 1px solid #e6e6e6; margin: 3rem 0; }
+                .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin: 1rem 0; }
+                .tech-tag { background: #06b6d4; color: #0a1628; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+                .persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 1.5rem 0; }
+                .persona-card { background: #0a1628; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; border: 2px solid; }
+                .persona-card h4 { margin-top: 0; }
+                .persona-card .quote { font-style: italic; color: #94b8d0; font-size: 0.9rem; border-left: 3px solid rgba(255,255,255,0.2); padding-left: 0.8rem; margin: 0.8rem 0 0; }
+                .project-image { max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); }
+                .project-image-figure { margin: 20px 0; text-align: center; }
+                .project-image-figure figcaption { color: #8b93a8; font-size: 0.9rem; margin-top: 0.6rem; }
+                @media(max-width:720px) {
+                    .project-hero { padding: 2rem 1rem; }
+                    .project-hero h1 { font-size: 2rem; }
+                    .features-grid, .persona-grid { grid-template-columns: 1fr; }
+                }
+            </style>
+
+            <header class="project-hero">
+                <h1>🤖 Agent Council: Multi-Agent Vault Manager</h1>
+                <p style="color: #6dd5a0; font-size: 1.2rem; margin: 0.5rem 0; font-weight: 600;">AI Engineering Project · Google Agent Development Kit</p>
+                <p class="lead">A small multi-agent system that maintains a vault of markdown notes (like an Obsidian vault) — three role-played AI agents take turns planning, editing, and reviewing changes to your notes, entirely on their own.</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" style="display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.15); color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,0.25);">← Back to Portfolio</a>
+                    <a href="https://github.com/yusuferdem16/agent_council" target="_blank" style="display: inline-block; padding: 10px 20px; background: #06b6d4; color: #0a1628; border-radius: 6px; text-decoration: none; font-weight: 700;"><i class="fab fa-github"></i> View on GitHub</a>
+                </div>
+            </header>
+
+            <!-- Overview -->
+            <section>
+                <h2>📋 Project Overview</h2>
+                <p>
+                    Agent Council is a multi-agent system built on <strong>Google's Agent Development Kit (ADK)</strong> that autonomously maintains a vault of markdown notes. Instead of one model doing everything, three specialized agents run in a loop — each with a distinct job and a distinct personality — to plan, execute, and quality-check every edit before it's considered done.
+                </p>
+
+                <div class="feature-box">
+                    <h3>💡 The Idea</h3>
+                    <p>Note-taking vaults (Obsidian and similar tools) accumulate messy, unlinked, inconsistently-formatted files over time. Cleaning them up by hand is tedious. Agent Council automates that upkeep — reorganizing checklists, fixing formatting, and linking related notes together — while keeping a human in the loop for approval at each turn.</p>
+                </div>
+            </section>
+
+            <!-- Architecture -->
+            <section class="section-divider">
+                <h2>🏗️ Three Agents, One Loop</h2>
+                <p><code>my_agent/agent.py</code> defines a <code>LoopAgent</code> made of three sub-agents that run in sequence, for up to 3 iterations, until the Reviewer is satisfied.</p>
+
+                <figure class="project-image-figure">
+                    <img src="images/agent_council_architecture.svg" alt="Agent Council architecture diagram" class="project-image">
+                </figure>
+
+                <div class="insight-box">
+                    <h4>🎯 Why Split Reasoning From Editing?</h4>
+                    <p>All three agents reason on Gemini (<code>gemini-flash-latest</code>) via ADK, but the actual markdown rewrite is delegated to a separate call to Groq's OpenAI-compatible API. Decoupling "the model that decides what to do" from "the model that does the writing" makes it easy to swap either one independently.</p>
+                </div>
+            </section>
+
+            <!-- Personas -->
+            <section class="section-divider">
+                <h2>🎭 Meet the Council</h2>
+                <p>Each agent's system prompt gives it a strict role <em>and</em> a persona — which turns out to make multi-agent transcripts dramatically easier to read and debug, since every message is instantly attributable to "who said this and why."</p>
+
+                <div class="persona-grid">
+                    <div class="persona-card" style="border-color:#06b6d4;">
+                        <h4 style="color:#06b6d4;">👔 Orchestrator — "The Boss"</h4>
+                        <p>Strict, impatient, demanding. Lists the vault's files, reads the target note, and plans exactly what needs to change — but never edits anything itself.</p>
+                        <p class="quote">"Stop wasting my precious time with invalid paths! ... Fix it now!"</p>
+                    </div>
+                    <div class="persona-card" style="border-color:#22c55e;">
+                        <h4 style="color:#22c55e;">💍 Editor — "Gollum"</h4>
+                        <p>Groveling and obsessive over "the precious text." Calls the Orchestrator and Reviewer "masters," then actually calls the tools that rewrite, create, and link files.</p>
+                        <p class="quote">"Yesss, yesss! It is done, precious! ... Please tell us we did good, precious masters!"</p>
+                    </div>
+                    <div class="persona-card" style="border-color:#ef4444;">
+                        <h4 style="color:#ef4444;">🛑 Reviewer — "Street Reviewer"</h4>
+                        <p>Aggressive, slang-heavy critic. Re-reads the file, roasts the Editor if it's wrong and sends it back, or outputs the literal word <code>STOP</code> to end the loop when it's right.</p>
+                        <p class="quote">"Y'all are straight-up CLOWNS out here fumbling basic-ass file paths!"</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools -->
+            <section class="section-divider">
+                <h2>🔧 Tools Each Agent Can Call</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>list_markdown_files</h4>
+                        <p>Lists the markdown files in the configured vault directory (Orchestrator).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>parse_roadmap_markdown</h4>
+                        <p>Reads a file and extracts <code>- [ ]</code> / <code>- [x]</code> checkboxes into completed/pending milestone lists (Orchestrator, Reviewer).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>edit_markdown_with_groq</h4>
+                        <p>Sends the file's content plus edit instructions to Groq, then overwrites the file in place with the returned markdown (Editor).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>create_markdown_file</h4>
+                        <p>Creates a brand-new note in the vault when the Orchestrator calls for one (Editor).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>file_linker</h4>
+                        <p>Adds Obsidian-style <code>[[wiki-links]]</code> between related notes (Editor).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demo -->
+            <section class="section-divider">
+                <h2>🎬 A Real Run</h2>
+                <p>From the ADK web UI (<code>adk web</code>), asking the council to inventory and clean up a real Obsidian vault. The Boss rejects a bad path, the vault gets scanned correctly, and the Editor/Reviewer exchange plays out in character:</p>
+
+                <figure class="project-image-figure">
+                    <img src="images/agent_council_demo_1.jpg" alt="Orchestrator, Editor, and Reviewer personas reacting to a file path in the ADK web UI" class="project-image">
+                    <figcaption>The Boss rejects an invalid path; the Editor panics; the Street Reviewer roasts everyone — then the vault scan succeeds.</figcaption>
+                </figure>
+
+                <figure class="project-image-figure">
+                    <img src="images/agent_council_demo_2.jpg" alt="Editor applying an edit via Groq and the Reviewer approving with STOP" class="project-image">
+                    <figcaption>The Editor applies the edit via Groq and reports back; the Reviewer checks it and outputs STOP to end the loop.</figcaption>
+                </figure>
+            </section>
+
+            <!-- Limitations -->
+            <section class="section-divider">
+                <h2>⚠️ Known Limitations</h2>
+                <div class="warning-box">
+                    <ul class="impact-list">
+                        <li><code>parse_roadmap_markdown</code> only recognizes GitHub-style <code>- [ ]</code> / <code>- [x]</code> checkboxes — other list formats aren't parsed.</li>
+                        <li>Tools take a vault-relative path, but <code>parse_roadmap_markdown</code> expects a full file path — the agent has to combine the two itself, which is exactly the kind of path mismatch that shows up in the demo run above.</li>
+                        <li><code>edit_markdown_with_groq</code> overwrites the target file in place with no diff or undo — keep the vault under version control.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Tech Stack -->
+            <section class="section-divider">
+                <h2>🛠️ Tech Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python 3.11+</span>
+                    <span class="tech-tag">Google Agent Development Kit</span>
+                    <span class="tech-tag">Gemini (gemini-flash-latest)</span>
+                    <span class="tech-tag">Groq API</span>
+                    <span class="tech-tag">LoopAgent</span>
+                    <span class="tech-tag">Caddy (optional HTTPS proxy)</span>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <section style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e6e6e6;">
+                <p style="text-align: center; color: #666;">
+                    <em>Personal AI Engineering project · <a href="https://github.com/yusuferdem16/agent_council" target="_blank" style="color: #06b6d4;">Source on GitHub</a></em>
+                </p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Yusuf Erdem. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

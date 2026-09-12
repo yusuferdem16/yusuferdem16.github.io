@@ -380,6 +380,30 @@ p {
     color: var(--secondary);
 }
 
+/* Card title/footer links — used instead of nesting <a> inside <a> */
+.project-item .card-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-item:hover .card-title-link {
+    color: var(--secondary);
+}
+
+.card-link-row {
+    margin-top: auto;
+    padding-top: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5em;
+}
+
+.card-link {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
 /* Live status badge — an inline chip next to a project's title */
 .badge-live {
     display: inline-flex;

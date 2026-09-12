@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1710 560" width="1710" height="560" font-family="-apple-system,Segoe UI,Roboto,sans-serif">
+  <rect width="1710" height="560" fill="#0a0e17"/>
+
+  <text x="46" y="52" font-size="30" font-weight="700" fill="#ffffff">🔁 LoopAgent — up to 3 iterations</text>
+  <line x1="46" y1="78" x2="1664" y2="78" stroke="#242c3d" stroke-width="1.5"/>
+
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7d8aa8"/>
+    </marker>
+  </defs>
+
+  <!-- Orchestrator -->
+  <rect x="80" y="150" width="330" height="140" rx="10" fill="#111726" stroke="#06b6d4" stroke-width="2"/>
+  <text x="245" y="185" text-anchor="middle" font-size="20" fill="#06b6d4" font-weight="700">👔 Orchestrator</text>
+  <text x="245" y="212" text-anchor="middle" font-size="13" fill="#c3cad9">"The Boss" — strict, impatient</text>
+  <text x="245" y="236" text-anchor="middle" font-size="13" fill="#8b93a8">lists vault files, plans the edit,</text>
+  <text x="245" y="256" text-anchor="middle" font-size="13" fill="#8b93a8">never edits directly</text>
+  <text x="245" y="278" text-anchor="middle" font-size="12" fill="#5b90b3">Gemini · gemini-flash-latest</text>
+
+  <!-- Editor -->
+  <rect x="690" y="150" width="330" height="140" rx="10" fill="#111726" stroke="#22c55e" stroke-width="2"/>
+  <text x="855" y="185" text-anchor="middle" font-size="20" fill="#22c55e" font-weight="700">💍 Editor</text>
+  <text x="855" y="212" text-anchor="middle" font-size="13" fill="#c3cad9">"Gollum" — groveling, obsessive</text>
+  <text x="855" y="236" text-anchor="middle" font-size="13" fill="#8b93a8">rewrites the markdown via Groq,</text>
+  <text x="855" y="256" text-anchor="middle" font-size="13" fill="#8b93a8">creates/links files</text>
+  <text x="855" y="278" text-anchor="middle" font-size="12" fill="#5fae82">reasons on Gemini · edits via Groq</text>
+
+  <!-- Reviewer -->
+  <rect x="1300" y="150" width="330" height="140" rx="10" fill="#111726" stroke="#ef4444" stroke-width="2"/>
+  <text x="1465" y="185" text-anchor="middle" font-size="20" fill="#ef4444" font-weight="700">🛑 Reviewer</text>
+  <text x="1465" y="212" text-anchor="middle" font-size="13" fill="#c3cad9">"Street Reviewer" — aggressive critic</text>
+  <text x="1465" y="236" text-anchor="middle" font-size="13" fill="#8b93a8">re-reads the file, checks it against</text>
+  <text x="1465" y="256" text-anchor="middle" font-size="13" fill="#8b93a8">the request</text>
+  <text x="1465" y="278" text-anchor="middle" font-size="12" fill="#c98a8a">Gemini · gemini-flash-latest</text>
+
+  <!-- arrows forward -->
+  <line x1="410" y1="220" x2="685" y2="220" stroke="#7d8aa8" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="1020" y1="220" x2="1295" y2="220" stroke="#7d8aa8" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <!-- loop-back arrow: reviewer -> orchestrator, if not STOP -->
+  <path d="M1465,290 L1465,420 L245,420 L245,295" stroke="#eab308" stroke-width="1.8" fill="none" marker-end="url(#arrow2)" stroke-dasharray="6,4"/>
+  <text x="855" y="410" text-anchor="middle" font-size="14" fill="#eab308">not correct → send the Editor back (up to 3 loops total)</text>
+
+  <!-- STOP exit -->
+  <rect x="1580" y="150" width="0" height="0"/>
+  <path d="M1630,220 L1690,220" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+  <text x="1660" y="205" text-anchor="middle" font-size="13" fill="#4ade80" font-weight="700">STOP</text>
+  <text x="1660" y="245" text-anchor="middle" font-size="12" fill="#8b93a8">loop</text>
+  <text x="1660" y="260" text-anchor="middle" font-size="12" fill="#8b93a8">ends</text>
+
+  <!-- footer note -->
+  <text x="46" y="500" font-size="14" fill="#6b7385">Reasoning (Orchestrator, Editor's judgment, Reviewer) runs on Gemini via Google's Agent Development Kit; the actual markdown rewrite is delegated to Groq's OpenAI-compatible API — decoupling "thinking" from "editing."</text>
+</svg>
