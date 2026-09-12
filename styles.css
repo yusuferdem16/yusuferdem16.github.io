@@ -1,4 +1,6 @@
 /* ==================== DESIGN SYSTEM ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+
 :root {
     /* Colors - Dark Mode */
     --primary: #ffffff;
@@ -30,6 +32,7 @@
     
     /* Typography */
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    --font-display: 'Space Grotesk', var(--font-sans);
     --font-mono: 'Monaco', 'Courier New', monospace;
     
     /* Shadows */
@@ -65,7 +68,6 @@ body {
     line-height: 1.6;
     color: var(--neutral-700);
     background: var(--bg-dark);
-    padding: var(--space-2);
 }
 
 .container {
@@ -138,31 +140,28 @@ nav ul li a:hover::after {
 }
 
 /* ==================== MAIN CONTENT ==================== */
-main {
-    margin: var(--space-8) 0;
-}
-
 section {
     margin-bottom: var(--space-8);
-    padding: var(--space-6);
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    transition: box-shadow var(--transition-base);
-    border: 1px solid var(--surface-hover);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--surface-hover);
 }
 
-section:hover {
-    box-shadow: var(--shadow-lg);
+section:first-of-type {
+    border-top: none;
 }
 
-/* Hero Section */
+/* Hero Section — full-bleed, breaks out of the .container it sits in */
 #about {
     position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: var(--space-8) var(--space-2);
     background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #0f766e 100%);
     color: white;
     overflow: hidden;
-    margin-top: 0;
+    border-top: none;
+    margin-bottom: var(--space-8);
 }
 
 #about::before {
@@ -189,10 +188,16 @@ section:hover {
     pointer-events: none;
 }
 
+
 /* Typography */
 h1, h2, h3 {
+    font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.01em;
+}
+
+.site-title {
+    font-family: var(--font-display);
 }
 
 h1 {
@@ -234,26 +239,78 @@ p {
 /* About Section */
 .about-content {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: var(--space-4);
-    text-align: center;
+    justify-content: center;
+    gap: var(--space-6);
+    text-align: left;
     position: relative;
     z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text {
+    max-width: 640px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.4em 0.9em;
+    border-radius: 999px;
+    margin-bottom: var(--space-3);
+}
+
+.about-content h1 {
+    font-size: 3rem;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-top: var(--space-3);
+}
+
+.hero-ctas .btn {
+    margin-top: 0;
 }
 
 .profile-img {
-    width: 160px;
-    height: 160px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid white;
     box-shadow: var(--shadow-lg);
+    flex-shrink: 0;
 }
 
 #about .about-content p {
     color: rgba(255,255,255,0.95);
-    max-width: 700px;
+    max-width: 600px;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-ctas {
+        justify-content: center;
+    }
+    .about-text {
+        max-width: 100%;
+    }
 }
 /* ==================== PROJECT GRID ==================== */
 .project-grid {
@@ -264,6 +321,7 @@ p {
 }
 
 .project-item {
+    position: relative;
     background: var(--surface);
     border: 1px solid var(--surface-hover);
     border-radius: var(--radius-lg);
@@ -321,6 +379,43 @@ p {
     color: var(--secondary);
 }
 
+/* Live status badge, overlaid on a project card's image */
+.badge-live {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(34, 197, 94, 0.5);
+    color: #4ade80;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.3em 0.8em;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
+.badge-live::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse-live 1.8s infinite;
+}
+
+@keyframes pulse-live {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+    70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
 /* Project Links */
 .project-item a {
     color: var(--secondary);
@@ -337,11 +432,6 @@ p {
 }
 
 /* ==================== EDUCATION SECTION ==================== */
-#education {
-    background: var(--surface-alt);
-    border: 1px solid var(--surface-hover);
-}
-
 #education p {
     font-weight: 500;
     color: var(--neutral-700);
@@ -428,6 +518,32 @@ p {
     border-color: var(--secondary);
 }
 
+/* Hero-specific button variants (used on the gradient hero background) */
+.btn-hero-solid {
+    background-color: #fff;
+    color: var(--secondary-hover);
+    border: 2px solid #fff;
+}
+
+.btn-hero-solid:hover {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-hero-outline {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.6);
+}
+
+.btn-hero-outline:hover {
+    background-color: rgba(255,255,255,0.15);
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
 /* ==================== CONTACT SECTION ==================== */
 .social-links {
     display: flex;
@@ -455,6 +571,68 @@ p {
     background-color: var(--secondary-hover);
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
+}
+
+/* ==================== SCROLL REVEAL ==================== */
+.reveal-init {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-init.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-init {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ==================== MOBILE NAV TOGGLE ==================== */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--surface-hover);
+    color: var(--primary);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0.4em 0.6em;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-toggle {
+        display: inline-block;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-2);
+        width: 100%;
+        padding-top: var(--space-3);
+    }
+
+    nav.open ul {
+        display: flex;
+    }
 }
 
 /* ==================== FOOTER ==================== */
@@ -493,22 +671,15 @@ footer {
         --space-6: 2rem;
     }
     
-    header .container {
-        flex-direction: column;
-        gap: var(--space-3);
-    }
-    
     nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
         gap: var(--space-3);
     }
-    
+
     section {
-        padding: var(--space-4);
+        padding-top: var(--space-4);
         margin-bottom: var(--space-6);
     }
-    
+
     h1 {
         font-size: 2rem;
     }
@@ -531,10 +702,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-    body {
-        padding: var(--space-1);
-    }
-    
     header .container {
         padding: var(--space-2) var(--space-1);
     }
@@ -549,10 +716,9 @@ footer {
     }
     
     section {
-        padding: var(--space-3);
-        border-radius: var(--radius-md);
+        padding-top: var(--space-3);
     }
-    
+
     h1 {
         font-size: 1.6rem;
     }
