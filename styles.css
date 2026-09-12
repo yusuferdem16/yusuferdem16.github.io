@@ -98,6 +98,7 @@ header .container {
     font-weight: 700;
     color: var(--primary);
     letter-spacing: -0.01em;
+    white-space: nowrap;
 }
 
 nav ul {
@@ -379,25 +380,22 @@ p {
     color: var(--secondary);
 }
 
-/* Live status badge, overlaid on a project card's image */
+/* Live status badge — an inline chip next to a project's title */
 .badge-live {
-    position: absolute;
-    top: var(--space-2);
-    right: var(--space-2);
     display: inline-flex;
     align-items: center;
     gap: 0.4em;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(34, 197, 94, 0.5);
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.4);
     color: #4ade80;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 0.3em 0.8em;
+    padding: 0.25em 0.7em;
     border-radius: 999px;
-    backdrop-filter: blur(4px);
-    z-index: 2;
+    vertical-align: middle;
+    margin-left: 0.6em;
 }
 
 .badge-live::before {
