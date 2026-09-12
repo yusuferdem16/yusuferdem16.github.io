@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1710 900" width="1710" height="900" font-family="-apple-system,Segoe UI,Roboto,sans-serif">
+  <rect width="1710" height="900" fill="#0a0e17"/>
+
+  <text x="46" y="56" font-size="30" font-weight="700" fill="#ffffff">📂 Project Structure</text>
+  <line x1="46" y1="82" x2="1664" y2="82" stroke="#242c3d" stroke-width="1.5"/>
+
+  <rect x="46" y="112" width="1618" height="748" rx="10" fill="#111726" stroke="#242c3d" stroke-width="1.5"/>
+
+  <g font-family="'Courier New',monospace" font-size="19" fill="#dbe2f0">
+    <text x="80" y="160">CryptoCurrencyPricePredicter/</text>
+
+    <text x="80" y="196">├── data/</text>
+    <text x="620" y="196" fill="#7d8aa8"># Price history + predictions, committed by CI</text>
+
+    <text x="80" y="228">├── models/</text>
+    <text x="620" y="228" fill="#7d8aa8"># Saved .keras and .pkl artifacts</text>
+
+    <text x="80" y="260">├── docs/screenshots/</text>
+    <text x="620" y="260" fill="#7d8aa8"># Dashboard screenshots used in the README</text>
+
+    <text x="80" y="292">├── src/</text>
+    <text x="130" y="324">├── automation.py</text>
+    <text x="620" y="324" fill="#7d8aa8"># Daily job: ingest, verify, forecast</text>
+    <text x="130" y="356">├── retrain.py</text>
+    <text x="620" y="356" fill="#7d8aa8"># Weekly job: retrain both models</text>
+    <text x="130" y="388">├── dashboard.py</text>
+    <text x="620" y="388" fill="#7d8aa8"># Streamlit UI, reads data/ directly</text>
+    <text x="130" y="420">├── storage.py</text>
+    <text x="620" y="420" fill="#7d8aa8"># File-based data store (CSV/JSON)</text>
+    <text x="130" y="452">├── ingestion.py</text>
+    <text x="620" y="452" fill="#7d8aa8"># Yahoo Finance data fetcher</text>
+    <text x="130" y="484">├── feature_engineering.py</text>
+    <text x="620" y="484" fill="#7d8aa8"># RSI, MACD, Bollinger, log returns</text>
+    <text x="130" y="516">├── data_processing.py</text>
+    <text x="620" y="516" fill="#7d8aa8"># Scaling + sequence generation</text>
+    <text x="130" y="548">├── sarimax_pipeline.py</text>
+    <text x="620" y="548" fill="#7d8aa8"># SARIMAX trainer</text>
+    <text x="130" y="580">├── train.py</text>
+    <text x="620" y="580" fill="#7d8aa8"># Bi-LSTM trainer</text>
+    <text x="130" y="612">├── baseline.py</text>
+    <text x="620" y="612" fill="#7d8aa8"># Naive random-walk baseline for comparison</text>
+    <text x="130" y="644">├── eda.py</text>
+    <text x="620" y="644" fill="#7d8aa8"># Exploratory data analysis</text>
+    <text x="130" y="676">├── force_run.py</text>
+    <text x="620" y="676" fill="#7d8aa8"># Manual/local trigger for the daily job</text>
+    <text x="130" y="708">└── models/</text>
+    <text x="620" y="708" fill="#7d8aa8"># Model definitions (gru_model.py)</text>
+
+    <text x="80" y="744">├── .streamlit/</text>
+    <text x="620" y="744" fill="#7d8aa8"># Streamlit theme/config</text>
+
+    <text x="80" y="776">├── .github/workflows/</text>
+    <text x="620" y="776" fill="#7d8aa8"># daily_prediction.yml, weekly_retrain.yml</text>
+
+    <text x="80" y="808">└── requirements.txt</text>
+  </g>
+</svg>
