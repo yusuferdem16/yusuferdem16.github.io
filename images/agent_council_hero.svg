@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0f2942"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  <rect width="800" height="400" fill="url(#glow)"/>
+
+  <!-- connecting lines between agent nodes -->
+  <g stroke="#06b6d4" stroke-width="2" stroke-opacity="0.55">
+    <line x1="400" y1="120" x2="230" y2="260"/>
+    <line x1="400" y1="120" x2="400" y2="270"/>
+    <line x1="400" y1="120" x2="570" y2="260"/>
+    <line x1="230" y1="260" x2="400" y2="270"/>
+    <line x1="400" y1="270" x2="570" y2="260"/>
+  </g>
+
+  <!-- orchestrator node -->
+  <circle cx="400" cy="120" r="34" fill="#0a1628" stroke="#06b6d4" stroke-width="3"/>
+  <circle cx="400" cy="120" r="10" fill="#06b6d4"/>
+
+  <!-- editor node -->
+  <circle cx="230" cy="260" r="30" fill="#0a1628" stroke="#22c55e" stroke-width="3"/>
+  <circle cx="230" cy="260" r="9" fill="#22c55e"/>
+
+  <!-- reviewer node -->
+  <circle cx="570" cy="260" r="30" fill="#0a1628" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="570" cy="260" r="9" fill="#8b5cf6"/>
+
+  <!-- vault node -->
+  <rect x="372" y="248" width="56" height="44" rx="6" fill="#0a1628" stroke="#e2e8f0" stroke-width="2.5"/>
+  <line x1="382" y1="262" x2="418" y2="262" stroke="#e2e8f0" stroke-width="2"/>
+  <line x1="382" y1="272" x2="418" y2="272" stroke="#e2e8f0" stroke-width="2"/>
+  <line x1="382" y1="282" x2="410" y2="282" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="400" y="345" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="30" font-weight="700" fill="#ffffff">Agent Council</text>
+  <text x="400" y="372" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" fill="#94b8d0">Multi-Agent Vault Management · Google ADK</text>
+</svg>
