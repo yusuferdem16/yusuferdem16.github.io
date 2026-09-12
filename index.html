@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <!-- Animated backdrop; rendered by the kinetic background bundle -->
+    <div id="kinetic-bg-root"></div>
     <!-- Header -->
     <header>
         <div class="container">
@@ -34,6 +36,8 @@
     <!-- About Section -->
     <main class="container">
         <section id="about">
+            <div id="hero-root" class="cf-widget-scope dark lm-hero-scope"></div>
+            <noscript>
             <div class="about-content">
                 <img src="images/profile_photo.jpg" alt="Yusuf Erdem" class="profile-img">
                 <div class="about-text">
@@ -48,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            </noscript>
         </section>
 
         <!-- Education Section -->
@@ -279,6 +284,7 @@
 
     <script src="script.js"></script>
     <script type="module" src="carousel-dist/carousel-widget.js"></script>
+    <script type="module" src="carousel-dist/kinetic-bg.js"></script>
 </body>
 
 </html>

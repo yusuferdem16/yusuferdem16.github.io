@@ -17,12 +17,17 @@ export default defineConfig({
   build: {
     outDir: "dist",
     rollupOptions: {
-      input: path.resolve(__dirname, "src/main.tsx"),
+      // Two entries: the home page loads the full widget bundle, every other
+      // page loads only the animated background.
+      input: {
+        "carousel-widget": path.resolve(__dirname, "src/main.tsx"),
+        "kinetic-bg": path.resolve(__dirname, "src/kinetic-bg.tsx"),
+      },
       output: {
         format: "es",
-        entryFileNames: "carousel-widget.js",
-        assetFileNames: "carousel-widget.[ext]",
-        chunkFileNames: "carousel-widget-[name].js",
+        entryFileNames: "[name].js",
+        assetFileNames: "[name].[ext]",
+        chunkFileNames: "shared-[name].js",
       },
     },
   },

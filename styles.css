@@ -53,6 +53,7 @@
     --radius-sm: 0.375rem;   /* 6px */
     --radius-md: 0.5rem;     /* 8px */
     --radius-lg: 0.75rem;    /* 12px */
+    --radius-xl: 1.125rem;   /* 18px */
     
     /* Transitions */
     --transition-fast: 150ms ease-in-out;
@@ -122,7 +123,7 @@ body::after {
 ::-webkit-scrollbar-thumb:hover { background: linear-gradient(var(--secondary-hover), var(--accent)); }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--space-2);
 }
@@ -215,7 +216,9 @@ section:first-of-type {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    padding: var(--space-8) var(--space-2);
+    /* The React hero (#hero-root) supplies its own padding; the noscript
+       fallback below re-adds it so the no-JS layout is unchanged. */
+    padding: 0;
     background: radial-gradient(ellipse 120% 100% at 50% -20%, #0f2942 0%, #05070d 60%), #05070d;
     color: white;
     overflow: hidden;
@@ -226,6 +229,7 @@ section:first-of-type {
 #about::before {
     content: '';
     position: absolute;
+    z-index: 0;
     top: -10%;
     right: -10%;
     width: 600px;
@@ -240,6 +244,7 @@ section:first-of-type {
 #about::after {
     content: '';
     position: absolute;
+    z-index: 0;
     bottom: -25%;
     left: -8%;
     width: 650px;
@@ -323,7 +328,17 @@ p {
     border-bottom-color: rgba(255,255,255,0.3);
 }
 
-/* About Section */
+/* Hero — the React hero and the no-JS fallback both sit above the neon orbs. */
+#hero-root {
+    position: relative;
+    z-index: 1;
+}
+
+/* About Section — no-JS fallback hero (see #hero-root for the rendered one) */
+#about .about-content {
+    padding: var(--space-8) var(--space-2);
+}
+
 .about-content {
     display: flex;
     align-items: center;
@@ -405,7 +420,8 @@ p {
 /* ==================== PROJECT GRID ==================== */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    /* min() keeps the 440px track from overflowing narrow viewports. */
+    grid-template-columns: repeat(auto-fill, minmax(min(440px, 100%), 1fr));
     gap: var(--space-6);
     margin-top: var(--space-4);
 }
@@ -413,21 +429,23 @@ p {
 .project-item {
     position: relative;
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
     border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
     display: flex;
     flex-direction: column;
     height: 100%;
+    /* Glass 2.0: a hairline top highlight reads as a lit edge on the panel. */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), var(--shadow-lg);
 }
 
 .project-item:hover {
     border-color: var(--secondary);
-    box-shadow: var(--shadow-glow-md);
-    transform: translateY(-4px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), var(--shadow-glow-md);
+    transform: translateY(-6px);
 }
 
 .project-item a {
@@ -440,28 +458,33 @@ p {
 
 .project-item img {
     width: 100%;
-    height: 200px;
+    height: 260px;
     object-fit: cover;
     background: var(--surface-hover);
+    transition: transform var(--transition-slow);
+}
+
+.project-item:hover img {
+    transform: scale(1.04);
 }
 
 .project-item-content {
-    padding: var(--space-4);
+    padding: var(--space-5);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .project-item h3 {
-    font-size: 1.4rem;
+    font-size: 1.55rem;
     margin: 0 0 var(--space-2) 0;
     color: var(--primary);
     text-align: left;
 }
 
 .project-item p {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1.02rem;
+    line-height: 1.65;
     margin: 0;
     flex-grow: 1;
     text-align: left;
@@ -865,4 +888,103 @@ footer {
         height: 45px;
         font-size: 1.1rem;
     }
+}
+/* ==================== PROJECT DETAIL PAGES ====================
+ * Each project page carries its own inline <style> block, several of which
+ * predate the dark reskin (e.g. `.feature-card` was still a light #f8f8f8
+ * panel). These rules pull every page onto the shared dark-glass system.
+ * They use `body .x` rather than `.x` so they out-specify those inline blocks,
+ * which would otherwise win on source order.
+ */
+body .feature-box,
+body .feature-card,
+body .metric-card,
+body .arch-diagram,
+body .compare-card-win,
+body .compare-card-lose,
+body .highlight-box,
+body .info-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), var(--shadow-lg);
+    color: var(--neutral-700);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+body .feature-box:hover,
+body .feature-card:hover,
+body .metric-card:hover,
+body .compare-card-win:hover,
+body .compare-card-lose:hover {
+    transform: translateY(-4px);
+    border-color: var(--secondary);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), var(--shadow-glow-sm);
+}
+
+/* Keep the accent bar these panels use, as a neon edge rather than a flat rule. */
+body .feature-box,
+body .feature-card {
+    border-left: 3px solid var(--secondary);
+}
+
+body .compare-card-win {
+    border-left: 3px solid #22c55e;
+}
+
+body .compare-card-lose {
+    border-left: 3px solid var(--neon-magenta);
+}
+
+body .feature-box h3,
+body .feature-card h3,
+body .metric-card h3,
+body .compare-card-win h3,
+body .compare-card-lose h3,
+body .feature-box h4,
+body .feature-card h4 {
+    color: var(--primary);
+}
+
+body .feature-box p,
+body .feature-card p,
+body .metric-card p,
+body .compare-card-win p,
+body .compare-card-lose p,
+body .feature-box li,
+body .feature-card li {
+    color: var(--neutral-700);
+}
+
+/* Project hero banners: match the home page's layered, lit look. */
+body .project-hero {
+    background:
+        radial-gradient(ellipse 120% 100% at 50% -20%, #0f2942 0%, rgba(5, 7, 13, 0.92) 60%),
+        rgba(5, 7, 13, 0.92);
+    border-bottom: 1px solid var(--glass-border);
+    padding: var(--space-8) var(--space-4);
+}
+
+body .project-hero h1 {
+    background: linear-gradient(90deg, #fff 0%, var(--secondary) 60%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Code blocks read as terminal panes on the glass. */
+body .code-block,
+body pre {
+    background: rgba(2, 6, 12, 0.82);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* The animated backdrop sits behind the page, so article surfaces stay sheer. */
+body .project-article {
+    position: relative;
+    z-index: 1;
 }

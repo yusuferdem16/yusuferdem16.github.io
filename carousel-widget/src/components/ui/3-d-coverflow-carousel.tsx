@@ -39,6 +39,49 @@ export interface CoverFlowCarouselProps {
   onCtaClick?: (item: CarouselItem) => void;
 }
 
+/**
+ * Coverflow geometry scales with the viewport: the stage used to be locked to a
+ * 330x500 card, which left the carousel looking undersized on large desktops.
+ */
+interface CoverflowMetrics {
+  card: number;
+  cardHeight: number;
+  near: number;
+  far: number;
+  stage: number;
+  minHeight: number;
+  pad: string;
+  titleSize: string;
+  descSize: string;
+}
+
+const COVERFLOW_METRICS: ReadonlyArray<readonly [number, CoverflowMetrics]> = [
+  [1536, { card: 430, cardHeight: 650, near: 372, far: 665, stage: 690, minHeight: 960, pad: "26px 24px 28px", titleSize: "1.6rem", descSize: "0.95rem" }],
+  [1280, { card: 400, cardHeight: 606, near: 346, far: 620, stage: 646, minHeight: 916, pad: "24px 22px 26px", titleSize: "1.5rem", descSize: "0.92rem" }],
+  [1024, { card: 366, cardHeight: 554, near: 316, far: 566, stage: 592, minHeight: 856, pad: "22px 20px 24px", titleSize: "1.38rem", descSize: "0.9rem" }],
+  [640, { card: 330, cardHeight: 500, near: 285, far: 510, stage: 534, minHeight: 782, pad: "20px 18px 22px", titleSize: "1.25rem", descSize: "0.88rem" }],
+  [0, { card: 272, cardHeight: 418, near: 232, far: 418, stage: 452, minHeight: 700, pad: "16px 15px 18px", titleSize: "1.1rem", descSize: "0.84rem" }],
+];
+
+function metricsForWidth(width: number): CoverflowMetrics {
+  for (const [min, metrics] of COVERFLOW_METRICS) {
+    if (width >= min) return metrics;
+  }
+  return COVERFLOW_METRICS[COVERFLOW_METRICS.length - 1][1];
+}
+
+function useCoverflowMetrics(): CoverflowMetrics {
+  const [metrics, setMetrics] = useState(() => metricsForWidth(window.innerWidth));
+
+  useEffect(() => {
+    const onResize = () => setMetrics(metricsForWidth(window.innerWidth));
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  return metrics;
+}
+
 export const defaultDishes: CarouselItem[] = [
   {
     tag: "#Signature",
@@ -61,6 +104,7 @@ export function CoverFlowCarousel({
 }: CoverFlowCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const m = useCoverflowMetrics();
   const touchStartX = useRef(0);
   const total = items.length;
 
@@ -107,8 +151,9 @@ export function CoverFlowCarousel({
 
   return (
     <section
-      className={`cf-widget-scope relative w-full min-h-[760px] flex items-center justify-center overflow-hidden py-12 select-none ${className}`}
+      className={`cf-widget-scope relative w-full flex items-center justify-center overflow-hidden py-12 select-none ${className}`}
       style={{
+        minHeight: `${m.minHeight}px`,
         backgroundColor: "#05070d",
         color: "#ffffff",
         fontFamily: "'Space Grotesk', system-ui, -apple-system, sans-serif",
@@ -140,7 +185,7 @@ export function CoverFlowCarousel({
         />
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto px-4 z-10 flex flex-col items-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-4">
         {/* Eyebrow */}
         {sectionLabel && (
           <div className="flex items-center gap-3 mb-8">
@@ -163,8 +208,8 @@ export function CoverFlowCarousel({
 
         {/* 3D Coverflow Stage */}
         <div
-          className="relative w-full h-[520px] flex justify-center items-center mb-8"
-          style={{ perspective: "1400px" }}
+          className="relative mb-8 flex w-full items-center justify-center"
+          style={{ height: `${m.stage}px`, perspective: "1600px" }}
         >
           {items.map((item, idx) => {
             const offset = (idx - currentIndex + total) % total;
@@ -182,22 +227,22 @@ export function CoverFlowCarousel({
               zIndex = 30;
               filter = "brightness(1)";
             } else if (offset === 1) {
-              transform = "translateX(285px) scale(0.84) rotateY(-24deg)";
+              transform = `translateX(${m.near}px) scale(0.84) rotateY(-24deg)`;
               opacity = 0.65;
               zIndex = 20;
               filter = "brightness(0.75)";
             } else if (offset === 2) {
-              transform = "translateX(510px) scale(0.68) rotateY(-38deg)";
+              transform = `translateX(${m.far}px) scale(0.68) rotateY(-38deg)`;
               opacity = 0.38;
               zIndex = 10;
               filter = "brightness(0.55) blur(1px)";
             } else if (offset === total - 1) {
-              transform = "translateX(-285px) scale(0.84) rotateY(24deg)";
+              transform = `translateX(-${m.near}px) scale(0.84) rotateY(24deg)`;
               opacity = 0.65;
               zIndex = 20;
               filter = "brightness(0.75)";
             } else if (offset === total - 2) {
-              transform = "translateX(-510px) scale(0.68) rotateY(38deg)";
+              transform = `translateX(-${m.far}px) scale(0.68) rotateY(38deg)`;
               opacity = 0.38;
               zIndex = 10;
               filter = "brightness(0.55) blur(1px)";
@@ -209,9 +254,9 @@ export function CoverFlowCarousel({
                 onClick={() => !isCenter && goToSlide(idx)}
                 style={{
                   position: "absolute",
-                  width: "330px",
-                  height: "500px",
-                  borderRadius: "18px",
+                  width: `${m.card}px`,
+                  height: `${m.cardHeight}px`,
+                  borderRadius: "20px",
                   overflow: "hidden",
                   backgroundColor: "#111726",
                   border: "1px solid rgba(255, 255, 255, 0.12)",
@@ -259,7 +304,7 @@ export function CoverFlowCarousel({
                     position: "relative",
                     width: "100%",
                     height: "100%",
-                    padding: "20px 18px 22px",
+                    padding: m.pad,
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
@@ -300,7 +345,7 @@ export function CoverFlowCarousel({
                   >
                     <h2
                       style={{
-                        fontSize: "1.5rem",
+                        fontSize: m.titleSize,
                         fontWeight: 900,
                         textTransform: "uppercase",
                         letterSpacing: "0.02em",
@@ -342,9 +387,9 @@ export function CoverFlowCarousel({
                     {item.desc && (
                       <p
                         style={{
-                          fontSize: "0.8rem",
+                          fontSize: m.descSize,
                           color: "rgba(255,255,255,0.9)",
-                          maxWidth: "280px",
+                          maxWidth: `${m.card - 50}px`,
                           margin: "0 0 10px",
                           lineHeight: 1.35,
                           textShadow: "0 2px 8px rgba(0,0,0,0.9)",

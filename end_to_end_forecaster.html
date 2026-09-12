@@ -13,6 +13,8 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
+    <!-- Animated backdrop; rendered by the kinetic background bundle -->
+    <div id="kinetic-bg-root"></div>
     <header>
         <div class="container">
             <div class="site-title">End-to-End Forecaster</div>
@@ -287,5 +289,6 @@ def fetch_and_store(ticker):
         </div>
     </footer>
 
+    <script type="module" src="carousel-dist/kinetic-bg.js"></script>
 </body>
 </html>

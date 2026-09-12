@@ -1,8 +1,22 @@
-@import "tailwindcss";
+/*
+ * `important` is deliberate. This bundle is embedded in the host static page,
+ * whose styles.css carries an UNLAYERED `* { margin: 0; padding: 0 }` reset
+ * plus bare `section`/`h1`/`p` rules. Unlayered CSS beats anything in a
+ * `@layer` regardless of specificity or source order, so without this every
+ * Tailwind spacing utility in the widget is silently dropped.
+ */
+@import "tailwindcss" important;
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
+/*
+ * These shadcn tokens are scoped to the widget roots, NOT `:root`. This bundle
+ * is a stylesheet on a host page that defines its own `--primary`, `--secondary`
+ * and `--accent`; declaring them on `:root` here overwrote the host's values
+ * (its white `--primary` became near-black), which made every heading on the
+ * page that uses `color: var(--primary)` almost invisible.
+ */
+.cf-widget-scope {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -24,7 +38,8 @@
   --ring: oklch(0.708 0 0);
 }
 
-.dark {
+.cf-widget-scope.dark,
+.dark .cf-widget-scope {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -83,4 +98,36 @@
   .cf-widget-scope {
     @apply bg-background text-foreground;
   }
+
+  /*
+   * The hero sits inside the host page's own dark `#about` band, so it opts out
+   * of the scope background and borrows the site's display/body typography
+   * instead of Tailwind's default stack.
+   */
+  .lm-hero-scope {
+    background: transparent;
+    font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  }
+  .lm-hero-scope :is(h1, h2, h3) {
+    font-family: var(--font-display, var(--font-sans, ui-sans-serif, system-ui, sans-serif));
+  }
+}
+
+/*
+ * Unlayered on purpose, for the same reason as the `important` import above:
+ * these have to out-specify the host page's unlayered `*` reset and its bare
+ * element rules for the properties the widget does not set via a utility.
+ */
+.cf-widget-scope section,
+.lm-hero-scope section {
+  margin: 0;
+  border-top: none;
+  border-image: none;
+}
+
+.lm-hero-scope :where(h1, h2, h3, p, span, a, img) {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
