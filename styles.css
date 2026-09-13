@@ -297,6 +297,21 @@ h2 {
     -webkit-text-fill-color: transparent;
 }
 
+/*
+ * The white-to-cyan clip above reads as a crisp accent on the site's flat
+ * dark sections, but the Experience heading (React-rendered, inside
+ * .cf-widget-scope) sits on the animated kinetic shader, whose own teal
+ * tones make that cyan tail blend in and look washed out. Force solid,
+ * fully-opaque text there instead; the gradient underline bar (h2::after)
+ * still applies for visual consistency with every other section heading.
+ */
+.cf-widget-scope h2 {
+    background: none;
+    -webkit-text-fill-color: var(--primary);
+    color: var(--primary);
+    text-shadow: 0 2px 16px rgba(5, 7, 13, 0.85);
+}
+
 h2::after {
     content: '';
     position: absolute;
@@ -568,10 +583,224 @@ p {
     text-align: left;
 }
 
-/* ==================== EDUCATION SECTION ==================== */
+/* ==================== EDUCATION SECTION ====================
+ * A left-to-right "academic path": completed degree, an animated connector,
+ * then the in-progress degree — distinct from the Experience section's
+ * vertical timeline, but built from the same tokens (glass, neon glow,
+ * mono-uppercase status pills) so the two read as one design system.
+ */
 #education p {
     font-weight: 500;
     color: var(--neutral-700);
+}
+
+.edu-path {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+.edu-card {
+    flex: 1 1 0;
+    min-width: 0;
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), var(--shadow-lg);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.edu-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--secondary);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), var(--shadow-glow-sm);
+}
+
+.edu-card-current {
+    border-color: rgba(34, 211, 238, 0.35);
+}
+
+.edu-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.edu-emblem {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px solid var(--glass-border);
+    flex-shrink: 0;
+}
+
+.edu-emblem-current {
+    background: rgba(34, 211, 238, 0.1);
+    border-color: var(--neon-glow-cyan);
+    box-shadow: 0 0 0 3px rgba(5, 7, 13, 0.6), 0 0 20px var(--neon-glow-cyan), 0 0 36px var(--neon-glow-violet);
+}
+
+.edu-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35em 0.7em;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.edu-status-done {
+    background: rgba(148, 163, 184, 0.1);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    color: var(--neutral-600);
+}
+
+.edu-status-live {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+}
+
+.edu-status-live::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse-live 1.8s infinite;
+}
+
+.edu-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.35em;
+    color: var(--primary);
+}
+
+.edu-institution {
+    font-weight: 600;
+    color: #a5f3fc;
+    margin-bottom: var(--space-2);
+}
+
+.edu-dates {
+    font-weight: 500;
+    color: var(--neutral-600);
+}
+
+.edu-desc {
+    color: var(--neutral-700);
+    margin-bottom: var(--space-3);
+}
+
+.edu-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.edu-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #e9d5ff;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 999px;
+    padding: 0.3em 0.75em;
+}
+
+.edu-connector {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    position: relative;
+}
+
+.edu-connector-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, rgba(148, 163, 184, 0.35), var(--secondary), var(--accent));
+    background-size: 200% 100%;
+    animation: edu-flow 4s linear infinite;
+}
+
+.edu-connector-arrow {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-dark);
+    color: var(--secondary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0 0.3em;
+    text-shadow: 0 0 10px var(--neon-glow-cyan);
+}
+
+@keyframes edu-flow {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .edu-connector-line { animation: none; }
+    .edu-status-live::before { animation: none; }
+}
+
+@media (max-width: 768px) {
+    .edu-path {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .edu-connector {
+        width: auto;
+        height: 40px;
+    }
+
+    .edu-connector-line {
+        left: 50%;
+        right: auto;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        height: auto;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, rgba(148, 163, 184, 0.35), var(--secondary), var(--accent));
+        background-size: 100% 200%;
+        animation: edu-flow-vertical 4s linear infinite;
+    }
+
+    .edu-connector-arrow {
+        transform: rotate(90deg);
+    }
+
+    @keyframes edu-flow-vertical {
+        0% { background-position: 0 200%; }
+        100% { background-position: 0 -200%; }
+    }
 }
 
 /* ==================== SKILLS ==================== */
@@ -987,4 +1216,109 @@ body pre {
 body .project-article {
     position: relative;
     z-index: 1;
+}
+
+/*
+ * The pass above missed several sub-elements and page-specific class names
+ * that only exist on one or two pages each (checked via a full grep of every
+ * inline <style> block across all 7 project pages). Extending it here rather
+ * than starting a second block, since it's the same "pull onto dark glass"
+ * job on the same pages.
+ */
+
+/* metric-card's own value/label text still carried dark-navy / mid-grey from
+   the light-theme original — invisible against the card's new dark glass. */
+body .metric-card .value {
+    color: var(--primary);
+}
+
+body .metric-card .label {
+    color: var(--neutral-600);
+}
+
+/* Singular `.feature` (end_to_end_forecaster, parcel_gis) is the same idea as
+   `.feature-card` under a different name — same light-panel leftover. */
+body .feature {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    color: var(--neutral-700);
+}
+
+/* tech-badge (parcel_gis only) — a mint-on-white chip; recolored to sit on
+   dark the way every other page's tech-tag chips already do. */
+body .tech-badge {
+    background: rgba(0, 208, 132, 0.14);
+    border: 1px solid rgba(0, 208, 132, 0.4);
+    color: #4ade80;
+}
+
+/* architecture-section (parcel_gis only) — a light mint callout panel. */
+body .architecture-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-left: 3px solid #00d084;
+    border-radius: var(--radius-xl);
+    color: var(--neutral-700);
+}
+
+body .architecture-section h2,
+body .architecture-section h3,
+body .architecture-section h4 {
+    color: var(--primary);
+}
+
+/* results-table (end_to_end_forecaster, parcel_gis) — still styled for a
+   white page: near-white header row, light borders. */
+body .results-table {
+    color: var(--neutral-700);
+}
+
+body .results-table th,
+body .results-table td {
+    border-color: var(--glass-border);
+}
+
+body .results-table th {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--primary);
+}
+
+/* section-divider — a plain #e6e6e6 rule from the old light theme, invisible
+   on a dark page. Swap for the same fading gradient hairline used between
+   the home page's own sections. */
+body .section-divider {
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(90deg, transparent, var(--glass-border) 20%, var(--glass-border) 80%, transparent) 1;
+}
+
+/*
+ * insight-box / warning-box / success-box / highlight / layer-box /
+ * persona-card / the phase-* and traffic-* status panels / weight-card
+ * already use transparent rgba tints with a colored border, authored
+ * specifically per page (green = good, red = risk, cyan/blue = info) — that
+ * semantic coding is left alone. Only the frosted-glass treatment is added,
+ * so they read as the same physical material as every other card on the
+ * site instead of a flat tint.
+ */
+body .insight-box,
+body .warning-box,
+body .success-box,
+body .highlight,
+body .layer-box,
+body .persona-card,
+body .phase-done,
+body .phase-progress,
+body .phase-pending,
+body .traffic-green,
+body .traffic-yellow,
+body .traffic-red,
+body .weight-card {
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
