@@ -1,8 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { CoverFlowCarousel } from "@/components/ui/3-d-coverflow-carousel";
 import LiquidMetalHero from "@/components/ui/liquid-metal-hero";
+import ExperienceTimeline from "@/components/ui/experience-timeline";
 import { projectItems } from "@/data/projects";
 import { achievementItems } from "@/data/achievements";
+import { experienceItems } from "@/data/experience";
 import "./index.css";
 
 function mount(elementId: string, node: React.ReactNode) {
@@ -41,6 +43,8 @@ mount(
     ]}
   />
 );
+
+mount("experience-root", <ExperienceTimeline items={experienceItems} />);
 
 mount(
   "projects-carousel-root",
