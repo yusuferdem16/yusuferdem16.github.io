@@ -21,7 +21,7 @@ export default defineConfig({
       // page loads only the animated background.
       input: {
         "carousel-widget": path.resolve(__dirname, "src/main.tsx"),
-        "kinetic-bg": path.resolve(__dirname, "src/kinetic-bg.tsx"),
+        "kinetic-bg": path.resolve(__dirname, "src/kinetic-bg.ts"),
       },
       output: {
         format: "es",
