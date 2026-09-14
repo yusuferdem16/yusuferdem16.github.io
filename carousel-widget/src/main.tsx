@@ -18,8 +18,8 @@ mount(
   <LiquidMetalHero
     badge="🎓 M.Sc. AI Engineering @ University of Passau"
     title="Yusuf Erdem"
-    eyebrow="Computer Engineer | AI Engineering Graduate Student"
-    subtitle="Building production-grade systems with expertise in data engineering, machine learning, and MLOps. Pursuing a Master of Artificial Intelligence Engineering at the University of Passau, Germany — passionate about transforming real-world problems into data-driven solutions."
+    eyebrow="AI Engineer · Actively Seeking a Werkstudent Role"
+    subtitle="AI Engineering graduate student building agentic AI and production ML systems — a passion that grew during my internship building multi-agent AI at Martur Fompak International. Also a language enthusiast, currently learning German (A2) alongside fluent English."
     avatarSrc="images/profile_photo.jpg"
     avatarAlt="Yusuf Erdem"
     primaryCta={{
@@ -37,8 +37,8 @@ mount(
       href: "mailto:abdullahyusuferdem@gmail.com",
     }}
     features={[
+      "Agentic AI Systems",
       "Production ML & MLOps",
-      "Data Engineering at Scale",
       "Applied AI Research",
     ]}
   />
