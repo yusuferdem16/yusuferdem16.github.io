@@ -57,7 +57,7 @@ export const Timeline = ({ data, heading, subheading, className }: TimelineProps
   return (
     <div className={cn("w-full font-sans", className)} ref={containerRef}>
       {(heading || subheading) && (
-        <div className="mx-auto max-w-4xl pb-12">
+        <div className="mx-auto max-w-5xl pt-10 pb-12">
           {heading && (
             <h2 className="mb-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {heading}
