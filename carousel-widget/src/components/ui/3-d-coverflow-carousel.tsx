@@ -151,7 +151,7 @@ export function CoverFlowCarousel({
 
   return (
     <section
-      className={`cf-widget-scope relative w-full flex items-center justify-center overflow-hidden py-12 select-none ${className}`}
+      className={`cf-widget-scope relative w-full flex items-center justify-center overflow-hidden py-12 select-none touch-pan-y ${className}`}
       style={{
         minHeight: `${m.minHeight}px`,
         backgroundColor: "#05070d",

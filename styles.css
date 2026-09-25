@@ -44,6 +44,8 @@
 }
 
 :root {
+    color-scheme: dark;
+
     /* Colors - Dark Mode */
     --primary: #ffffff;
     --primary-light: #f3f4f6;
@@ -112,6 +114,18 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+/* Visible focus ring for keyboard navigation only (not mouse/touch clicks) */
+a:focus-visible,
+button:focus-visible,
+.nav-toggle:focus-visible,
+.social-icon:focus-visible,
+.card-title-link:focus-visible,
+.card-link:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
 }
 
 body {
@@ -864,7 +878,7 @@ p {
     border-left: 3px solid var(--secondary);
     font-weight: 500;
     color: var(--neutral-700);
-    transition: all var(--transition-base);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
 .skills-list li:hover {
@@ -887,7 +901,7 @@ p {
     object-fit: cover;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
     background: var(--surface-hover);
 }
 
@@ -907,7 +921,7 @@ p {
     margin-top: var(--space-3);
     font-size: 0.95rem;
     font-weight: 600;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
     border: 2px solid var(--secondary);
     cursor: pointer;
 }
@@ -976,7 +990,7 @@ p {
     justify-content: center;
     border-radius: 50%;
     font-size: 1.3rem;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
     text-decoration: none;
 }
 
