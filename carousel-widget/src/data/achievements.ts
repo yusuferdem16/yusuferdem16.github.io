@@ -2,6 +2,15 @@ import type { CarouselItem } from "@/components/ui/3-d-coverflow-carousel";
 
 export const achievementItems: CarouselItem[] = [
   {
+    tag: "#ResearchGrant",
+    titleLine1: "TÜBİTAK 2209-A",
+    titleLine2: "NATIONAL RESEARCH GRANT",
+    desc: "Awarded a TÜBİTAK 2209-A national undergraduate research grant to fund the AI-based health risk scoring capstone project.",
+    img: "images/health_risk_hero.png",
+    ctaText: "Read Full Project",
+    ctaUrl: "health_risk_model.html",
+  },
+  {
     tag: "#Conference",
     titleLine1: "MUISC 2026",
     titleLine2: "ORAL PRESENTATION",
