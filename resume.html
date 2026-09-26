@@ -47,6 +47,29 @@
             color: var(--neutral-700);
             opacity: 0.7;
         }
+        .resume-viewer-wrap {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+        .resume-viewer {
+            width: 100%;
+            height: 85vh;
+            min-height: 600px;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg, 1rem);
+            box-shadow: var(--shadow-md);
+            background: #fff;
+        }
+        .resume-viewer-fallback {
+            text-align: center;
+            padding: 2rem;
+            color: var(--neutral-700);
+        }
+        @media (max-width: 640px) {
+            .resume-viewer {
+                height: 70vh;
+            }
+        }
     </style>
 </head>
 <body>
@@ -72,6 +95,15 @@
                 <i class="fas fa-download" aria-hidden="true"></i> Download Resume (PDF)
             </a>
             <p class="resume-meta">For full project write-ups, source links, and live demos, see the <a href="index.html">portfolio homepage</a>.</p>
+        </div>
+
+        <div class="resume-viewer-wrap">
+            <iframe class="resume-viewer" src="Yusuf_Erdem_Resume.pdf" title="Yusuf Erdem's resume, viewable inline">
+                <div class="resume-viewer-fallback">
+                    <p>Your browser can't display the PDF inline.</p>
+                    <a href="Yusuf_Erdem_Resume.pdf" target="_blank" class="card-link">Open Resume (PDF) →</a>
+                </div>
+            </iframe>
         </div>
     </main>
 
