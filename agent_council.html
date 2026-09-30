@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agent Council — Yusuf Erdem</title>
-    <meta name="description" content="Agent Council: a multi-agent system on Google's ADK that autonomously maintains markdown note vaults — orchestrator, editor, and reviewer agents working in a loop.">
+    <meta name="description" content="Agent Council: a multi-agent system on Google's ADK that autonomously maintains markdown note vaults — hardened with edit validation, automatic backups, path-traversal protection, and a 45-test pytest suite.">
     <link rel="canonical" href="https://yusuferdem16.github.io/agent_council.html">
     <meta name="theme-color" content="#05070d">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Yusuf Erdem">
     <meta property="og:title" content="Agent Council — Yusuf Erdem">
-    <meta property="og:description" content="Agent Council: a multi-agent system on Google's ADK that autonomously maintains markdown note vaults — orchestrator, editor, and reviewer agents working in a loop.">
+    <meta property="og:description" content="Agent Council: a multi-agent system on Google's ADK that autonomously maintains markdown note vaults — hardened with edit validation, automatic backups, path-traversal protection, and a 45-test pytest suite.">
     <meta property="og:url" content="https://yusuferdem16.github.io/agent_council.html">
     <meta property="og:image" content="https://yusuferdem16.github.io/images/agent_council_hero.svg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Agent Council — Yusuf Erdem">
-    <meta name="twitter:description" content="Agent Council: a multi-agent system on Google's ADK that autonomously maintains markdown note vaults — orchestrator, editor, and reviewer agents working in a loop.">
+    <meta name="twitter:description" content="Agent Council: a multi-agent system on Google's ADK that autonomously maintains markdown note vaults — hardened with edit validation, automatic backups, path-traversal protection, and a 45-test pytest suite.">
     <meta name="twitter:image" content="https://yusuferdem16.github.io/images/agent_council_hero.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -96,7 +96,7 @@
             <header class="project-hero">
                 <h1>🤖 Agent Council: Multi-Agent Vault Manager</h1>
                 <p style="color: #6dd5a0; font-size: 1.2rem; margin: 0.5rem 0; font-weight: 600;">AI Engineering Project · Google Agent Development Kit</p>
-                <p class="lead">A small multi-agent system that maintains a vault of markdown notes (like an Obsidian vault) — three role-played AI agents take turns planning, editing, and reviewing changes to your notes, entirely on their own.</p>
+                <p class="lead">A small multi-agent system that maintains a vault of markdown notes (like an Obsidian vault) — three role-played AI agents take turns planning, editing, and reviewing changes to your notes, entirely on their own. Recently hardened from a fragile demo into something safe to run against a real vault.</p>
                 <div style="margin-top: 1.5rem; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                     <a href="index.html" style="display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.15); color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,0.25);">← Back to Portfolio</a>
                     <a href="https://github.com/yusuferdem16/agent_council" target="_blank" style="display: inline-block; padding: 10px 20px; background: #06b6d4; color: #0a1628; border-radius: 6px; text-decoration: none; font-weight: 700;"><i class="fab fa-github"></i> View on GitHub</a>
@@ -112,7 +112,7 @@
 
                 <div class="feature-box">
                     <h3>💡 The Idea</h3>
-                    <p>Note-taking vaults (Obsidian and similar tools) accumulate messy, unlinked, inconsistently-formatted files over time. Cleaning them up by hand is tedious. Agent Council automates that upkeep — reorganizing checklists, fixing formatting, and linking related notes together — while keeping a human in the loop for approval at each turn.</p>
+                    <p>Note-taking vaults (Obsidian and similar tools) accumulate messy, unlinked, inconsistently-formatted files over time. Cleaning them up by hand is tedious. Agent Council automates that upkeep — reorganizing checklists, fixing formatting, and linking related notes together — while keeping a human in the loop for approval at each turn. The personas are intentional flavor on top of a real, production-style safety layer underneath: every edit is validated and backed up before it touches your vault.</p>
                 </div>
             </section>
 
@@ -149,10 +149,11 @@
                     </div>
                     <div class="persona-card" style="border-color:#ef4444;">
                         <h4 style="color:#ef4444;">🛑 Reviewer — "Street Reviewer"</h4>
-                        <p>Aggressive, slang-heavy critic. Re-reads the file, roasts the Editor if it's wrong and sends it back, or outputs the literal word <code>STOP</code> to end the loop when it's right.</p>
+                        <p>Aggressive, slang-heavy critic. Re-reads the file, roasts the Editor if it's wrong and sends it back, or calls ADK's <code>exit_loop</code> tool to actually end the loop when it's right.</p>
                         <p class="quote">"Y'all are straight-up CLOWNS out here fumbling basic-ass file paths!"</p>
                     </div>
                 </div>
+                <p style="color: #8b93a8; font-size: 0.92rem; margin-top: 1.5rem;">The personas are intentional flavor — they make multi-agent transcripts easy to debug. Underneath the theatrics is a real, production-style safety layer; see below.</p>
             </section>
 
             <!-- Tools -->
@@ -161,7 +162,7 @@
                 <div class="features-grid">
                     <div class="feature-card">
                         <h4>list_markdown_files</h4>
-                        <p>Lists the markdown files in the configured vault directory (Orchestrator).</p>
+                        <p>Recursively lists markdown files anywhere in the vault (nested folders now included), excluding internal folders like <code>.obsidian/</code>, <code>.trash/</code>, and the backup directory (Orchestrator).</p>
                     </div>
                     <div class="feature-card">
                         <h4>parse_roadmap_markdown</h4>
@@ -169,7 +170,7 @@
                     </div>
                     <div class="feature-card">
                         <h4>edit_markdown_with_groq</h4>
-                        <p>Sends the file's content plus edit instructions to Groq, then overwrites the file in place with the returned markdown (Editor).</p>
+                        <p>Sends the file's content plus edit instructions to Groq, validates the returned markdown before accepting it, writes a timestamped backup of the original, then applies the edit. Supports a dry-run mode and section-level edits (rewrite just one heading) for large files (Editor).</p>
                     </div>
                     <div class="feature-card">
                         <h4>create_markdown_file</h4>
@@ -177,9 +178,14 @@
                     </div>
                     <div class="feature-card">
                         <h4>file_linker</h4>
-                        <p>Adds Obsidian-style <code>[[wiki-links]]</code> between related notes (Editor).</p>
+                        <p>Adds Obsidian-style <code>[[wiki-links]]</code> under a dedicated "## Related notes" section, skipping duplicates and disambiguating notes that share a name elsewhere in the vault (Editor).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>exit_loop</h4>
+                        <p>ADK's built-in escalation tool, called by the Reviewer on approval to actually end the <code>LoopAgent</code> early instead of running to the iteration cap regardless of outcome (Reviewer).</p>
                     </div>
                 </div>
+                <p style="color: #8b93a8; font-size: 0.92rem; margin-top: 1rem;">Every tool that touches the filesystem resolves its path against the configured vault root first and refuses anything — absolute paths, <code>../</code> escapes — that would read or write outside it.</p>
             </section>
 
             <!-- Demo -->
@@ -194,8 +200,50 @@
 
                 <figure class="project-image-figure">
                     <img src="images/agent_council_demo_2.jpg" alt="Editor applying an edit via Groq and the Reviewer approving with STOP" class="project-image">
-                    <figcaption>The Editor applies the edit via Groq and reports back; the Reviewer checks it and outputs STOP to end the loop.</figcaption>
+                    <figcaption>The Editor applies the edit via Groq and reports back; the Reviewer checks it and says STOP.</figcaption>
                 </figure>
+                <div class="warning-box">
+                    <h4>🐛 The Bug This Run Was Hiding</h4>
+                    <p>This screenshot is from before the fix below: the Reviewer saying "STOP" was purely cosmetic — ADK's <code>LoopAgent</code> only exits on an explicit escalate signal or a hard iteration cap, so the loop actually ran to completion every single time regardless of what the Reviewer said. It <em>looked</em> like the council was stopping on approval; it wasn't.</p>
+                </div>
+            </section>
+
+            <!-- Hardening -->
+            <section class="section-divider">
+                <h2>🛡️ From Demo to Safe-to-Run</h2>
+                <p>The version above worked, but it wasn't safe to point at a real vault: a bad edit could silently wipe out a note, the "review and stop" step didn't actually stop anything, and there was no guardrail against a tool writing outside the vault. Here's what changed:</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>✅ No more silent data loss</h4>
+                        <p>The Editor used to overwrite a note with whatever Groq returned, no matter how much content it dropped. Every edit is now validated before being written — rejected if it's much shorter than the original, or if it lost wikilinks, embeds, code blocks, or frontmatter, unless the instructions explicitly asked for that removal. A timestamped backup of the original is written before any accepted change.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✅ The loop actually stops now</h4>
+                        <p>The Reviewer was supposed to end the loop by saying "STOP" — but ADK's <code>LoopAgent</code> only stops on an explicit escalate signal or the iteration cap, so it ran to completion every time regardless of the review outcome. Wired in ADK's built-in <code>exit_loop</code> tool so approval actually ends the loop early.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✅ Closed a path-traversal hole</h4>
+                        <p>Tools now resolve every path against the configured vault root and refuse anything — absolute paths, <code>../</code> escapes — that would read or write outside it.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✅ Recursive, cleaner file discovery</h4>
+                        <p>Nested vault folders now show up in listings, whereas the tool previously only scanned the top-level directory. Internal folders (<code>.obsidian/</code>, <code>.trash/</code>, the new backup folder) are excluded.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✅ A real linking tool</h4>
+                        <p>Replaced a bare "append a wikilink" tool with one that adds links under a "## Related notes" section, skips duplicates, and disambiguates notes that share the same name elsewhere in the vault.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✅ Dry-run and section-level edits</h4>
+                        <p>A dry-run mode previews an edit without writing it, and section-level editing rewrites just one heading's section instead of the whole file — useful for large notes.</p>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h4>🧪 Tested Against a Fake Vault</h4>
+                    <p>A 45-test <code>pytest</code> suite covers path-safety, edit validation and backups, linking, and the loop-exit mechanism — all running against a disposable fake vault fixture, so the suite needs no real API keys or network calls.</p>
+                </div>
             </section>
 
             <!-- Limitations -->
@@ -204,8 +252,6 @@
                 <div class="warning-box">
                     <ul class="impact-list">
                         <li><code>parse_roadmap_markdown</code> only recognizes GitHub-style <code>- [ ]</code> / <code>- [x]</code> checkboxes — other list formats aren't parsed.</li>
-                        <li>Tools take a vault-relative path, but <code>parse_roadmap_markdown</code> expects a full file path — the agent has to combine the two itself, which is exactly the kind of path mismatch that shows up in the demo run above.</li>
-                        <li><code>edit_markdown_with_groq</code> overwrites the target file in place with no diff or undo — keep the vault under version control.</li>
                     </ul>
                 </div>
             </section>
@@ -219,6 +265,9 @@
                     <span class="tech-tag">Gemini (gemini-flash-latest)</span>
                     <span class="tech-tag">Groq API</span>
                     <span class="tech-tag">LoopAgent</span>
+                    <span class="tech-tag">pytest</span>
+                    <span class="tech-tag">Path-Traversal Prevention</span>
+                    <span class="tech-tag">Defensive Tool Design</span>
                     <span class="tech-tag">Caddy (optional HTTPS proxy)</span>
                 </div>
             </section>

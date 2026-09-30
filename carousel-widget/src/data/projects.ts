@@ -14,7 +14,7 @@ export const projectItems: CarouselItem[] = [
     tag: "#AIEngineering",
     titleLine1: "AGENT COUNCIL",
     titleLine2: "MULTI-AGENT VAULT MANAGER",
-    desc: "Three role-played AI agents plan, edit, and review markdown notes in a loop, built on Google's Agent Development Kit.",
+    desc: "Three role-played AI agents plan, edit, and review markdown notes in a loop on Google's ADK — hardened with edit validation, backups, and 45 tests.",
     img: "images/agent_council_hero.svg",
     ctaText: "Read Full Project",
     ctaUrl: "agent_council.html",
