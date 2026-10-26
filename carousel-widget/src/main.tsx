@@ -18,7 +18,7 @@ mount(
   <LiquidMetalHero
     badge="🎓 M.Sc. AI Engineering @ University of Passau"
     title="Yusuf Erdem"
-    eyebrow="AI Engineer · Actively Seeking a Werkstudent Role"
+    eyebrow="AI Engineering Student · Actively Seeking a Werkstudent Role"
     subtitle="AI Engineering graduate student building agentic AI and production ML systems — a passion that grew during my internship building multi-agent AI at Martur Fompak International. Also a language enthusiast, currently learning German alongside fluent English."
     avatarSrc="images/profile_photo.jpg"
     avatarAlt="Yusuf Erdem"
