@@ -360,11 +360,19 @@ h2 {
  * tones make that cyan tail blend in and look washed out. Force solid,
  * fully-opaque text there instead; the gradient underline bar (h2::after)
  * still applies for visual consistency with every other section heading.
+ *
+ * Hardcoded #ffffff, not var(--primary): the coverflow carousel's own root
+ * also carries .cf-widget-scope (for Tailwind utility scoping) and defines
+ * its OWN --primary as a shadcn token — which falls back to shadcn's light-
+ * theme near-black (oklch(0.205 0 0)) since that root never gets the
+ * sibling .dark class. That shadows the site's white --primary for every
+ * h2 inside the carousel too (the per-card titles), rendering them almost
+ * black. A literal value sidesteps the name collision entirely.
  */
 .cf-widget-scope h2 {
     background: none;
-    -webkit-text-fill-color: var(--primary);
-    color: var(--primary);
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
     text-shadow: 0 2px 16px rgba(5, 7, 13, 0.85);
 }
 
